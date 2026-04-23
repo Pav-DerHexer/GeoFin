@@ -328,6 +328,25 @@
     line-height: 1.6;
   }
 
+  /* ── HOME NAV ── */
+  .home-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.55rem 1.5rem;
+  }
+  .home-nav a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    text-decoration: none;
+  }
+  .home-nav a:hover { color: var(--accent); }
+
   @media (max-width: 600px) {
     h1 { font-size: 1.8rem; }
     h2 { font-size: 1.4rem; }
@@ -338,6 +357,8 @@
 </style>
 </head>
 <body>
+
+<nav class="home-nav"><a href="index.html">← Inicio</a></nav>
 
 <header>
   <div class="header-eyebrow">Análisis &middot; Macroeconomía &middot; Cripto</div>
