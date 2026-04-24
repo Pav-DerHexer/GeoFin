@@ -167,6 +167,7 @@
     background: #1a3a5c;
   }
 
+  .post-tag.geo { background: #1a3a5c; }
   .post-tag.fin { background: #2e6b3a; }
   .post-tag.new { background: var(--accent); }
 
@@ -193,6 +194,43 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent2);
+  }
+
+  /* ── FEATURED (most recent post) ── */
+  .post.featured {
+    grid-template-columns: 1fr;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 2.5rem;
+  }
+
+  .post.featured .post-body {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .post.featured .post-title {
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+
+  .post.featured .post-subtitle {
+    font-size: 0.95rem;
+    max-width: 600px;
+  }
+
+  .post.featured .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .post.featured .post-date-inline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
   }
 
   @media (max-width: 540px) {
@@ -240,6 +278,33 @@
   </header>
 
   <p class="section-label">Latest articles</p>
+
+  <a class="post featured" href="2026.04.23_Bitcoin.Sovereign.Debt_Direction.of.Greatest.Incentive.html">
+    <div class="post-body">
+      <div class="post-meta">
+        <span class="post-tag new">New</span>
+        <span class="post-tag fin">Finance</span>
+        <span class="post-date-inline">April 23, 2026</span>
+      </div>
+      <h2 class="post-title">Bitcoin and Sovereign Debt:<br>The Direction of <em>Greatest Incentive</em></h2>
+      <p class="post-subtitle">How BTC and stablecoins may become the financial infrastructure that the sovereign debt system needs to survive itself.</p>
+      <span class="post-read">Read analysis →</span>
+    </div>
+  </a>
+
+  <a class="post" href="2026.03.31_Ground.Troops.Cost.Analysis_vs_Petrodollar.Decline.html">
+    <div class="post-date">
+      <span class="post-date-day">31</span>
+      <span class="post-date-month">Mar</span>
+      <span class="post-date-year">2026</span>
+    </div>
+    <div class="post-body">
+      <span class="post-tag geo">Geopolitics</span>
+      <h2 class="post-title">The Real Cost of the War<br>USA/Israel vs. <em>Iran</em></h2>
+      <p class="post-subtitle">What is more costly: a ground intervention to control the Strait of Hormuz, or the erosion of the petrodollar system that the war itself is accelerating?</p>
+      <span class="post-read">Read analysis →</span>
+    </div>
+  </a>
 
   <a class="post" href="2026.03.13_Geopolitical.Analysis.Middle.East_March.2026.html">
     <div class="post-date">
