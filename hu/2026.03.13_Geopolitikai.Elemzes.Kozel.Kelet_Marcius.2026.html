@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Közel-Kelet: Ki nyer, ki veszít és miért Netanyahu az egyetlen kibontott szál</title>
+<link rel="alternate" hreflang="es" href="../es/2026.03.13_Analisis.Geopolitico.Oriente.Medio_Marzo.2026.html">
+<link rel="alternate" hreflang="en" href="../en/2026.03.13_Geopolitical.Analysis.Middle.East_March.2026.html">
+<link rel="alternate" hreflang="de" href="../de/2026.03.13_Geopolitische.Analyse.Naher.Osten_Maerz.2026.html">
+<link rel="alternate" hreflang="hu" href="./2026.03.13_Geopolitikai.Elemzes.Kozel.Kelet_Marcius.2026.html">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f4f0e8;
+    --accent: #c8392b;
+    --accent2: #1a3a5c;
+    --muted: #6b6560;
+    --rule: #d4cfc7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  header { border-bottom: 3px double var(--ink); padding: 2rem 0 0; text-align: center; }
+
+  .header-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 820px;
+    margin: 0 auto 1.5rem;
+    padding: 0 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em { font-style: italic; color: var(--accent); }
+
+  .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    padding: 0 2rem;
+  }
+
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+  .lead { padding: 3rem 0 2rem; border-bottom: 1px solid var(--rule); }
+
+  .lead p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    line-height: 1.65;
+    color: #1a1a1a;
+  }
+
+  section { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
+
+  .section-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+
+  h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  p { margin-bottom: 1.2rem; font-size: 1rem; color: #2a2a2a; }
+
+  .actors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .actor-card {
+    border: 1px solid var(--rule);
+    padding: 1.5rem;
+    background: white;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .actor-card:hover { transform: translateY(-2px); box-shadow: 4px 4px 0 var(--ink); }
+
+  .actor-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .actor-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+    margin-top: 0.8rem;
+  }
+
+  .actor-text { font-size: 0.88rem; line-height: 1.55; color: #333; margin: 0; }
+
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .scenario-card {
+    padding: 1.25rem;
+    border: 1px solid var(--rule);
+    background: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scenario-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .s1::after { background: #2ecc71; }
+  .s2::after { background: #3498db; }
+  .s3::after { background: #e74c3c; }
+  .s4::after { background: #9b59b6; }
+
+  .scenario-prob {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .s1 .scenario-prob { color: #2ecc71; }
+  .s2 .scenario-prob { color: #3498db; }
+  .s3 .scenario-prob { color: #e74c3c; }
+  .s4 .scenario-prob { color: #9b59b6; }
+
+  .scenario-title { font-size: 0.8rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--ink); }
+  .scenario-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin: 0; }
+
+  .pullquote {
+    margin: 2.5rem 0;
+    padding: 2rem 2rem 2rem 3rem;
+    border-left: 4px solid var(--accent);
+    background: white;
+    position: relative;
+  }
+
+  .pullquote::before {
+    content: '\201E';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--accent);
+    opacity: 0.2;
+    position: absolute;
+    top: -1rem; left: 0.5rem;
+    line-height: 1;
+  }
+
+  .pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .timeline { margin: 2rem 0; position: relative; padding-left: 2rem; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.4rem; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .timeline-item { position: relative; margin-bottom: 1.5rem; padding-left: 1rem; }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.7rem; top: 0.4rem;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  .timeline-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-event { font-size: 0.9rem; font-weight: 500; color: var(--ink); margin-bottom: 0.25rem; }
+  .timeline-detail { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+  .netanyahu-box {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2.5rem;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .netanyahu-box::before {
+    content: '⚠';
+    position: absolute;
+    right: 1.5rem; top: 1rem;
+    font-size: 4rem;
+    opacity: 0.08;
+  }
+
+  .netanyahu-box h2 { color: var(--paper); margin-bottom: 1rem; }
+  .netanyahu-box p { color: rgba(244,240,232,0.85); font-size: 0.95rem; }
+  .netanyahu-box .signal-list { list-style: none; margin: 1rem 0; }
+
+  .netanyahu-box .signal-list li {
+    padding: 0.5rem 0 0.5rem 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.88rem;
+    color: rgba(244,240,232,0.85);
+    position: relative;
+  }
+
+  .netanyahu-box .signal-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+
+  .econ-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .econ-card { padding: 1.25rem; border: 1px solid var(--rule); background: white; }
+
+  .econ-actor {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .econ-verdict { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .econ-pos { color: #1a7a3c; }
+  .econ-neg { color: var(--accent); }
+  .econ-amb { color: #856404; }
+  .econ-detail { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin: 0; }
+
+  .markets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+
+  .market-card { border: 1px solid var(--rule); background: white; overflow: hidden; }
+
+  .market-card-header {
+    padding: 0.75rem 1.25rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .mh-tension { background: #856404; }
+  .mh-escalada { background: var(--accent); }
+  .mh-paz { background: #1a7a3c; }
+
+  .market-card-body { padding: 1.25rem; }
+
+  .market-scenario {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+
+  .position-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.83rem;
+  }
+
+  .position-row:last-of-type { border-bottom: none; }
+  .pos-asset { color: #333; }
+
+  .pos-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+
+  .pos-long { background: #d4edda; color: #155724; }
+  .pos-short { background: #f8d7da; color: #721c24; }
+
+  .market-note {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .conclusion { background: var(--accent2); color: white; padding: 3rem; }
+  .conclusion h2 { color: white; font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 1.5rem; }
+  .conclusion p { color: rgba(255,255,255,0.85); font-size: 0.95rem; max-width: 700px; }
+
+  .conclusion .final-line {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: white;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .disclaimer {
+    padding: 2rem 0;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-style: italic;
+    border-top: 1px solid var(--rule);
+  }
+
+  .home-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.55rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .home-nav > a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    text-decoration: none;
+  }
+  .home-nav > a:hover { color: var(--accent); }
+
+  .lang-bar { display: flex; align-items: center; gap: 0.35rem; }
+  .lang-bar a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .lang-bar a:hover { color: var(--accent2); }
+  .lang-bar a.active { color: var(--accent2); }
+  .lang-bar .sep { color: var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; }
+
+  @media (max-width: 600px) {
+    .actors-grid, .scenario-grid, .econ-grid, .markets-grid { grid-template-columns: 1fr; }
+    .header-meta { flex-direction: column; gap: 0.5rem; align-items: center; }
+    .conclusion, .netanyahu-box { padding: 1.5rem; }
+    .lang-bar { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="home-nav">
+  <a href="index.html">← Kezdőlap</a>
+  <div class="lang-bar">
+    <a href="../es/2026.03.13_Analisis.Geopolitico.Oriente.Medio_Marzo.2026.html">ES</a>
+    <span class="sep">·</span>
+    <a href="../en/2026.03.13_Geopolitical.Analysis.Middle.East_March.2026.html">EN</a>
+    <span class="sep">·</span>
+    <a href="../de/2026.03.13_Geopolitische.Analyse.Naher.Osten_Maerz.2026.html">DE</a>
+    <span class="sep">·</span>
+    <a href="./2026.03.13_Geopolitikai.Elemzes.Kozel.Kelet_Marcius.2026.html" class="active">HU</a>
+  </div>
+</nav>
+
+<header>
+  <div class="header-eyebrow">Geopolitikai elemzés · 2026. március</div>
+  <h1>Közel-Kelet: Ki nyer, ki veszít<br>és miért <em>Netanyahu</em> az egyetlen kibontott szál</h1>
+  <p class="subtitle">Az ösztönzők, tárgyalási tőkeáttételek és az Iránnal való konfliktus globális gazdasági következményeinek elemzése</p>
+  <div class="header-meta">
+    <span>Szerző: <strong>P.V.</strong></span>
+    <span>Olvasási idő: 14 perc</span>
+    <span>Geopolitika · Gazdaság · Közel-Kelet</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="lead">
+    <p>Senki sem tud megegyezni abban, hogy miért kezdődött ez a háború. Szó esik nukleáris fegyverekről, Izraelről, Amerika védelméről. De ha minden szereplő valódi ösztönzőit követjük, egy olyan kép rajzolódik ki, amely gyökeresen különbözik attól, amit a mainstream média mutat. Ez nem háború nemzetek között. Ez az érdekek konvergenciája, amelyben szinte minden hatalmas szereplő ugyanazt akarja: a kiutat. Majdnem mindannyian.</p>
+  </div>
+
+  <section>
+    <div class="section-number">01 · A központi tézis</div>
+    <h2>A bejelentett célok nem a valódi célok</h2>
+
+    <p>A konfliktus nyilvános céljai — az iráni nukleáris program felszámolása, a terrorizmusfinanszírozás megszüntetése, rezsimváltás — egy feltűnő közös vonással rendelkeznek: egyiket sem határozták meg egyértelmű sikerkritériumokkal. Nincs célvonal. Ez nem véletlen.</p>
+
+    <p>Ha egy katonai célnak nincs pontos sikerdefiníciója, a kétértelműség funkcionális: lehetővé teszi a konfliktus határozatlan ideig való folytatását, a cél megváltoztatását, ha az kényelmetlenné válik, és soha nem kell megmagyarázni, miért nem sikerült elérni.</p>
+
+    <div class="pullquote">
+      <p>A 2015-ös JCPOA fékezte az iráni nukleáris programot, és az összes IAEA-jelentés szerint működött. Az USA 2018-ban egyoldalúan kilépett. Azóta az iráni nukleáris program fejlettebb, mint amikor az egyezmény még érvényben volt.</p>
+    </div>
+
+    <p>Ha a valódi cél a nukleáris program megfékezése lett volna, az egyetlen eszköz elhagyása, amely megfékezte, kontraproduktív. A logikai következtetés: vagy súlyos inkompetencia állt fenn, vagy a nukleáris program nem volt a valódi cél.</p>
+  </section>
+
+  <section>
+    <div class="section-number">02 · Szereplők térképe</div>
+    <h2>Minden szereplő ösztönzői és tőkeáttételei</h2>
+
+    <div class="actors-grid">
+
+      <div class="actor-card">
+        <div class="actor-name">Amerikai Katonai-Ipari Komplexum</div>
+        <div class="actor-label">Ösztönző</div>
+        <p class="actor-text">Minden kilőtt rakétát pótolni kell. Minden konfliktus szerződéseket generál. Részvényeik háborúban emelkednek. Mindkét párt kampányát finanszírozzák, és rendszeresen forgatnak a magánszektor és a Pentagon között.</p>
+        <div class="actor-label">Tőkeáttétel</div>
+        <p class="actor-text">Strukturális befolyás a Kongresszusra és a Pentagon döntéseire. A legnagyobb az amerikai rendszerben.</p>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-name">Netanyahu / Izraeli Kormány</div>
+        <div class="actor-label">Ösztönző</div>
+        <p class="actor-text">Kettős: valódi stratégiai (Irán atombomba nélkül) és személyes (a külső konfliktus eltereli a figyelmet a korrupciós bírósági eljárásaitól és megszilárdítja szélsőjobbos koalícióját). Netanyahu számára a konfliktus folytatása politikai túlélés kérdése.</p>
+        <div class="actor-label">Tőkeáttétel</div>
+        <p class="actor-text">Közvetlen katonai műveleti kapacitás, beleértve az amerikai indítókódok nélküli szuverén nukleáris arzenált, és privilegizált hozzáférés washingtoni döntésekhez lobbi és adományozók révén.</p>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-name">Kína</div>
+        <div class="actor-label">Ösztönző</div>
+        <p class="actor-text">A Hormuzi-szoros stabilitása (olajának 40%-a), a Selyemút fejlesztése, a dollár gyengítése tartalékvalutaként, és a globális közvetítő hatalom megszilárdítása egy kimerült USA-val szemben.</p>
+        <div class="actor-label">Tőkeáttételek</div>
+        <p class="actor-text">Az iráni olaj 80%-át vásárolja. A 2023-as szaúdi-iráni egyezmény közvetítője. Az USA legnagyobb külső hitelezője (760 milliárd $ kincstárjegyekben). Ellenőrzi a ritkaföld-feldolgozás 85–90%-át: e nélkül az USA nem tud fejlett fegyvereket gyártani.</p>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-name">Trump / USA</div>
+        <div class="actor-label">Ösztönző</div>
+        <p class="actor-text">A félidős választások 2026 novemberében vannak. Egy hosszú háború inflációt hajt fel és megsemmisíti a választási tőkéjét. Olyan kiutat kell találnia, amelyet eladhat mint azt a nagy győzelmet, amelyet egyetlen korábbi elnök sem tudott elérni.</p>
+        <div class="actor-label">Tőkeáttétel</div>
+        <p class="actor-text">Évi 3,8 milliárd $ katonai segély Izraelnek. Ez a legerősebb elérhető tőkeáttétel Netanyahu felett, és eddig a legkevésbé kihasznált. Egy tranzakcionális szereplő, mint Trump, lehet az első, aki ezt hitelt érdemlően alkalmazza.</p>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-name">Irán — Az ajatollahok rezsimje</div>
+        <div class="actor-label">Ösztönző</div>
+        <p class="actor-text">Az iráni rezsim számára ez nem csak geopolitikai konfliktus: létező harc. A területe elleni közvetlen támadások a rezsim túlélését teszik legfőbb ösztönzővé. Egy létéért küzdő szereplő nem gyengeségből tárgyal — abszolút és megkerülhetetlen garanciákat követelve tárgyal.</p>
+        <div class="actor-label">Tőkeáttétel</div>
+        <p class="actor-text">A Hormuzi-szoros ellenőrzése: a világ olajának 20%-a halad át rajta. A lezárással való fenyegetés végrehajtás nélkül többet ér, mint végrehajtva, de az egzisztenciális logika bármikor megváltoztathatja ezt a kalkulációt.</p>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-name">Szaúd-Arábia / Öböl</div>
+        <div class="actor-label">Ösztönző</div>
+        <p class="actor-text">A Vision 2030 regionális stabilitást igényel befektetések és turizmus vonzásához. Amíg a szoros feszültség alatt van, olajoexportjuk szenved, függetlenül a tőzsdei ártól. A stabilitás és a kereskedelmi útvonalak újranyitása az, ami lehetővé teszi tartalékaik monetizálását.</p>
+        <div class="actor-label">Tőkeáttétel</div>
+        <p class="actor-text">Masszív befektetések az USA-ban és dokumentált politikai befolyás szuverén vagyonalapok révén. Belülről tudnak hatni az amerikai rendszerre.</p>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-name">Oroszország</div>
+        <div class="actor-label">Ösztönző</div>
+        <p class="actor-text">Oroszország ösztönzője szintén egzisztenciális: Ukrajna demilitarizálása és a NATO-tagság elleni állandó vétó. A közel-keleti konfliktus gazdaságilag kedvező számára és az USA-t elfoglalja, de amit Oroszország igazán akar, az Európában van. Trump-Putyin tárgyalások már folyamatban vannak.</p>
+        <div class="actor-label">Tőkeáttétel</div>
+        <p class="actor-text">Katonai hírszerzés biztosítása Iránnak, hivatalosan nem elismerten. E komponens nélkül Irán célmeghatározása lényegesen nehezebb lenne. Oroszország csak akkor ösztönzött Iránt tárgyalásra nyomni, ha valódi ellenszolgáltatásokat kap Ukrajnában és Európában.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="section-number">03 · Lehetséges forgatókönyvek</div>
+    <h2>Négy kimenetel és becsült valószínűségük</h2>
+
+    <div class="scenario-grid">
+      <div class="scenario-card s4">
+        <div class="scenario-prob">45%</div>
+        <div class="scenario-title">Kínai közvetítés</div>
+        <p class="scenario-desc">Kína megkönnyíti a megállapodást Irán és az USA feletti tőkeáttételeinek felhasználásával. Technikailag a legszilárdabb forgatókönyv. Azt is megköveteli, hogy az iráni követelések elfogadhatóak legyenek, és Oroszország részben megkapja, amit Ukrajnában keres.</p>
+      </div>
+      <div class="scenario-card s3">
+        <div class="scenario-prob">25%</div>
+        <div class="scenario-title">Kontrollálatlan eszkaláció</div>
+        <p class="scenario-desc">Egyetlen racionális szereplő sem akarja, de Netanyahunak ösztönzői vannak a maximális feszültség fenntartására. Izrael független a nukleáris fegyverek használatában. Egzisztenciális küzdelemben a félreszámítások valószínűbbek, mint bármely modell előre jelzi.</p>
+      </div>
+      <div class="scenario-card s2">
+        <div class="scenario-prob">20%</div>
+        <div class="scenario-title">A konfliktus befagyasztása</div>
+        <p class="scenario-desc">Trump kinyilváníthatja a győzelmet és leállíthatja a támadásokat, de Irán egzisztenciális küzdelmében folytathatja, hogy szilárd meg nem támadási garanciák nélkül kiszorítson minden amerikai jelenlétet a térségből. Kína ösztönzőivel sem egyezik, amely végleges megoldást igényel.</p>
+      </div>
+      <div class="scenario-card s1">
+        <div class="scenario-prob">10%</div>
+        <div class="scenario-title">Nagy Trump-Irán megállapodás</div>
+        <p class="scenario-desc">Az USA korábbi fegyverszünet-megszegése súlyosan rontotta Trump hitelességét Irán előtt. Teherán aligha ír alá kétoldalú megállapodást anélkül, hogy harmadik felek garantálnák, akik nem függnek attól, aki már egyszer nem tartotta be a szavát.</p>
+      </div>
+    </div>
+
+    <p>Az 1., 3. és 4. forgatókönyvnek van egy közös szükséges feltétele: hogy Netanyahu ne legyen többé az aktív blokkoló tényező. Enélkül az eszkaláció vagy a határozatlan befagyasztás valószínűsége nő minden valódi megoldás rovására.</p>
+  </section>
+
+  <section>
+    <div class="section-number">04 · A blokkoló csomópont</div>
+    <h2>Netanyahu: az egyetlen szereplő, akinek ösztönzői a konfliktus felé mutatnak</h2>
+
+    <p>Ha minden valódi hatalommal rendelkező szereplő ösztönzőit feltérképezzük, szokatlan kép rajzolódik ki: szinte mindannyian de-eszkalációt akarnak. Kínának stabilitás kell. Trumpnak választási győzelem kell. Iránnak túlélés és szankciók feloldása kell. Szaúd-Arábiának Vision 2030 kell. Európának olcsó energia kell. Oroszország Ukrajna demilitarizálását, a NATO-tagság elleni vétót és az európai kereskedelmi kapcsolatok helyreállítását akarja.</p>
+
+    <p>Egyetlen szereplő van, akinek személyes és politikai ösztönzői ellentétes irányba mutatnak.</p>
+
+    <div class="netanyahu-box">
+      <h2>Miért Netanyahu az a szál, amely mindent blokkol</h2>
+      <p>Netanyahu aktív korrupciós vádakkal szembesül az izraeli bíróságokon. Koalíciója szélsőjobbos pártoktól függ, amelyek szétesnének bármely olyan megállapodásnál, amely életben hagyja az iráni rezsimet. Egy aktív külső konfliktus eltereli az igazságszolgáltatási figyelmet és megszilárdítja politikai pozícióját.</p>
+      <p style="margin-top:1rem;">Számára a békének közvetlen politikai ára van. Mindenki más számára a háborúnak növekvő költségei vannak.</p>
+      <p style="margin-top:1rem;">Paradox módon Ali Khamenei meggyilkolásának elrendelésével Netanyahu politikailag önmagát áldozta fel. Ez a döntés visszafordíthatatlanul elidegenítette ösztönzőit a legfontosabb globális hatalmi blokkoktól, beleértve magát Trumpot is. Azon túl eszkalált, amit egyetlen stratégiai szövetsége sem volt hajlandó követni, és ez az elszigeteltség gyorsítja bukását.</p>
+      <ul class="signal-list" style="margin-top:1.5rem;">
+        <li><strong>Figyelendő kulcsszignál:</strong> Az izraeli támogatás csökkentése az ENSZ Biztonsági Tanácsában az USA részéről</li>
+        <li><strong>Figyelendő kulcsszignál:</strong> Belső bírósági eljárásainak felgyorsulása Izraelben</li>
+        <li><strong>Figyelendő kulcsszignál:</strong> Nyilvános repedések koalíciójában (Ben Gvir, Smotrich)</li>
+        <li><strong>Figyelendő kulcsszignál:</strong> Öböl-közvetítők fokozott diplomáciai aktivitása Izraellel</li>
+        <li><strong>Figyelendő kulcsszignál:</strong> Trump nyilvánosan feltételekhez köti az izraeli katonai segélyt</li>
+        <li><strong>Figyelendő kulcsszignál:</strong> Izraeli katonák vagy hírszerző tisztek kritikus nyilatkozatai az ő irányításával szemben</li>
+      </ul>
+    </div>
+
+    <p>Trump nyilvános kérése Netanyahu felmentésére nem üres lojalitási gesztus. Tranzakcionális nyelv: <em>„Segítek neked az igazságügyi ügyekben, ha te segítesz nekem lezárni ezt."</em> Trump azonosította a blokkoló csomópontot, és tárgyalt kiutat kínál, mielőtt a helyzet költségesebb intézkedésekre kényszerítené.</p>
+
+    <p>A blokkoló csomóponttal rendelkező rendszerek hajlamosak megoldani azokat. A legvalószínűbb út nem fizikai, hanem politikai és igazságügyi: koalíciójának összeomlása, felgyorsult bírósági lépések, vagy valamilyen személyes védelemmel kísért tárgyalt visszavonulás. Minden útban Netanyahu lekerül a színpadról. A különbség az, hogy méltóságteljes kiszállással vagy anélkül.</p>
+  </section>
+
+  <section>
+    <div class="section-number">05 · Az ütemterv</div>
+    <h2>Trumpnak kevesebb ideje van, mint látszik</h2>
+
+    <p>A névleges határidő a 2026 novemberi választások. De a valódi határidő a 2026-os nyár: ha a gazdaság inflációs nyomás alatt van, amikor az republikánus előválasztások megkezdődnek, a választási kár már bekövetkezett, még ha októberben jön is megállapodás.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2026. április</div>
+        <div class="timeline-event">USA–Kína csúcs vagy kapcsolatfelvétel</div>
+        <p class="timeline-detail">A közvetítői lánc aktiválása. Kína jelzi, hogy felhasználja Irán feletti tőkeáttételeit. Az USA elfogadja a kínai szerepet. Annak jelei, hogy Kína már elítélte az iráni támadásokat, arra utalnak, hogy a jelzés folyamatban van.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026. április — május</div>
+        <div class="timeline-event">Kínai nyomás Iránra és Trump-Putyin kontaktusok</div>
+        <p class="timeline-detail">Kína privát módon közvetíti Iránnak a de-eszkaláció feltételeit. Párhuzamosan a Trump-Putyin tárgyalások Ukrajnáról az a tőkeáttétel, amely Oroszországot ráveheti a katonai hírszerzés Iránnak való biztosításának leállítására.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026. május — június</div>
+        <div class="timeline-event">Netanyahu válsága vagy távozása</div>
+        <p class="timeline-detail">A legbizonytalanabb lépés. Politikai önfeláldozása, miután azon túl eszkalált, amit szövetségesei követni akartak, elszigeteltté tette. Koalíciójának összeomlása vagy felgyorsult bírósági lépések a legvalószínűbb mechanizmusok.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026. június — július</div>
+        <div class="timeline-event">Formális tárgyalás és keretmegállapodás</div>
+        <p class="timeline-detail">Netanyahu semlegesítésével egy pragmatikusabb izraeli vezetés nem blokkol aktívan. Valószínű csatorna: Omán vagy Katar, az USA és Irán történelmi közvetítői.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026. július — augusztus</div>
+        <div class="timeline-event">A nagy megállapodás bejelentése</div>
+        <p class="timeline-detail">Trump bemutatja a közel-keleti békét, amelyet egyetlen korábbi elnök sem ért el. Az olaj esik. Az infláció enged. Választási hatás ősszel.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026. november</div>
+        <div class="timeline-event">Félidős választások</div>
+        <p class="timeline-detail">Az eredmény attól függ, hogy az előző sorrend időben lezárult-e, és a gazdasági hatások érzékelhetők-e az átlagos amerikai szavazó számára.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-number">06 · Gazdasági következmények</div>
+    <h2>Mit jelent az Iránnal való normalizálás a világgazdaságnak</h2>
+
+    <h3>Az azonnali hatás: az olaj</h3>
+    <p>A piac nem vár a végrehajtásra: a főcímre reagál. Abban a pillanatban, amikor egy megállapodás hiteles, a Brent néhány nap alatt nagyon erősen esik. Irán képes napi 1,5 millió hordóval bővíteni a piacot. A lánc közvetlen: az olaj esik, a globális logisztika esik, az infláció esik, a jegybankok mozgásteret kapnak kamatcsökkentésre, a jelzáloghitelek esnek, a fogyasztás emelkedik.</p>
+
+    <h3>A strukturális hatás: a petrodollár nyomás alatt</h3>
+    <p>1974 óta az olajat dollárban adják el, ami arra kényszerít minden országot, hogy dollárt tartson tartalékban az energiavásárláshoz. Ez fenntartja a dollár értékét és lehetővé teszi az USA számára az olcsó adósságkibocsátást. Irán már jüanban ad el Kínának. Szaúd-Arábia részleges jüan-megállapodásokat írt alá. Az iráni normalizálás kiterjeszti ezt a mintát. Ez nem azonnali dollár-összeomlás: fokozatos, de strukturális erózió, hosszú távú következményekkel az USA adósságfinanszírozási és katonai kiadási képességére.</p>
+
+    <h3>A központi ellentmondás</h3>
+    <p>Trumpnak normalizálás kell a 2026 novemberi választások megnyeréséhez: az olaj esik, az infláció esik, a kamatok esnek. Ez pontosan az a gazdasági forgatókönyv, amelyre a kampányának szüksége van. De ez a normalizálás felgyorsítja annak a petrodollár-rendszernek az eróziót, amelyen az USA hosszú távú pénzügyi hatalma alapul. Azonnali enyhülés, amely elmélyíti a strukturális problémát. Így működnek ezek a történelmi ciklusok.</p>
+
+    <div class="econ-grid">
+      <div class="econ-card">
+        <div class="econ-actor">USA — Fogyasztók</div>
+        <div class="econ-verdict econ-pos">Rövid távon pozitív</div>
+        <p class="econ-detail">Az olaj esik, az infláció esik, mozgástér kamatcsökkentésre és eső jelzáloghitelekre.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">USA — Pénzügyi rendszer</div>
+        <div class="econ-verdict econ-neg">Hosszú távon negatív</div>
+        <p class="econ-detail">A petrodollár fokozatos eróziója és a dollár iránti strukturális kereslet csökkenése globális tartalékvalutaként.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">Kína</div>
+        <div class="econ-verdict econ-pos">Nagyon pozitív</div>
+        <p class="econ-detail">Normalizált energia, megerősödött jüan regionális valutaként, stabilizált Selyemút, megszilárdult közvetítői hegemónia.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">Európa</div>
+        <div class="econ-verdict econ-pos">Pozitív</div>
+        <p class="econ-detail">Olcsó energia enyhíti az iparát, az iráni piac újra nyitva az exportra, a regionális migrációs nyomás csökkentése.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">Öbölállamok</div>
+        <div class="econ-verdict econ-pos">Pozitív</div>
+        <p class="econ-detail">Amíg a szoros feszültség alatt van, nem exportálhatnak normálisan. A stabilitás és az útvonalak újranyitása teszi lehetővé tartalékaik monetizálását és a Vision 2030 végrehajtását.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">Oroszország</div>
+        <div class="econ-verdict econ-amb">Kétértelmű</div>
+        <p class="econ-detail">Az olaj esése negatív a bevételeire. De ha cserébe eléri ukrajna céljait és az európai energiaexportjára vonatkozó szankciók feloldását, a hosszú távú nettó egyenleg kedvező lehet.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">Irán</div>
+        <div class="econ-verdict econ-pos">Nagyon pozitív</div>
+        <p class="econ-detail">Szankciók feloldása, visszaintegráció a világgazdaságba és egy 90 millió lakosú, hatalmas energiatartalékokkal rendelkező ország stabilizálása.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">Amerikai Katonai Komplexum</div>
+        <div class="econ-verdict econ-neg">Negatív</div>
+        <p class="econ-detail">Kevesebb aktív konfliktus, kevesebb pótlási szerződés, kevesebb politikai indoklás a növekvő védelmi költségvetésekre.</p>
+      </div>
+    </div>
+
+    <h3>Az ironikus eredmény</h3>
+    <p>Ha a legvalószínűbb forgatókönyv megvalósul, a végeredmény funkcionálisan hasonló lesz ahhoz a 2015-ös JCPOA-hoz, amelyet Obama tárgyal, amelyből Trump 2018-ban kilépett kiváltva a jelenlegi eszkalációt — más névvel helyreállítva, Trump eredményeként bemutatva. Netanyahu politikai eltávolítása és megállapodás az ajatollahokkal — akik továbbra is irányítják Iránt — nagyobb stabilitást hoz a térségbe, helyreállítja a kereskedelmi útvonalakat és deaktiválja a Hormuzi-szoros elleni állandó fenyegetést. Ezrek halála és masszív pusztítás ahhoz, hogy lényegében oda jussunk, ahol tíz évvel ezelőtt már lehettünk volna.</p>
+  </section>
+
+  <section>
+    <div class="section-number">07 · Pénzügyi piacok</div>
+    <h2>Pozicionálás forgatókönyvenként</h2>
+
+    <p>A leírt geopolitikai fejlődés közvetlen és differenciált következményekkel jár a pénzügyi piacokra nézve attól függően, melyik forgatókönyv valósul meg. Az alábbiak az azonosított ösztönzőkön alapuló spekulatív elemzések, nem befektetési ajánlások.</p>
+
+    <div class="markets-grid">
+
+      <div class="market-card">
+        <div class="market-card-header mh-tension">Jelenlegi fázis — Feszültség a megoldás előtt</div>
+        <div class="market-card-body">
+          <div class="market-scenario">Maximális bizonytalanság · Alap-forgatókönyv</div>
+          <div class="position-row">
+            <span class="pos-asset">Brent / Olaj</span>
+            <span class="pos-badge pos-long">HOSSZÚ</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">Földgáz</span>
+            <span class="pos-badge pos-long">HOSSZÚ</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">Energia-nyersanyagok</span>
+            <span class="pos-badge pos-long">HOSSZÚ</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">S&amp;P 500</span>
+            <span class="pos-badge pos-short">RÖVID</span>
+          </div>
+          <p class="market-note">A tartós bizonytalanság nem megfelelő környezet részvényeknek, különösen az amerikai részvények jelenlegi, történelmileg magas értékeltségei mellett. Az energiakockázati prémium indokolja a nyersanyagokban való hosszú pozíciókat, amíg a megoldás nem látható.</p>
+        </div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-header mh-escalada">2. forgatókönyv — Kontrollálatlan eszkaláció (25%)</div>
+        <div class="market-card-body">
+          <div class="market-scenario">Netanyahu fenntartja a konfliktust · Nukleáris kockázat</div>
+          <div class="position-row">
+            <span class="pos-asset">Brent / Olaj</span>
+            <span class="pos-badge pos-long">HOSSZÚ</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">Földgáz</span>
+            <span class="pos-badge pos-long">HOSSZÚ</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">Energia-nyersanyagok</span>
+            <span class="pos-badge pos-long">HOSSZÚ</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">S&amp;P 500</span>
+            <span class="pos-badge pos-short">RÖVID</span>
+          </div>
+          <p class="market-note">Ha a Hormuz tartósan lezárul vagy a konfliktus nukleáris szintre eszkalálódik, a jelenlegi fázis pozicionálása fenntartandó és erősítendő. Az energiasokk súlyos lenne, és a hatás az amerikai részvényekre mély és tartós.</p>
+        </div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-header mh-paz">Netanyahu távozásának jele — Közelgő megoldás</div>
+        <div class="market-card-body">
+          <div class="market-scenario">A rajtkövek · Pozíciórotáció</div>
+          <div class="position-row">
+            <span class="pos-asset">Brent / Olaj</span>
+            <span class="pos-badge pos-short">RÖVID</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">Földgáz</span>
+            <span class="pos-badge pos-short">RÖVID</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">Energia-nyersanyagok</span>
+            <span class="pos-badge pos-short">RÖVID</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">S&amp;P 500</span>
+            <span class="pos-badge pos-long">HOSSZÚ</span>
+          </div>
+          <p class="market-note">Amikor a leírt kulcsszignálok megjelennek — koalíciós repedés, felgyorsult bírósági eljárások, csökkentett amerikai izraeli támogatás — az a pillanat a pozíciórotációra. A piac az olaj esését és az inflációcsökkentést a megállapodás hivatalossá válása előtt fogja árazni. Figyeld Netanjahut, ne Iránt.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<div class="conclusion">
+  <div class="container">
+    <h2>Következtetés: Figyeld Netanjahut, ne Iránt</h2>
+    <p>Minden fogaskerék a helyén van. Kínának megvannak a tőkeáttételei és az akarata a felhasználásukra. Trumpnak megvan a választási ösztönzője. Iránnak megvan a gazdasági és egzisztenciális szükséglete. Szaúd-Arábiának megvan a stratégiai érdeke. Oroszország feltételei ott vannak az asztalon Ukrajnával kapcsolatban. Az egyetlen szereplő, akinek személyes ösztönzői blokkolják azt, amire mindannyian szükségük van, Netanyahu.</p>
+    <p style="margin-top:1rem;">Azzal, hogy azon túl eszkalált, amit stratégiai szövetségesei követni akartak, Netanyahu politikailag önmagát áldozta fel és elszigetelté vált. Amikor megérkezik a bejelentés a színpadról való távozásáról — legyen az korai választás Izraelben, koalíciós törés vagy tárgyalt visszavonulás — a lánc többi eleme viszonylag gyorsan mozdul: a megállapodás, az olaj esése, az inflációcsökkentés és a globális pénzügyi rend újraegyensúlyozódásának kezdete.</p>
+    <p class="final-line">Ez nem összeesküvés. Ez az ösztönzők konvergenciája. A blokkoló csomóponttal rendelkező rendszerek pedig hajlamosak történelmileg megoldani azokat.</p>
+  </div>
+</div>
+
+<div class="container">
+  <p class="disclaimer">Ez az elemzés nyilvános információkon és minden szereplő ösztönzőinek logikai követésén alapuló spekulatív, független értelmezés. A forgatókönyvekhez rendelt valószínűségek megindokolt becslések, nem előrejelzések. A geopolitika nem egzakt tudomány, és a szereplők félreszámításai mindig lehetségesek. A pénzügyi piacokkal foglalkozó blokk spekulatív elemzés, és semmilyen esetben sem minősül pénzügyi vagy befektetési tanácsadásnak.</p>
+</div>
+
+</body>
+</html>

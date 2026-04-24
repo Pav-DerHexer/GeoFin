@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Az USA/Izrael vs. Irán háború valódi költségei — Geopolitikai elemzés</title>
+<link rel="alternate" hreflang="es" href="../es/2026.03.31_Analisis.de.Costes.Tropas.Terrestres_vs_Declive.del.Petrodolar.html">
+<link rel="alternate" hreflang="en" href="../en/2026.03.31_Ground.Troops.Cost.Analysis_vs_Petrodollar.Decline.html">
+<link rel="alternate" hreflang="de" href="../de/2026.03.31_Reale.Kriegskosten.USA.Israel.vs.Iran_Petrodollar.Niedergang.html">
+<link rel="alternate" hreflang="hu" href="./2026.03.31_Haborus.Koltsegek.USA.Israel.vs.Iran_Petrodollar.Hanyatlas.html">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0e;
+  --bg-elevated: #151518;
+  --bg-card: #1a1a1f;
+  --text: #d4d0c8;
+  --text-muted: #8a8680;
+  --text-bright: #f0ece4;
+  --accent: #c8964a;
+  --accent-dim: #8a6832;
+  --danger: #b84233;
+  --warning: #c8964a;
+  --success: #4a8a5c;
+  --border: #2a2a30;
+  --border-accent: #3a3530;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--accent); color: var(--bg); }
+
+.container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(200,150,74,0.06) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 80%, rgba(184,66,51,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  font-weight: 900;
+  color: var(--text-bright);
+  line-height: 1.15;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.4s forwards;
+}
+
+.hero h1 em { font-style: italic; color: var(--accent); }
+
+.hero-question {
+  font-size: 1.15rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 640px;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.hero-answer {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--danger);
+  border-left: 3px solid var(--danger);
+  padding-left: 20px;
+  margin: 28px 0;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.8s forwards;
+}
+
+.hero-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1s forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.toc {
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.toc-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.toc-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+}
+
+.toc-list a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.toc-list a:hover { color: var(--accent); }
+
+.section { padding: 80px 0 40px; border-bottom: 1px solid var(--border); }
+
+.section-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-dim);
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.25;
+  margin-bottom: 32px;
+}
+
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin: 40px 0 16px;
+}
+
+h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 36px 0 16px;
+}
+
+p { margin-bottom: 18px; }
+strong { color: var(--text-bright); font-weight: 600; }
+em { font-style: italic; }
+
+ul, ol { margin: 12px 0 18px 20px; }
+li { margin-bottom: 8px; }
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead { background: var(--bg-elevated); }
+
+th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(200,150,74,0.03); }
+
+.callout {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent);
+  padding: 24px 28px;
+  margin: 28px 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout.danger { border-left-color: var(--danger); }
+.callout.success { border-left-color: var(--success); }
+.callout p:last-child { margin-bottom: 0; }
+
+.callout-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.callout.danger .callout-label { color: var(--danger); }
+
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.data-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.data-card .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.data-card .value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.data-card .note { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-bright);
+  border-left: 3px solid var(--accent);
+  padding: 16px 24px;
+  margin: 28px 0;
+  background: rgba(200,150,74,0.04);
+}
+
+.indicator {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 24px;
+  margin: 20px 0;
+}
+
+.indicator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.indicator-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-bright);
+  letter-spacing: 0.5px;
+}
+
+.indicator-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.indicator p { font-size: 14px; margin-bottom: 10px; }
+.indicator p:last-child { margin-bottom: 0; }
+
+.tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-right: 6px;
+}
+
+.tag-danger { background: rgba(184,66,51,0.2); color: var(--danger); }
+.tag-warning { background: rgba(200,150,74,0.2); color: var(--warning); }
+.tag-success { background: rgba(74,138,92,0.2); color: var(--success); }
+
+.conclusion { padding: 80px 0; text-align: center; }
+.conclusion h2 { margin-bottom: 40px; }
+.conclusion p { font-size: 1.1rem; max-width: 640px; margin: 0 auto 20px; }
+
+.sources { padding: 40px 0 80px; border-top: 1px solid var(--border); }
+.sources p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+.home-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.55rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-nav > a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+}
+.home-nav > a:hover { color: var(--text-bright); }
+
+.lang-bar { display: flex; align-items: center; gap: 0.35rem; }
+.lang-bar a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.lang-bar a:hover { color: var(--accent); }
+.lang-bar a.active { color: var(--accent); }
+.lang-bar .sep { color: var(--border); font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; }
+
+@media (max-width: 640px) {
+  body { font-size: 15px; }
+  .hero { min-height: auto; padding: 60px 0; }
+  .toc { position: static; }
+  .data-grid { grid-template-columns: 1fr 1fr; }
+  .section { padding: 60px 0 30px; }
+  .lang-bar { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="home-nav">
+  <a href="index.html">← Kezdőlap</a>
+  <div class="lang-bar">
+    <a href="../es/2026.03.31_Analisis.de.Costes.Tropas.Terrestres_vs_Declive.del.Petrodolar.html">ES</a>
+    <span class="sep">·</span>
+    <a href="../en/2026.03.31_Ground.Troops.Cost.Analysis_vs_Petrodollar.Decline.html">EN</a>
+    <span class="sep">·</span>
+    <a href="../de/2026.03.31_Reale.Kriegskosten.USA.Israel.vs.Iran_Petrodollar.Niedergang.html">DE</a>
+    <span class="sep">·</span>
+    <a href="./2026.03.31_Haborus.Koltsegek.USA.Israel.vs.Iran_Petrodollar.Hanyatlas.html" class="active">HU</a>
+  </div>
+</nav>
+
+<header class="hero">
+<div class="container">
+  <div class="hero-label">Geopolitikai elemzés · 2026. március</div>
+  <h1>Az USA/Izrael vs. <em>Irán</em> háború<br>valódi költségei</h1>
+  <p class="hero-question">Mi drágább: egy szárazföldi hadművelet a Hormuzi-szoros ellenőrzéséért, vagy a petrodollár-rendszer eróziója, amelyet maga a háború gyorsít?</p>
+  <div class="hero-answer">A kérdés rosszul van feltéve. Ezek nem alternatív forgatókönyvek — additívak. A katonai beavatkozás nem védi meg a petrodollárt; gyorsabban rombolja le.</div>
+  <div class="hero-date">Elemzés készült: 2026. március 30. · Konfliktus folyamatban</div>
+</div>
+</header>
+
+<nav class="toc">
+<div class="container">
+  <div class="toc-label">Tartalom</div>
+  <ul class="toc-list">
+    <li><a href="#s1">01 — A játéktér</a></li>
+    <li><a href="#s2">02 — A petrodollár</a></li>
+    <li><a href="#s3">03 — De-dollarizáció</a></li>
+    <li><a href="#s4">04 — Számszerűsítés</a></li>
+    <li><a href="#s5">05 — Taktikai eredmények</a></li>
+    <li><a href="#s6">06 — Monitoring</a></li>
+    <li><a href="#s7">07 — Torzítások</a></li>
+    <li><a href="#conclusion">Következtetés</a></li>
+  </ul>
+</div>
+</nav>
+
+<section class="section" id="s1">
+<div class="container">
+  <div class="section-number">01. fejezet</div>
+  <h2>A játéktér: ki vásárolja az öböl olajat</h2>
+
+  <h3>Az átfolyási mennyiségek a Hormuzi-szoroson</h3>
+  <p>A konfliktus előtt naponta körülbelül 20 millió hordó olaj haladt át a Hormuzi-szoroson, ami a globális tengeri olajtransport több mint negyedét és a világi fogyasztás közel egyötödét képviselte.</p>
+
+  <div class="data-grid">
+    <div class="data-card"><div class="label">Szaúd-Arábia</div><div class="value">37,2%</div><div class="note">a Hormuz-forgalomból</div></div>
+    <div class="data-card"><div class="label">Irak</div><div class="value">22,8%</div><div class="note">a Hormuz-forgalomból</div></div>
+    <div class="data-card"><div class="label">EAE</div><div class="value">12,9%</div><div class="note">a Hormuz-forgalomból</div></div>
+    <div class="data-card"><div class="label">Irán</div><div class="value">10,6%</div><div class="note">a Hormuz-forgalomból</div></div>
+    <div class="data-card"><div class="label">Kuvait</div><div class="value">10,1%</div><div class="note">a Hormuz-forgalomból</div></div>
+  </div>
+
+  <p>Ez az öt ország együttesen a Hormuzon áthaladó összes nyersolaj és kondenzátum <strong>93,6%-át</strong> képviseli.</p>
+
+  <h3>A vevők: Ázsia uralja a keresletet</h3>
+  <p>Az olaj célállomása elsöprő mértékben ázsiai. Az ázsiai országok együttesen a szoroson átmenő nyersolaj <strong>89,2%-át</strong> kapják. Kína egyedül <strong>37,7%-ot</strong> nyel el — többet, mint bármely más ország, nagy különbséggel. India, Japán és Dél-Korea egészíti ki a domináns vásárlók képét.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Termelő ország</th><th>Főbb vevők</th><th>Hormuzi alternatívák</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Szaúd-Arábia</strong></td><td>Kína (export 21,7%-a), Dél-Korea, Japán, India, EAE</td><td>Kelet-Nyugat csővezeték a Vörös-tengerhez (~5–7 Mb/d)</td></tr>
+      <tr><td><strong>Irak</strong></td><td>Kína, India</td><td>Nincs jelentős</td></tr>
+      <tr><td><strong>EAE</strong></td><td>India (58,3%-os növekedés 2024-ben), Kína</td><td>Fujairah csővezeték (1,8 Mb/d)</td></tr>
+      <tr><td><strong>Kuvait</strong></td><td>Ázsia (domináns piac). Az exportbevétel 90%-a olajból</td><td>Nincs</td></tr>
+      <tr><td><strong>Katar</strong></td><td>Kína a főbb vevő. 9.300 Mcf/nap LNG Hormuzon át</td><td>Nincs</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Irán: az exportőr, aki már a dolláron kívül működik</h3>
+  <p>Irán az élő esettanulmány arra, mi történik, ha egy jelentős olajoexportőr teljesen kilép a dollárrendszerből.</p>
+
+  <div class="data-grid">
+    <div class="data-card"><div class="label">Termelés 2025</div><div class="value">4,19</div><div class="note">Mb/nap (globális 5%)</div></div>
+    <div class="data-card"><div class="label">Export 2024</div><div class="value">~1,6</div><div class="note">Mb/nap (43 Mrd. $ bevétel)</div></div>
+    <div class="data-card"><div class="label">Kína vásárol</div><div class="value">&gt;90%</div><div class="note">az iráni exportból</div></div>
+    <div class="data-card"><div class="label">Kedvezmény</div><div class="value">$7–8</div><div class="note">hordónként a benchmark alatt</div></div>
+  </div>
+
+  <p>Kína jüan-számlákon vagy áruszállítmányok révén fizet az iráni olajért. Árnyékflották, malajziai átrakások és közvetítők alkalmazása dokumentált. <strong>Ez az infrastruktúra már létezik és működik</strong> — nem kell nulláról felépíteni a GCC plusz olajának befogadásához.</p>
+
+  <div class="callout">
+    <div class="callout-label">A központi paradoxon</div>
+    <p><strong>A GCC-eladók Ázsiának adnak el, de dollárban számolnak el és takarítanak meg.</strong> Ez az eltérés a kereskedelmi cél (Ázsia) és a pénzügyi cél (USA) között pontosan az a repedés, amelyet a jelenlegi háború mélyít.</p>
+  </div>
+</div>
+</section>
+
+<section class="section" id="s2">
+<div class="container">
+  <div class="section-number">02. fejezet</div>
+  <h2>A petrodollár-mechanizmus és sebezhetősége</h2>
+
+  <h3>Hogyan működik a ciklus</h3>
+  <p>Az 1974-es Kissinger-Faisal egyezménnyel létrehozott petrodollár-rendszer öt lépésben működik: az olajat dollárban adják el; az exportőrök többleteket halmoznak fel; ezeket a dollárokat Treasuries-ba és dolláreszközökbe forgatják vissza; a GCC valuták dollárhoz vannak kötve (6-ból 5 ország); és ez az újrahasznosítás mesterségesen alacsonyan tartja a hozamokat, lehetővé téve az USA számára az olcsó finanszírozást.</p>
+
+  <div class="callout">
+    <p>Az implicit ellenszolgáltatás: <strong>az USA garantálja a Perzsa-öböl biztonságát és a Hormuzi-szoroson való szabad áthaladást.</strong></p>
+  </div>
+
+  <h3>A mechanizmus számszerűsítése</h3>
+  <h4>Közvetlen Treasury-állományok (2025. december)</h4>
+
+  <div class="data-grid">
+    <div class="data-card"><div class="label">Szaúd-Arábia</div><div class="value">$149,5Mrd</div></div>
+    <div class="data-card"><div class="label">EAE</div><div class="value">$95,6Mrd</div></div>
+    <div class="data-card"><div class="label">Kuvait</div><div class="value">$66,1Mrd</div></div>
+    <div class="data-card"><div class="label">GCC Top 3 összesen</div><div class="value">~$311Mrd</div><div class="note">a globális piac 3,4%-a</div></div>
+  </div>
+
+  <p>Japánhoz (1,19 ezer milliárd $) vagy Kínához (683 milliárd $) képest szerénynek tűnik, de jelentősége aránytalan: jelzést küld az olajotermelők dollárba vetett bizalmáról.</p>
+
+  <p>A GCC szuverén vagyonalapjai együttesen kb. <strong>4,9 ezer milliárd $</strong> értékű vagyont kezelnek — egy szám, amely 2030-ra várhatóan meghaladja a 7 ezer milliárd $-t. Történelmileg főként dollárban denominált eszközökbe fektetve, bár Ázsia felé egyre növekvő diverzifikációval.</p>
+
+  <h3>Az eróziós jelek a háború előtt</h3>
+  <ul>
+    <li>A dollár aránya a globális tartalékokban <strong>56,9%-ra</strong> esett — legalacsonyabb 1995 óta, a 2001-es 72%-ról</li>
+    <li>Kína és Szaúd-Arábia ~7 milliárd $ értékű devizaswap-megállapodást írtak alá</li>
+    <li>Szaúd-Arábia csatlakozott a Kína vezette mBridge projekthez</li>
+    <li>A globális olaj ~20%-a már 2023-ban dolláron kívül kereskedett</li>
+  </ul>
+</div>
+</section>
+
+<section class="section" id="s3">
+<div class="container">
+  <div class="section-number">03. fejezet</div>
+  <h2>De-dollarizációs fogékonyság GCC-országonként</h2>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Ország</th><th>Fogékonyság</th><th>Fő ok</th><th>Hormuz-bypass</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Katar</strong></td><td><span class="tag tag-danger">Magas</span></td><td>A domináns vevő Kína. Teljes Hormuz-függés</td><td>Nincs</td></tr>
+      <tr><td><strong>Kuvait</strong></td><td><span class="tag tag-danger">Magas</span></td><td>A bevétel 90%-a olajtól függ. Ázsiai vevők</td><td>Nincs</td></tr>
+      <tr><td><strong>Irak</strong></td><td><span class="tag tag-warning">Közép-Magas</span></td><td>Kína és India a főbb ügyfelek. Nincs bypass Baszrának</td><td>Nincs</td></tr>
+      <tr><td><strong>EAE</strong></td><td><span class="tag tag-warning">Közepes</span></td><td>Gazdasági diverzifikáció. Már kísérletezik rúpiával</td><td>Fujairah (1,8 Mb/d)</td></tr>
+      <tr><td><strong>Szaúd-Arábia</strong></td><td><span class="tag tag-success">Közép-Alacsony</span></td><td>A dollár-kötés árfolyamkockázatot teremt. De a döntő elem</td><td>Kelet-Nyugat (~5–7 Mb/d)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout danger">
+    <div class="callout-label">Kulcsmegkülönböztetés: kényszer vs. önkéntes</div>
+    <p>Ha Irán de facto ellenőrzi a Hormuz-átjárást és jüanban szed vámot, a bypass nélküli országok (Katar, Kuvait, Irak) nem választják a de-dollarizációt — <strong>kényszerítik őket erre.</strong> Ez drámaian felgyorsítja az erózió ütemét.</p>
+  </div>
+</div>
+</section>
+
+<section class="section" id="s4">
+<div class="container">
+  <div class="section-number">04. fejezet</div>
+  <h2>Összehasonlító számszerűsítés: szárazföldi invázió vs. petrodollár-erózió</h2>
+
+  <h3>A forgatókönyv: szárazföldi invázió</h3>
+  <p><strong>Referencia: Irak 2003.</strong> ~2–3 ezer milliárd $ közvetlen kiadásba került + 1 ezer milliárd $ veteránellátásra. A Bush-kormány 50–60 milliárd $-t becsült. A háború nyolc évig tartott hat hét helyett.</p>
+  <p><strong>Irán lényegesen nehezebb hadszíntér:</strong> 3,8× nagyobb terület, 3,5× több lakos, hegyi terep, igazolt rakétaképesség, kettős szorosblokád, és olaj 107 $/hordón a 2003-as 30 $ helyett.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Tétel</th><th>Konzervatív becslés</th><th>Magas becslés</th></tr></thead>
+    <tbody>
+      <tr><td>Közvetlen katonai kiadások</td><td>2–3 ezer milliárd $</td><td>4–5 ezer milliárd $</td></tr>
+      <tr><td>Veteránellátás (40 év)</td><td>1–1,5 ezer milliárd $</td><td>2+ ezer milliárd $</td></tr>
+      <tr><td>Felvett adósság kamatai</td><td>1,5–2 ezer milliárd $</td><td>3+ ezer milliárd $</td></tr>
+      <tr><td><strong>Összesen</strong></td><td><strong>4,5–6,5 ezer milliárd $</strong></td><td><strong>9–10+ ezer milliárd $</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>A petrodollár-erózió forgatókönyve</h3>
+
+  <div class="data-grid">
+    <div class="data-card"><div class="label">USA államadóssága</div><div class="value">$39E</div><div class="note">2026. március</div></div>
+    <div class="data-card"><div class="label">Kamatfizetések 2025</div><div class="value">$970Mrd</div><div class="note">3. költségvetési tétel</div></div>
+    <div class="data-card"><div class="label">10 éves Treasury</div><div class="value">4,44%</div><div class="note">8 hónapos csúcs</div></div>
+    <div class="data-card"><div class="label">Projekció 2036</div><div class="value">$2,1E</div><div class="note">Éves kamatok (CBO)</div></div>
+  </div>
+
+  <p>Ha a GCC-olajon kereskedelem egy része jüanra vált → kevesebb visszaforgott dollár → kevesebb Treasury-kereslet → hozamok emelkednek → USA többet fizet. <strong>Minden +50 bázispont ≈ ~195 milliárd $ éves többletköltség.</strong></p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Migrációs forgatókönyv</th><th>Hozamhatás</th><th>Éves többletköltség</th><th>10 éves költség</th></tr></thead>
+    <tbody>
+      <tr><td>A GCC 5%-a jüanra vált</td><td>+15–25 bp</td><td>~60–100 milliárd $</td><td>~0,6–1 ezer milliárd $</td></tr>
+      <tr><td>A GCC 15–20%-a jüanra vált</td><td>+50–80 bp</td><td>~195–310 milliárd $</td><td>~2–3 ezer milliárd $</td></tr>
+      <tr><td>Riyal/dollár kötés felbontása</td><td>+100–150 bp</td><td>~390–585 milliárd $</td><td>~4–6 ezer milliárd $</td></tr>
+      <tr><td>Kaszkád: GCC + BRICS 30%+ de-dollarizáció</td><td>+150–250 bp</td><td>~585 milliárd $–1 ezer milliárd $</td><td>~6–10 ezer milliárd $</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Fő következtetés: a költségek additívak</h3>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Forgatókönyv</th><th>A költség (invázió)</th><th>B költség (petrodollár)</th><th>Összesen</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Katonai sikerrel járó invázió</strong></td><td>4,5–10+ ezer milliárd $</td><td>Részleges (visszafordíthatatlan kár)</td><td>A + B részleges</td></tr>
+      <tr><td><strong>Sikertelen invázió</strong></td><td>4,5–10+ ezer milliárd $</td><td>Teljes és felgyorsult</td><td>A + B teljes</td></tr>
+      <tr><td><strong>Invázió nélkül</strong></td><td>$0</td><td>Lassú, kezelhető ütem</td><td>Csak B (fokozatos)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout danger">
+    <div class="callout-label">A megoldhatatlan paradoxon</div>
+    <p>Az invázió nem akadályozza meg a petrodollár eróziót — felgyorsítja. A Hormuz-zárral telt minden egyes háborús nap nyilvánosan bizonyítja, hogy az USA nem tudja teljesíteni az 1974-es egyezség rá eső részét. <strong>Ez olyan, mint a ház alapját eladni a tető javítására.</strong></p>
+  </div>
+</div>
+</section>
+
+<section class="section" id="s5">
+<div class="container">
+  <div class="section-number">05. fejezet</div>
+  <h2>A taktikai eredmények és miért nem változtatják meg a stratégiai egyenletet</h2>
+
+  <h3>Amit az USA/Izrael elért</h3>
+  <p>Irán katonai degradálása valós: több mint 15 000 célpont eltalálva, a ballisztikus rakétaindítási kapacitás 90%-kal csökkentve (Pentagon szerint), több mint 700 rakéta megsemmisítve telephelyeiken, több mint 50 hajó elsüllyesztve, komoly károk Natanzban és Fordowban.</p>
+
+  <h3>Miért nem elég</h3>
+  <p><strong>A katonai degradálásról:</strong> nem az abszolút megsemmisítés számít, hanem a funkcionális maradékkapacitás. Egy hónappal később Irán még mindig lő és szelektíven ellenőrzi a Hormuzt. Ahogy az USA elfogórakéta-készletei fogynak, ugyanaz az iráni maradékkapacitás hatékonyabbá válhat.</p>
+
+  <p><strong>A nukleáris programról:</strong> a tudást nem lehet lebombázni. Ami még rosszabb: Khamenei meggyilkolása — aki fatvát adott ki a nukleáris fegyverek ellen — és az IRGC általi felváltása megteremti az előfeltételeket ahhoz, hogy Irán arra a következtetésre jusson, hogy működőképes nukleáris arzenálra van szüksége.</p>
+
+  <p><strong>A „semmittevésről":</strong> a status quo nem volt ingyenes. De a beavatkozás nyilvánosan demonstrálta az USA képtelenségét a Hormuz nyitva tartására. A nem-beavatkozásból való tárgyalás legalább a képesség látszatát megőrizte volna — ami a pénzügyi geopolitikában majdnem olyan értékes, mint a tényleges képesség.</p>
+
+  <div class="callout">
+    <div class="callout-label">Helyettesítési torzítás</div>
+    <p>A háborús diskurzus felváltja a kérdést: <em>„Védjük-e azt a pénzügyi rendszert, amelytől hatalmunk függ?"</em> — a könnyebbre cseréli: <em>„Degradáljuk-e az ellenség katonai kapacitását?"</em> A második válasza lehet „igen", miközben az elsőé „nem". <strong>Ami a birodalom jövőjét meghatározza, az az első.</strong></p>
+  </div>
+</div>
+</section>
+
+<section class="section" id="s6">
+<div class="container">
+  <div class="section-number">06. fejezet</div>
+  <h2>Figyelendő változók</h2>
+
+  <blockquote>Megvan-e az amerikai kormányzaton belül az a kellő elemzői tisztánlátás, hogy megértse: minden háborús hét felgyorsítja annak a pénzügyi mechanizmusnak az eróziót, amelyet a leginkább meg kell őriznie?</blockquote>
+
+  <h4>Elsődleges pénzügyi mutatók</h4>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">10 éves US kincstárjegy hozama</span>
+      <span class="indicator-value">4,44% (2026.03.27.)</span>
+    </div>
+    <p>Közvetlen jele a petrodollár egészségének. A piacok 50% valószínűséget áraznak a Fed decemberi kamatemelésére — teljes fordulat a korábbi kamatcsökkentési várakozásokhoz képest.</p>
+    <p><span class="tag tag-danger">Kritikus küszöb</span> Ha tartósan meghaladja a 4,5%-ot, miközben az olaj is emelkedik → az újrahasznosítási mechanizmus meghibásodásának jele.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">MOVE-index (ICE BofA)</span>
+      <span class="indicator-value">A kötvénypiac „VIX-e"</span>
+    </div>
+    <p>Tartományok: &lt;80 = nyugalom; 80–120 = mérsékelt volatilitás; &gt;120 = extrém stressz. Gyors szabály: MOVE ÷ 15 = potenciális napi swing a 10 éves hozamban.</p>
+    <p><span class="tag tag-danger">Kulcsszignál</span> Tartósan &gt;120-as MOVE a konfliktus alatt = a kötvénypiac rendszerszintű kockázatot áraz az amerikai adósságban.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">EUR/CHF</span>
+      <span class="indicator-value">~0,915 (március vége) · min 0,8975 (március eleje)</span>
+    </div>
+    <p>Globális likviditási proxy: a CHF erősödik (EUR/CHF csökken) likviditáskontrakciónál. A pár 4,26%-ot esett 12 hónap alatt, de a 0,89-ről való visszapattanás ellenjel — a piacok (még) nem pánikszerű rendszerszintű módban vannak.</p>
+    <p><span class="tag tag-danger">Medvés</span> Tartós áttörés 0,90 alatt → érzékelt rendszerszintű kockázat. <span class="tag tag-success">Bikas</span> Emelkedés 0,93–0,95 felé → piac de-eszkalációt áraz.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Arany</span>
+      <span class="indicator-value">~$4.450–4.800 · -15/20% az ATH $5.595-ről</span>
+    </div>
+    <p>Az arany legrosszabb teljesítménye bármely nagy konfliktus első 4 hetében 50 év alatt. Konvergens tényezők: profit-taking a 2025-ös bull run után (+65%), erős DXY, magas hozamok menedékként versengnek, hawkish Fed, jegybankok eladják tartalékaikat védelmi/energiaköltségek finanszírozására, masszív ETF-kiáramlások.</p>
+    <p>Az arany esése paradox módon koherens a tézisssel: háború → olaj emelkedik → infláció → Fed nem vág → hozamok emelkednek → dollár rövid távon erős → arany esik. De ez <strong>mérgező dollár-erősödés</strong> — magas kamatokból táplálkozik, amelyek drágítják az adósságot, nem bizalomból.</p>
+    <p><span class="tag tag-warning">Figyelni</span> Ha a Fedet gazdasági romlás kényszeríti kamatcsökkentésre (40% recessziós valószínűség az EY-Parthenon szerint), az arany hevesen fordulhat. A GS és a Deutsche $6.000–6.300/oz célárat tart 2026-ra.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Brent</span>
+      <span class="indicator-value">~$107/hordó (közeli csúcs $116)</span>
+    </div>
+    <p><span class="tag tag-danger">Kritikus küszöb</span> Tartósan $120–130 felett a globális gazdasági kár önmegerősítővé válik.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Jüan-tranzakciók a Hormuznál</span>
+    </div>
+    <p>A CNN megerősítette, hogy legalább két hajó jüanban fizetett vámot (2026. március 14.). A volumen alakulását a kényszer-de-dollarizáció közvetlen mutatójaként kell figyelni.</p>
+  </div>
+
+  <h4>Katonai mutatók</h4>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Bevetés összetétele</span>
+      <span class="indicator-value">~10–15.000 könnyű gyalogság (jelenlegi) nem hiteles bevetés</span>
+    </div>
+    <p>Jelenlegi bevetés (82. légideszant-hadosztály) = puszta tárgyalási nyomás. <span class="tag tag-danger">Valódi invázió jele</span> Nehéz kétéltű erők, MCM-aknaszedő egységek vagy &gt;50.000 katona.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Iráni maradékkapacitás</span>
+    </div>
+    <p>Amíg Irán lő és szelektíven ellenőrzi a Hormuzt, a degradálás nem érte el a funkcionális küszöböt. Az indítási ütemet és a szövetséges infrastruktúra elleni támadási képességet kell figyelni.</p>
+  </div>
+
+  <h4>Politikai de-eszkalációs mutatók</h4>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Netanyahu leváltása</span>
+      <span class="indicator-value">A legfontosabb politikai jel</span>
+    </div>
+    <p>Március 27-én Tucker Carlson közzétette „The Bibi Files"-t — egy dokumentumfilmet, amely 1.000+ órányi kiszivárgott rendőrségi kihallgatáson alapul, Oscar-díjas Alex Gibney rendezésében. Izraelben betiltva. Összeköti a háborús döntéseket Netanyahu börtönkerülési stratégiájával. Tartalmaz felvételeket, amelyeken leírja Katar havi 35 millió $-os Hamásznak való utalásait.</p>
+    <p>Az időzítés — háború közepén, konzervatív platformon, amelynek közönsége a republikánus bázis — arra utal, hogy az establishment egyes szektorai talajt készítenek elő a kiszorítására a de-eszkaláció feltételeként.</p>
+    <p><span class="tag tag-success">De-eszkaláció jele</span> Ha Netanyahu bukik, eltűnik az egyik fő ösztönző a konfliktus meghosszabbítására.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">A Hormuz újranyitása</span>
+    </div>
+    <p><span class="tag tag-success">Pozitív</span> Jüan-vám nélkül → valódi de-eszkaláció. <span class="tag tag-danger">Negatív</span> Jüan-vámmal → petrodollár-erózió még a „békében" is.</p>
+  </div>
+</div>
+</section>
+
+<section class="conclusion" id="conclusion">
+<div class="container">
+  <h2>Következtetés</h2>
+  <p>Az USA-nak nincsenek jó lehetőségei. A katonai beavatkozás ért el néhány taktikai sikert — az iráni nukleáris program degradálása, a flotta és bizonyos infrastruktúrák megsemmisítése — de azon pénzügyi rendszer eróziójának felgyorsítása árán, amelytől az amerikai hatalom függ, anélkül hogy csökkentette volna a Hormuzi-szoros feletti kontrollt.</p>
+  <p>A költségstruktúra nem „invázió <em>vagy</em> petrodollár elvesztése" — hanem <strong>„invázió + a petrodollár felgyorsított elvesztése."</strong></p>
+  <p>Az amerikai birodalom háborút indított, feltehetően azért, hogy megvédje azt a rendet, amelytől függ. De a háború pontosan ezt a rendet rombolja le.</p>
+  <p style="color: var(--accent); font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem; margin-top: 32px;">A petrodollár nem éli túl ezt a háborút jelenlegi formájában, a katonai kimeneteltől függetlenül.</p>
+</div>
+</section>
+
+<footer class="sources">
+<div class="container">
+  <p><strong>Források:</strong> U.S. Energy Information Administration, Visual Capitalist, OPEC Annual Statistical Bulletin 2025, Brown University Costs of War Project, Congressional Budget Office, Peterson Foundation, Deutsche Bank, Fortune, S&amp;P Global, Asia Society Policy Institute, Arms Control Association, Atlantic Council, Bloomberg, CNBC, Newsweek, BullionVault és mások. Piaci adatok: 2026. március 30.</p>
+</div>
+</footer>
+
+</body>
+</html>
