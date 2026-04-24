@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>El coste real de la guerra EEUU/Israel vs. Irán — Análisis geopolítico</title>
+<link rel="alternate" hreflang="es" href="./2026.03.31_Analisis.de.Costes.Tropas.Terrestres_vs_Declive.del.Petrodolar.html">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -458,12 +459,15 @@ blockquote {
 .home-nav {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 200;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
   padding: 0.55rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.home-nav a {
+.home-nav > a {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.68rem;
   letter-spacing: 0.12em;
@@ -471,7 +475,26 @@ blockquote {
   color: var(--accent);
   text-decoration: none;
 }
-.home-nav a:hover { color: var(--text-bright); }
+.home-nav > a:hover { color: var(--text-bright); }
+
+/* ── LANG BAR (inside home-nav, dark theme) ── */
+.lang-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.lang-bar a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.lang-bar a:hover { color: var(--accent); }
+.lang-bar a.active { color: var(--accent); }
+.lang-bar .sep { color: var(--border); font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; }
 
 /* MOBILE */
 @media (max-width: 640px) {
@@ -480,12 +503,24 @@ blockquote {
   .toc { position: static; }
   .data-grid { grid-template-columns: 1fr 1fr; }
   .section { padding: 60px 0 30px; }
+  .lang-bar { display: none; }
 }
 </style>
 </head>
 <body>
 
-<nav class="home-nav"><a href="index.html">← Inicio</a></nav>
+<nav class="home-nav">
+  <a href="index.html">← Inicio</a>
+  <div class="lang-bar">
+    <a href="./2026.03.31_Analisis.de.Costes.Tropas.Terrestres_vs_Declive.del.Petrodolar.html" class="active">ES</a>
+    <span class="sep">·</span>
+    <a href="../en/">EN</a>
+    <span class="sep">·</span>
+    <a href="../de/">DE</a>
+    <span class="sep">·</span>
+    <a href="../hu/">HU</a>
+  </div>
+</nav>
 
 <!-- HERO -->
 <header class="hero">
@@ -556,7 +591,7 @@ blockquote {
   <div class="data-grid">
     <div class="data-card"><div class="label">Producción 2025</div><div class="value">4,19</div><div class="note">mb/d (5% global)</div></div>
     <div class="data-card"><div class="label">Exportaciones 2024</div><div class="value">~1,6</div><div class="note">mb/d ($43.000M ingresos)</div></div>
-    <div class="data-card"><div class="label">China compra</div><div class="value">>90%</div><div class="note">de las exportaciones iraníes</div></div>
+    <div class="data-card"><div class="label">China compra</div><div class="value">&gt;90%</div><div class="note">de las exportaciones iraníes</div></div>
     <div class="data-card"><div class="label">Descuento</div><div class="value">$7-8</div><div class="note">por barril bajo benchmark</div></div>
   </div>
 
@@ -834,7 +869,7 @@ blockquote {
 <!-- SOURCES -->
 <footer class="sources">
 <div class="container">
-  <p><strong>Fuentes:</strong> U.S. Energy Information Administration, Visual Capitalist, OPEC Annual Statistical Bulletin 2025, Brown University Costs of War Project, Congressional Budget Office, Peterson Foundation, Deutsche Bank, Fortune, S&P Global, Asia Society Policy Institute, Arms Control Association, Atlantic Council, Bloomberg, CNBC, Newsweek, BullionVault, y otros. Datos de mercado al 30 de marzo de 2026.</p>
+  <p><strong>Fuentes:</strong> U.S. Energy Information Administration, Visual Capitalist, OPEC Annual Statistical Bulletin 2025, Brown University Costs of War Project, Congressional Budget Office, Peterson Foundation, Deutsche Bank, Fortune, S&amp;P Global, Asia Society Policy Institute, Arms Control Association, Atlantic Council, Bloomberg, CNBC, Newsweek, BullionVault, y otros. Datos de mercado al 30 de marzo de 2026.</p>
 </div>
 </footer>
 

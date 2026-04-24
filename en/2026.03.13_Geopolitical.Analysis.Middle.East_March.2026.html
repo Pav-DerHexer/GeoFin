@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Middle East: Who Wins, Who Loses, and Why Netanyahu is the Only Loose End</title>
+<link rel="alternate" hreflang="en" href="./2026.03.13_Geopolitical.Analysis.Middle.East_March.2026.html">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f4f0e8;
+    --accent: #c8392b;
+    --accent2: #1a3a5c;
+    --muted: #6b6560;
+    --rule: #d4cfc7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  header {
+    border-bottom: 3px double var(--ink);
+    padding: 2rem 0 0;
+    text-align: center;
+  }
+
+  .header-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 820px;
+    margin: 0 auto 1.5rem;
+    padding: 0 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em { font-style: italic; color: var(--accent); }
+
+  .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    padding: 0 2rem;
+  }
+
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+  .lead { padding: 3rem 0 2rem; border-bottom: 1px solid var(--rule); }
+
+  .lead p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    line-height: 1.65;
+    color: #1a1a1a;
+  }
+
+  section { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
+
+  .section-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+
+  h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  p { margin-bottom: 1.2rem; font-size: 1rem; color: #2a2a2a; }
+
+  .actors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .actor-card {
+    border: 1px solid var(--rule);
+    padding: 1.5rem;
+    background: white;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .actor-card:hover { transform: translateY(-2px); box-shadow: 4px 4px 0 var(--ink); }
+
+  .actor-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .actor-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+    margin-top: 0.8rem;
+  }
+
+  .actor-text { font-size: 0.88rem; line-height: 1.55; color: #333; margin: 0; }
+
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .scenario-card {
+    padding: 1.25rem;
+    border: 1px solid var(--rule);
+    background: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scenario-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .s1::after { background: #2ecc71; }
+  .s2::after { background: #3498db; }
+  .s3::after { background: #e74c3c; }
+  .s4::after { background: #9b59b6; }
+
+  .scenario-prob {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .s1 .scenario-prob { color: #2ecc71; }
+  .s2 .scenario-prob { color: #3498db; }
+  .s3 .scenario-prob { color: #e74c3c; }
+  .s4 .scenario-prob { color: #9b59b6; }
+
+  .scenario-title { font-size: 0.8rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--ink); }
+  .scenario-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin: 0; }
+
+  .pullquote {
+    margin: 2.5rem 0;
+    padding: 2rem 2rem 2rem 3rem;
+    border-left: 4px solid var(--accent);
+    background: white;
+    position: relative;
+  }
+
+  .pullquote::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--accent);
+    opacity: 0.2;
+    position: absolute;
+    top: -1rem; left: 0.5rem;
+    line-height: 1;
+  }
+
+  .pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .timeline { margin: 2rem 0; position: relative; padding-left: 2rem; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.4rem; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .timeline-item { position: relative; margin-bottom: 1.5rem; padding-left: 1rem; }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.7rem; top: 0.4rem;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  .timeline-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-event { font-size: 0.9rem; font-weight: 500; color: var(--ink); margin-bottom: 0.25rem; }
+  .timeline-detail { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+  .netanyahu-box {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2.5rem;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .netanyahu-box::before {
+    content: '⚠';
+    position: absolute;
+    right: 1.5rem; top: 1rem;
+    font-size: 4rem;
+    opacity: 0.08;
+  }
+
+  .netanyahu-box h2 { color: var(--paper); margin-bottom: 1rem; }
+  .netanyahu-box p { color: rgba(244,240,232,0.85); font-size: 0.95rem; }
+  .netanyahu-box .signal-list { list-style: none; margin: 1rem 0; }
+
+  .netanyahu-box .signal-list li {
+    padding: 0.5rem 0 0.5rem 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.88rem;
+    color: rgba(244,240,232,0.85);
+    position: relative;
+  }
+
+  .netanyahu-box .signal-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+
+  .econ-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .econ-card { padding: 1.25rem; border: 1px solid var(--rule); background: white; }
+
+  .econ-actor {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .econ-verdict { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .econ-pos { color: #1a7a3c; }
+  .econ-neg { color: var(--accent); }
+  .econ-amb { color: #856404; }
+  .econ-detail { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin: 0; }
+
+  .markets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+
+  .market-card { border: 1px solid var(--rule); background: white; overflow: hidden; }
+
+  .market-card-header {
+    padding: 0.75rem 1.25rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .mh-tension { background: #856404; }
+  .mh-escalada { background: var(--accent); }
+  .mh-paz { background: #1a7a3c; }
+
+  .market-card-body { padding: 1.25rem; }
+
+  .market-scenario {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+
+  .position-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.83rem;
+  }
+
+  .position-row:last-of-type { border-bottom: none; }
+  .pos-asset { color: #333; }
+
+  .pos-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+
+  .pos-long { background: #d4edda; color: #155724; }
+  .pos-short { background: #f8d7da; color: #721c24; }
+
+  .market-note {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .conclusion {
+    background: var(--accent2);
+    color: white;
+    padding: 3rem;
+  }
+
+  .conclusion h2 { color: white; font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 1.5rem; }
+  .conclusion p { color: rgba(255,255,255,0.85); font-size: 0.95rem; max-width: 700px; }
+
+  .conclusion .final-line {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: white;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .disclaimer {
+    padding: 2rem 0;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-style: italic;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── HOME NAV ── */
+  .home-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.55rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .home-nav > a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    text-decoration: none;
+  }
+  .home-nav > a:hover { color: var(--accent); }
+
+  /* ── LANG BAR (inside home-nav) ── */
+  .lang-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .lang-bar a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .lang-bar a:hover { color: var(--accent2); }
+  .lang-bar a.active { color: var(--accent2); }
+  .lang-bar .sep { color: var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; }
+
+  @media (max-width: 600px) {
+    .actors-grid, .scenario-grid, .econ-grid, .markets-grid { grid-template-columns: 1fr; }
+    .header-meta { flex-direction: column; gap: 0.5rem; align-items: center; }
+    .conclusion, .netanyahu-box { padding: 1.5rem; }
+    .lang-bar { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="home-nav">
+  <a href="index.html">&larr; Home</a>
+  <div class="lang-bar">
+    <a href="../es/2026.03.13_Analisis.Geopolitico.Oriente.Medio_Marzo.2026.html">ES</a>
+    <span class="sep">&middot;</span>
+    <a href="./2026.03.13_Geopolitical.Analysis.Middle.East_March.2026.html" class="active">EN</a>
+    <span class="sep">&middot;</span>
+    <a href="../de/">DE</a>
+    <span class="sep">&middot;</span>
+    <a href="../hu/">HU</a>
+  </div>
+</nav>
+
+<header>
+  <div class="header-eyebrow">Geopolitical Analysis &middot; March 2026</div>
+  <h1>Middle East: Who Wins, Who Loses<br>and Why <em>Netanyahu</em> is the Only Loose End</h1>
+  <p class="subtitle">An analysis of incentives, negotiating leverage, and global economic consequences of the conflict with Iran</p>
+  <div class="header-meta">
+    <span>By <strong>P.V.</strong></span>
+    <span>Reading time: 14 min</span>
+    <span>Geopolitics &middot; Economics &middot; Middle East</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="lead">
+    <p>Nobody can agree on why this war started. There is talk of nuclear weapons, of Israel, of protecting America. But when you follow the actual incentives of each actor, the picture that emerges is radically different from the one offered by mainstream media. This is not a war between nations. It is a convergence of interests in which almost all powerful actors want the same thing: the way out. Almost all of them.</p>
+  </div>
+
+  <!-- BLOCK 1 -->
+  <section>
+    <div class="section-number">01 &middot; The central thesis</div>
+    <h2>The stated objectives are not the real objectives</h2>
+
+    <p>The public objectives of the conflict—eliminating Iran's nuclear program, cutting off terrorist financing, regime change—share a striking trait: none of them is defined with clear victory criteria. There is no finish line. That is not an accident.</p>
+
+    <p>When a military objective has no precise definition of success, the ambiguity is functional: it allows the conflict to continue indefinitely, the objective to be shifted when the previous one becomes inconvenient, and never having to explain why it was not achieved.</p>
+
+    <div class="pullquote">
+      <p>The 2015 JCPOA curbed Iran's nuclear program and was working according to all IAEA reports. The US withdrew unilaterally in 2018. Since then, Iran's nuclear program is more advanced than when the agreement existed.</p>
+    </div>
+
+    <p>If the real objective were to halt the nuclear program, abandoning the only instrument that was halting it is counterproductive. The logical conclusion: either there was serious incompetence, or the nuclear program was not the real objective.</p>
+  </section>
+
+  <!-- BLOCK 2 -->
+  <section>
+    <div class="section-number">02 &middot; Map of actors</div>
+    <h2>Incentives and leverage of each player</h2>
+
+    <div class="actors-grid">
+
+      <div class="actor-card">
+        <div class="actor-name">US Military-Industrial Complex</div>
+        <div class="actor-label">Incentive</div>
+        <p class="actor-text">Every missile launched must be replaced. Every conflict generates contracts. Their stocks rise when there is war. They fund campaigns of both parties and systematically rotate between the private sector and the Pentagon.</p>
+        <div class="actor-label">Leverage</div>
+        <p class="actor-text">Structural influence over Congress and Pentagon decisions. The greatest in the American system.</p>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-name">Netanyahu / Israeli Government</div>
+        <div class="actor-label">Incentive</div>
+        <p class="actor-text">Twofold: a real strategic one (Iran without a nuclear bomb) and a personal one (external conflict displaces his corruption trials and consolidates his far-right coalition). For Netanyahu, the continuation of the conflict is a matter of political survival.</p>
+        <div class="actor-label">Leverage</div>
+        <p class="actor-text">Direct military operational capability, including a sovereign nuclear arsenal without American launch codes, and privileged access to Washington's decisions via lobbying and donors.</p>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-name">China</div>
+        <div class="actor-label">Incentive</div>
+        <p class="actor-text">Stability in the Strait of Hormuz (40% of its oil), advancement of the Belt and Road Initiative, weakening of the dollar as a reserve currency, and consolidation as a global mediating power against a worn-down US.</p>
+        <div class="actor-label">Leverage</div>
+        <p class="actor-text">Purchases 80% of Iranian oil. Mediator of the 2023 Saudi-Iran agreement. Largest foreign holder of US debt ($760 billion in Treasury bonds). Controls 85–90% of rare earth refining: without it, the US cannot manufacture advanced weaponry or replenish its arsenals.</p>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-name">Trump / United States</div>
+        <div class="actor-label">Incentive</div>
+        <p class="actor-text">The midterm elections are in November 2026. A prolonged war drives up inflation and destroys his electoral capital. He needs an exit he can sell as the great victory no previous president could achieve.</p>
+        <div class="actor-label">Leverage</div>
+        <p class="actor-text">$3.8 billion per year in military aid to Israel. It is the most powerful available leverage over Netanyahu and the least utilized so far. A transactional actor like Trump could be the first to use it credibly.</p>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-name">Iran — The Ayatollahs' Regime</div>
+        <div class="actor-label">Incentive</div>
+        <p class="actor-text">For the Iranian regime, this is not just a geopolitical conflict: it is an existential struggle. Direct attacks on its territory make regime survival the supreme incentive. An actor fighting for its existence does not negotiate from weakness—it negotiates demanding absolute and non-negotiable guarantees.</p>
+        <div class="actor-label">Leverage</div>
+        <p class="actor-text">Control of the Strait of Hormuz: 20% of the world's oil passes through it. The threat of closing it is worth more unexecuted than executed, but existential logic can change that calculus at any moment.</p>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-name">Saudi Arabia / Gulf States</div>
+        <div class="actor-label">Incentive</div>
+        <p class="actor-text">Vision 2030 requires regional stability to attract investment and tourism. As long as the Strait is under tension, their oil exports suffer regardless of the trading price. Stability and the reopening of trade routes is what allows them to monetize their reserves.</p>
+        <div class="actor-label">Leverage</div>
+        <p class="actor-text">Massive investments in the US and documented political influence via sovereign wealth funds. They can apply pressure from within the American system itself.</p>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-name">Russia</div>
+        <div class="actor-label">Incentive</div>
+        <p class="actor-text">Russia's incentive is also existential: the demilitarization of Ukraine and a permanent veto on its integration into NATO. The annexation of Ukrainian territories is Moscow's response to a threat perceived as direct to its security. The Middle East conflict benefits it economically and keeps the US distracted, but what Russia truly wants is in Europe. Trump-Putin talks are already underway.</p>
+        <div class="actor-label">Leverage</div>
+        <p class="actor-text">Provision of military intelligence to Iran, not officially declared. Without this component, Iran would find it far more difficult to target with precision. Russia only has an incentive to pressure Iran toward negotiation if it obtains real concessions on Ukraine and Europe.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BLOCK 3 -->
+  <section>
+    <div class="section-number">03 &middot; Possible scenarios</div>
+    <h2>Four outcomes and their estimated probability</h2>
+
+    <div class="scenario-grid">
+      <div class="scenario-card s4">
+        <div class="scenario-prob">45%</div>
+        <div class="scenario-title">Chinese mediation</div>
+        <p class="scenario-desc">China facilitates the agreement using its leverage over Iran and the US. Technically the most solid. Also requires that Iranian demands be acceptable and that Russia partially obtains what it wants in Ukraine.</p>
+      </div>
+      <div class="scenario-card s3">
+        <div class="scenario-prob">25%</div>
+        <div class="scenario-title">Uncontrolled escalation</div>
+        <p class="scenario-desc">No rational actor wants it, but Netanyahu has incentives to maintain maximum tension. Israel has independence in the use of nuclear weapons. In existential struggle contexts, miscalculations are more likely than any model predicts.</p>
+      </div>
+      <div class="scenario-card s2">
+        <div class="scenario-prob">20%</div>
+        <div class="scenario-title">Conflict freeze</div>
+        <p class="scenario-desc">Trump could declare victory and cease attacks, but Iran, in an existential struggle, might continue to eliminate all American presence in the area without solid non-aggression guarantees. It also does not align with China's incentives, which needs a definitive resolution.</p>
+      </div>
+      <div class="scenario-card s1">
+        <div class="scenario-prob">10%</div>
+        <div class="scenario-title">Grand Trump-Iran deal</div>
+        <p class="scenario-desc">The prior truce broken by the US has severely damaged Trump's credibility with Iran. Tehran is unlikely to sign a bilateral agreement without third-party guarantees that do not depend on the word of someone who already broke one.</p>
+      </div>
+    </div>
+
+    <p>Scenarios 1, 3, and 4 share a necessary condition: that Netanyahu ceases to be the active blocking factor. Without that, the probability of escalation or indefinite freeze increases at the expense of any real resolution.</p>
+  </section>
+
+  <!-- BLOCK 4 -->
+  <section>
+    <div class="section-number">04 &middot; The blocking node</div>
+    <h2>Netanyahu: the only actor whose incentives point toward conflict</h2>
+
+    <p>If you map the incentives of all actors with real power, an unusual picture emerges: virtually all of them want de-escalation. China needs stability. Trump needs an electoral victory. Iran needs to survive and have sanctions lifted. Saudi Arabia needs to execute Vision 2030. Europe needs cheap energy. Russia wants the demilitarization of Ukraine, a veto on its NATO membership, and the restoration of trade relations with Europe.</p>
+
+    <p>There is one single actor whose personal and political incentives point in the opposite direction.</p>
+
+    <div class="netanyahu-box">
+      <h2>Why Netanyahu is the loose end blocking everything</h2>
+      <p>Netanyahu faces active corruption charges in Israeli courts. His coalition depends on far-right parties that would fracture at any agreement that leaves the Iranian regime standing. An active external conflict displaces judicial attention and consolidates his political position.</p>
+      <p style="margin-top:1rem;">For him, peace has an immediate political cost. For everyone else, war has a growing cost.</p>
+      <p style="margin-top:1rem;">Paradoxically, by ordering the assassination of Ali Khamenei, Netanyahu has politically self-immolated. That decision has irreversibly misaligned his incentives with those of the major global power blocs, including Trump himself. He has escalated beyond what any of his strategic allies were willing to support, and that isolation will accelerate his downfall.</p>
+      <ul class="signal-list" style="margin-top:1.5rem;">
+        <li><strong>Key signal to watch:</strong> Reduction of American support for Israel at the UN Security Council</li>
+        <li><strong>Key signal to watch:</strong> Acceleration of his domestic judicial proceedings in Israel</li>
+        <li><strong>Key signal to watch:</strong> Public fractures in his coalition (Ben Gvir, Smotrich)</li>
+        <li><strong>Key signal to watch:</strong> Increased diplomatic activity by Gulf mediators with Israel</li>
+        <li><strong>Key signal to watch:</strong> Trump publicly conditions Israeli military aid</li>
+        <li><strong>Key signal to watch:</strong> Critical statements by Israeli military or intelligence officials against his leadership</li>
+      </ul>
+    </div>
+
+    <p>Trump's public request for Netanyahu to be exonerated is not an empty gesture of loyalty. It is transactional language: <em>"I help you with the legal issues if you help me close this."</em> Trump has identified the blocking node and is offering a negotiated exit before the situation forces more costly measures.</p>
+
+    <p>Systems with blocking nodes tend to resolve them. The most likely path is not physical but political and judicial: coalition collapse, accelerated judicial pressure, or a negotiated withdrawal with some form of personal protection. In all paths, Netanyahu exits the stage. The difference is whether he does so with an honorable exit or without one.</p>
+  </section>
+
+  <!-- BLOCK 5 -->
+  <section>
+    <div class="section-number">05 &middot; The timeline</div>
+    <h2>Trump has less time than it seems</h2>
+
+    <p>The nominal deadline is the November 2026 elections. But the real deadline is summer 2026: if the economy remains under inflationary pressure when the Republican primaries begin, the electoral damage is already done even if an agreement arrives in October.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">April 2026</div>
+        <div class="timeline-event">US-China summit or contact</div>
+        <p class="timeline-detail">Activation of the mediation chain. China signals it will use its leverage over Iran. The US accepts the Chinese role. Indications that China has already condemned Iranian attacks suggest the signaling is already underway.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">April — May 2026</div>
+        <div class="timeline-event">Chinese pressure on Iran and Trump-Putin contacts</div>
+        <p class="timeline-detail">China privately conveys de-escalation conditions to Iran. In parallel, Trump-Putin talks on Ukraine are the lever that can move Russia to stop providing military intelligence to Iran.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">May — June 2026</div>
+        <div class="timeline-event">Netanyahu crisis or exit</div>
+        <p class="timeline-detail">The most uncertain step. His political self-immolation after escalating beyond what his allies would support has isolated him. Coalition fracture or judicial acceleration are the most likely mechanisms.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">June — July 2026</div>
+        <div class="timeline-event">Formal negotiation and framework agreement</div>
+        <p class="timeline-detail">With Netanyahu neutralized, a more pragmatic Israeli leadership does not actively block. Likely channel: Oman or Qatar, historic mediators between the US and Iran.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">July — August 2026</div>
+        <div class="timeline-event">Grand deal announcement</div>
+        <p class="timeline-detail">Trump presents the Middle East peace that no previous president achieved. Oil drops. Inflation eases. Electoral effect in autumn.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">November 2026</div>
+        <div class="timeline-event">Midterm elections</div>
+        <p class="timeline-detail">The outcome depends on whether the preceding sequence was completed in time and whether the economic effects are perceptible to the average American voter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCK 6 -->
+  <section>
+    <div class="section-number">06 &middot; Economic implications</div>
+    <h2>What normalization with Iran means for the global economy</h2>
+
+    <h3>The immediate effect: oil</h3>
+    <p>The market does not wait for implementation: it reacts to the headline. The moment an agreement becomes credible, Brent prices will drop sharply within days. Iran has the capacity to add 1.5 million barrels per day to the market. The chain is direct: oil falls, global logistics costs fall, inflation falls, central banks have room to cut rates, mortgages drop, consumption rises.</p>
+
+    <h3>The structural effect: the petrodollar under pressure</h3>
+    <p>Since 1974, oil has been sold in dollars, which forces all countries to hold dollar reserves to buy energy. This sustains the dollar's value and allows the US to issue cheap debt. Iran already sells to China in yuan. Saudi Arabia has signed partial agreements in yuan. An Iranian normalization expands that pattern. It is not an immediate dollar collapse: it is a gradual but structural erosion with long-term consequences for America's ability to finance its debt and military spending.</p>
+
+    <h3>The central contradiction</h3>
+    <p>Trump needs normalization to win the November 2026 elections: oil drops, inflation drops, interest rates drop. It is exactly the economic scenario his campaign needs. But that same normalization accelerates the erosion of the petrodollar system on which American long-term financial power rests. It is an immediate relief that deepens the structural problem. This is how these cycles have historically worked.</p>
+
+    <div class="econ-grid">
+      <div class="econ-card">
+        <div class="econ-actor">US — Consumers</div>
+        <div class="econ-verdict econ-pos">Positive in the short term</div>
+        <p class="econ-detail">Oil drops, inflation drops, room for interest rate and mortgage cuts.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">US — Financial system</div>
+        <div class="econ-verdict econ-neg">Negative in the long term</div>
+        <p class="econ-detail">Gradual erosion of the petrodollar and structural demand for dollars as a global reserve currency.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">China</div>
+        <div class="econ-verdict econ-pos">Very positive</div>
+        <p class="econ-detail">Normalized energy, strengthened yuan as a regional currency, stabilized Belt and Road, consolidated mediating hegemony.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">Europe</div>
+        <div class="econ-verdict econ-pos">Positive</div>
+        <p class="econ-detail">Cheap energy relieving its industry, reopened Iranian market for exports, reduced regional migratory pressure.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">Gulf States</div>
+        <div class="econ-verdict econ-pos">Positive</div>
+        <p class="econ-detail">As long as the Strait is under tension, they cannot export normally. Stability and route reopening is what allows them to monetize their reserves and execute Vision 2030.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">Russia</div>
+        <div class="econ-verdict econ-amb">Ambiguous</div>
+        <p class="econ-detail">The drop in oil prices is negative for its revenues. But if in exchange it achieves its objectives in Ukraine and the lifting of sanctions on its energy exports to Europe, the long-term net balance could be favorable.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">Iran</div>
+        <div class="econ-verdict econ-pos">Very positive</div>
+        <p class="econ-detail">Lifting of sanctions, reintegration into the global economy, and stabilization of a country with 90 million inhabitants and enormous energy reserves.</p>
+      </div>
+      <div class="econ-card">
+        <div class="econ-actor">US Military Complex</div>
+        <div class="econ-verdict econ-neg">Negative</div>
+        <p class="econ-detail">Less active conflict, fewer replacement contracts, less political justification for increasing defense budgets.</p>
+      </div>
+    </div>
+
+    <h3>The ironic outcome</h3>
+    <p>If the most likely scenario materializes, the final result will be functionally similar to the 2015 JCPOA that Obama negotiated, from which Trump withdrew in 2018 triggering the current escalation, rebuilt under a different name and presented as Trump's achievement. The political elimination of Netanyahu and an agreement with the Ayatollahs—who will continue governing Iran—will bring greater stability to the region, restore trade routes, and defuse the permanent threat over the Strait of Hormuz. Thousands dead and massive destruction to arrive, in essence, where things could have been ten years ago.</p>
+  </section>
+
+  <!-- BLOCK 7 -->
+  <section>
+    <div class="section-number">07 &middot; Financial markets</div>
+    <h2>How to position according to the scenario</h2>
+
+    <p>The geopolitical evolution described has direct and differentiated consequences for financial markets depending on which scenario materializes. What follows is a speculative analysis based on the identified incentives, not an investment recommendation.</p>
+
+    <div class="markets-grid">
+
+      <div class="market-card">
+        <div class="market-card-header mh-tension">Current phase — Tension before resolution</div>
+        <div class="market-card-body">
+          <div class="market-scenario">Maximum uncertainty &middot; Base scenario</div>
+          <div class="position-row">
+            <span class="pos-asset">Brent / Oil</span>
+            <span class="pos-badge pos-long">LONG</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">Natural gas</span>
+            <span class="pos-badge pos-long">LONG</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">Energy commodities</span>
+            <span class="pos-badge pos-long">LONG</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">S&amp;P 500</span>
+            <span class="pos-badge pos-short">SHORT</span>
+          </div>
+          <p class="market-note">Sustained uncertainty is not the right environment to be in equities, especially with current American equity valuations at historically elevated levels. The energy risk premium justifies long positions in commodities while no resolution is in sight.</p>
+        </div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-header mh-escalada">Scenario 2 — Uncontrolled escalation (25%)</div>
+        <div class="market-card-body">
+          <div class="market-scenario">Netanyahu sustains the conflict &middot; Nuclear use risk</div>
+          <div class="position-row">
+            <span class="pos-asset">Brent / Oil</span>
+            <span class="pos-badge pos-long">LONG</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">Natural gas</span>
+            <span class="pos-badge pos-long">LONG</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">Energy commodities</span>
+            <span class="pos-badge pos-long">LONG</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">S&amp;P 500</span>
+            <span class="pos-badge pos-short">SHORT</span>
+          </div>
+          <p class="market-note">If Hormuz is closed in a sustained manner or the conflict escalates toward the nuclear, the current phase positioning holds and intensifies. The energy shock would be severe and the impact on American equities deep and prolonged.</p>
+        </div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-header mh-paz">Netanyahu exit signal — Resolution approaching</div>
+        <div class="market-card-body">
+          <div class="market-scenario">The starting gun &middot; Position rotation</div>
+          <div class="position-row">
+            <span class="pos-asset">Brent / Oil</span>
+            <span class="pos-badge pos-short">SHORT</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">Natural gas</span>
+            <span class="pos-badge pos-short">SHORT</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">Energy commodities</span>
+            <span class="pos-badge pos-short">SHORT</span>
+          </div>
+          <div class="position-row">
+            <span class="pos-asset">S&amp;P 500</span>
+            <span class="pos-badge pos-long">LONG</span>
+          </div>
+          <p class="market-note">When the key signals described appear—coalition fracture, judicial acceleration, reduction of American support for Israel—that is the moment to rotate positions. The market will price in the oil drop and inflation reduction before the agreement is official. Watch Netanyahu, not Iran.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- CONCLUSION -->
+<div class="conclusion">
+  <div class="container">
+    <h2>Conclusion: Watch Netanyahu, Not Iran</h2>
+    <p>All the gears are in position. China has the leverage and the will to use it. Trump has the electoral incentive. Iran has the economic and existential need. Saudi Arabia has the strategic interest. Russia has its conditions on the table regarding Ukraine. The only actor whose personal incentives block what everyone else needs is Netanyahu.</p>
+    <p style="margin-top:1rem;">By escalating beyond what his strategic allies were willing to support, Netanyahu has politically self-immolated and become isolated. When the announcement of his exit from the stage comes—whether early elections in Israel, coalition fracture, or negotiated withdrawal—the rest of the chain will move with relative speed: the agreement, the oil drop, the inflation reduction, and the beginning of the rebalancing of the global financial order.</p>
+    <p class="final-line">It is not a conspiracy. It is a convergence of incentives. And systems with blocking nodes tend, historically, to resolve them.</p>
+  </div>
+</div>
+
+<div class="container">
+  <p class="disclaimer">This analysis is a speculative and independent interpretation based on public information and the logical tracking of each actor's incentives. The probabilities assigned to the scenarios are reasoned estimates, not predictions. Geopolitics is not an exact science and miscalculations by the actors are always possible. The financial markets section is speculative analysis and does not in any case constitute financial or investment advice.</p>
+</div>
+
+</body>
+</html>
