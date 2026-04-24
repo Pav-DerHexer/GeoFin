@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Die realen Kriegskosten USA/Israel vs. Iran — Geopolitische Analyse</title>
+<link rel="alternate" hreflang="es" href="../es/2026.03.31_Analisis.de.Costes.Tropas.Terrestres_vs_Declive.del.Petrodolar.html">
+<link rel="alternate" hreflang="en" href="../en/2026.03.31_Ground.Troops.Cost.Analysis_vs_Petrodollar.Decline.html">
+<link rel="alternate" hreflang="de" href="./2026.03.31_Reale.Kriegskosten.USA.Israel.vs.Iran_Petrodollar.Niedergang.html">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0e;
+  --bg-elevated: #151518;
+  --bg-card: #1a1a1f;
+  --text: #d4d0c8;
+  --text-muted: #8a8680;
+  --text-bright: #f0ece4;
+  --accent: #c8964a;
+  --accent-dim: #8a6832;
+  --danger: #b84233;
+  --warning: #c8964a;
+  --success: #4a8a5c;
+  --border: #2a2a30;
+  --border-accent: #3a3530;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(200,150,74,0.06) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 80%, rgba(184,66,51,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  font-weight: 900;
+  color: var(--text-bright);
+  line-height: 1.15;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.4s forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-question {
+  font-size: 1.15rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 640px;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.hero-answer {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--danger);
+  border-left: 3px solid var(--danger);
+  padding-left: 20px;
+  margin: 28px 0;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.8s forwards;
+}
+
+.hero-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1s forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* NAV TOC */
+.toc {
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.toc-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.toc-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+}
+
+.toc-list a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.toc-list a:hover { color: var(--accent); }
+
+/* SECTIONS */
+.section {
+  padding: 80px 0 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-dim);
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.25;
+  margin-bottom: 32px;
+}
+
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin: 40px 0 16px;
+}
+
+h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 36px 0 16px;
+}
+
+p { margin-bottom: 18px; }
+
+strong { color: var(--text-bright); font-weight: 600; }
+
+em { font-style: italic; }
+
+/* LISTS */
+ul, ol {
+  margin: 12px 0 18px 20px;
+}
+
+li { margin-bottom: 8px; }
+
+/* TABLES */
+.table-wrap {
+  overflow-x: auto;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead {
+  background: var(--bg-elevated);
+}
+
+th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+
+tr:last-child td { border-bottom: none; }
+
+tr:hover td { background: rgba(200,150,74,0.03); }
+
+/* CALLOUTS */
+.callout {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent);
+  padding: 24px 28px;
+  margin: 28px 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout.danger {
+  border-left-color: var(--danger);
+}
+
+.callout.success {
+  border-left-color: var(--success);
+}
+
+.callout p:last-child { margin-bottom: 0; }
+
+.callout-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.callout.danger .callout-label { color: var(--danger); }
+
+/* DATA CARDS */
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.data-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.data-card .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.data-card .value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.data-card .note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* BIAS TABLE */
+.bias-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin: 12px 0;
+}
+
+.bias-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--warning);
+  margin-bottom: 6px;
+}
+
+.bias-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.bias-control {
+  font-size: 14px;
+  color: var(--text);
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+}
+
+/* BLOCKQUOTE */
+blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-bright);
+  border-left: 3px solid var(--accent);
+  padding: 16px 24px;
+  margin: 28px 0;
+  background: rgba(200,150,74,0.04);
+}
+
+/* INDICATOR BLOCKS */
+.indicator {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 24px;
+  margin: 20px 0;
+}
+
+.indicator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.indicator-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-bright);
+  letter-spacing: 0.5px;
+}
+
+.indicator-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.indicator p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.indicator p:last-child { margin-bottom: 0; }
+
+.tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-right: 6px;
+}
+
+.tag-danger { background: rgba(184,66,51,0.2); color: var(--danger); }
+.tag-warning { background: rgba(200,150,74,0.2); color: var(--warning); }
+.tag-success { background: rgba(74,138,92,0.2); color: var(--success); }
+
+/* CONCLUSION */
+.conclusion {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.conclusion h2 {
+  margin-bottom: 40px;
+}
+
+.conclusion p {
+  font-size: 1.1rem;
+  max-width: 640px;
+  margin: 0 auto 20px;
+}
+
+/* SOURCES */
+.sources {
+  padding: 40px 0 80px;
+  border-top: 1px solid var(--border);
+}
+
+.sources p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ── HOME NAV ── */
+.home-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.55rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-nav > a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+}
+.home-nav > a:hover { color: var(--text-bright); }
+
+/* ── LANG BAR (inside home-nav, dark theme) ── */
+.lang-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.lang-bar a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.lang-bar a:hover { color: var(--accent); }
+.lang-bar a.active { color: var(--accent); }
+.lang-bar .sep { color: var(--border); font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; }
+
+/* MOBILE */
+@media (max-width: 640px) {
+  body { font-size: 15px; }
+  .hero { min-height: auto; padding: 60px 0; }
+  .toc { position: static; }
+  .data-grid { grid-template-columns: 1fr 1fr; }
+  .section { padding: 60px 0 30px; }
+  .lang-bar { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="home-nav">
+  <a href="index.html">← Startseite</a>
+  <div class="lang-bar">
+    <a href="../es/2026.03.31_Analisis.de.Costes.Tropas.Terrestres_vs_Declive.del.Petrodolar.html">ES</a>
+    <span class="sep">·</span>
+    <a href="../en/2026.03.31_Ground.Troops.Cost.Analysis_vs_Petrodollar.Decline.html">EN</a>
+    <span class="sep">·</span>
+    <a href="./2026.03.31_Reale.Kriegskosten.USA.Israel.vs.Iran_Petrodollar.Niedergang.html" class="active">DE</a>
+    <span class="sep">·</span>
+    <a href="../hu/">HU</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+<div class="container">
+  <div class="hero-label">Geopolitische Analyse · März 2026</div>
+  <h1>Die realen Kriegskosten<br>USA/Israel vs. <em>Iran</em></h1>
+  <p class="hero-question">Was ist teurer: eine Bodenoffensive zur Kontrolle der Straße von Hormus oder die Erosion des Petrodollar-Systems, die der Krieg selbst beschleunigt?</p>
+  <div class="hero-answer">Die Frage ist falsch gestellt. Es sind keine alternativen Szenarien — sie sind additiv. Die militärische Intervention schützt den Petrodollar nicht; sie zerstört ihn schneller.</div>
+  <div class="hero-date">Analyse erstellt am 30. März 2026 · Konflikt andauernd</div>
+</div>
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+<div class="container">
+  <div class="toc-label">Inhalt</div>
+  <ul class="toc-list">
+    <li><a href="#s1">01 — Das Spielfeld</a></li>
+    <li><a href="#s2">02 — Der Petrodollar</a></li>
+    <li><a href="#s3">03 — De-Dollarisierung</a></li>
+    <li><a href="#s4">04 — Quantifizierung</a></li>
+    <li><a href="#s5">05 — Taktische Erfolge</a></li>
+    <li><a href="#s6">06 — Monitoring</a></li>
+    <li><a href="#s7">07 — Verzerrungen</a></li>
+    <li><a href="#conclusion">Schlussfolgerung</a></li>
+  </ul>
+</div>
+</nav>
+
+<!-- SECTION 1 -->
+<section class="section" id="s1">
+<div class="container">
+  <div class="section-number">Abschnitt 01</div>
+  <h2>Das Spielfeld: Wer kauft das Öl aus dem Golf</h2>
+
+  <h3>Die Durchflussmengen durch die Straße von Hormus</h3>
+  <p>Vor dem Konflikt flossen täglich rund 20 Millionen Barrel durch die Straße von Hormus — mehr als ein Viertel des globalen Seetransports von Öl und knapp ein Fünftel des weltweiten Verbrauchs.</p>
+
+  <div class="data-grid">
+    <div class="data-card"><div class="label">Saudi-Arabien</div><div class="value">37,2%</div><div class="note">des Hormus-Durchflusses</div></div>
+    <div class="data-card"><div class="label">Irak</div><div class="value">22,8%</div><div class="note">des Hormus-Durchflusses</div></div>
+    <div class="data-card"><div class="label">VAE</div><div class="value">12,9%</div><div class="note">des Hormus-Durchflusses</div></div>
+    <div class="data-card"><div class="label">Iran</div><div class="value">10,6%</div><div class="note">des Hormus-Durchflusses</div></div>
+    <div class="data-card"><div class="label">Kuwait</div><div class="value">10,1%</div><div class="note">des Hormus-Durchflusses</div></div>
+  </div>
+
+  <p>Zusammen repräsentieren diese fünf Länder <strong>93,6%</strong> des gesamten Roh- und Kondensatöls, das durch Hormus transportiert wird.</p>
+
+  <h3>Die Käufer: Asien dominiert die Nachfrage</h3>
+  <p>Das Ziel dieses Öls ist überwältigend asiatisch. Asiatische Länder zusammen beziehen <strong>89,2%</strong> des durch die Meerenge transportierten Rohöls. China allein absorbiert <strong>37,7%</strong> — mehr als jedes andere Land mit großem Abstand. Indien, Japan und Südkorea vervollständigen das Bild der dominierenden Käufer.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Produzentenland</th><th>Hauptabnehmer</th><th>Alternativen zu Hormus</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Saudi-Arabien</strong></td><td>China (21,7% der Exporte), Südkorea, Japan, Indien, VAE</td><td>Ost-West-Pipeline zum Roten Meer (~5–7 Mb/d)</td></tr>
+      <tr><td><strong>Irak</strong></td><td>China, Indien</td><td>Keine nennenswerte</td></tr>
+      <tr><td><strong>VAE</strong></td><td>Indien (Wachstum von 58,3% im Jahr 2024), China</td><td>Fujairah-Pipeline (1,8 Mb/d)</td></tr>
+      <tr><td><strong>Kuwait</strong></td><td>Asien (dominanter Markt). 90% der Exporteinnahmen abhängig vom Öl</td><td>Keine</td></tr>
+      <tr><td><strong>Katar</strong></td><td>China ist Hauptabnehmer. 9.300 Mcf/d LNG durch Hormus</td><td>Keine</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Iran: der Exporteur, der bereits außerhalb des Dollars operiert</h3>
+  <p>Der Iran ist die lebende Fallstudie dafür, was geschieht, wenn ein bedeutender Ölexporteur vollständig aus dem Dollar-System aussteigt.</p>
+
+  <div class="data-grid">
+    <div class="data-card"><div class="label">Produktion 2025</div><div class="value">4,19</div><div class="note">Mb/d (5% global)</div></div>
+    <div class="data-card"><div class="label">Exporte 2024</div><div class="value">~1,6</div><div class="note">Mb/d (43 Mrd. $ Einnahmen)</div></div>
+    <div class="data-card"><div class="label">China kauft</div><div class="value">&gt;90%</div><div class="note">der iranischen Exporte</div></div>
+    <div class="data-card"><div class="label">Rabatt</div><div class="value">$7–8</div><div class="note">pro Barrel unter Benchmark</div></div>
+  </div>
+
+  <p>China bezahlt iranisches Öl über Yuan-Konten oder per Warenlieferung. Der Einsatz von Schattenflotten, Umladungen über Malaysia und Mittelsmänner ist dokumentiert. <strong>Diese Infrastruktur existiert bereits und funktioniert</strong> — sie muss nicht von Grund auf neu aufgebaut werden, um zusätzliches GCC-Öl aufzunehmen.</p>
+
+  <div class="callout">
+    <div class="callout-label">Das zentrale Paradox</div>
+    <p><strong>Die GCC-Verkäufer verkaufen nach Asien, verrechnen und sparen aber in Dollar.</strong> Dieses Missverhältnis zwischen dem kommerziellen Ziel (Asien) und dem finanziellen Ziel (USA) ist genau der Riss, den der aktuelle Krieg vertieft.</p>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 2 -->
+<section class="section" id="s2">
+<div class="container">
+  <div class="section-number">Abschnitt 02</div>
+  <h2>Der Petrodollar-Mechanismus und seine Verwundbarkeit</h2>
+
+  <h3>Wie der Kreislauf funktioniert</h3>
+  <p>Das Petrodollar-System, das 1974 im Kissinger-Faisal-Abkommen begründet wurde, funktioniert in fünf Schritten: Öl wird in Dollar verkauft; Exporteure häufen Überschüsse an; diese Dollars werden in Treasuries und Dollar-Vermögenswerte recycelt; die GCC-Währungen sind an den Dollar gebunden (5 von 6 Ländern); und dieses Recycling hält die Renditen künstlich niedrig, sodass die USA sich günstig finanzieren können.</p>
+
+  <div class="callout">
+    <p>Die implizite Gegenleistung: <strong>Die USA garantieren die Sicherheit des Persischen Golfs und den freien Durchfluss durch Hormus.</strong></p>
+  </div>
+
+  <h3>Quantifizierung des Mechanismus</h3>
+  <h4>Direkte Treasury-Bestände (Dezember 2025)</h4>
+
+  <div class="data-grid">
+    <div class="data-card"><div class="label">Saudi-Arabien</div><div class="value">$149,5B</div></div>
+    <div class="data-card"><div class="label">VAE</div><div class="value">$95,6B</div></div>
+    <div class="data-card"><div class="label">Kuwait</div><div class="value">$66,1B</div></div>
+    <div class="data-card"><div class="label">GCC Top 3 gesamt</div><div class="value">~$311B</div><div class="note">3,4% des globalen Marktes</div></div>
+  </div>
+
+  <p>Das erscheint bescheiden gegenüber Japan (1,19 Bio. $) oder China (683 Mrd. $), aber seine Bedeutung ist unverhältnismäßig hoch: Es sendet Signale über das Vertrauen der Ölproduzenten in den Dollar.</p>
+
+  <p>Die Staatsfonds des GCC verwalten zusammen <strong>~4,9 Billionen $</strong> an Vermögenswerten — eine Zahl, die bis 2030 voraussichtlich 7 Billionen $ übersteigen wird. Historisch großteils in Dollar-Vermögenswerte investiert, jedoch mit zunehmender Diversifizierung nach Asien.</p>
+
+  <h3>Erosionssignale vor dem Krieg</h3>
+  <ul>
+    <li>Der Dollar-Anteil an den globalen Reserven fiel auf <strong>56,9%</strong> — Tiefstwert seit 1995, von 72% im Jahr 2001</li>
+    <li>China und Saudi-Arabien unterzeichneten ein Währungsswap-Abkommen über rund 7 Mrd. $</li>
+    <li>Saudi-Arabien trat dem von China geführten mBridge-Projekt bei</li>
+    <li>~20% des globalen Öls wurde 2023 bereits außerhalb des Dollars gehandelt</li>
+  </ul>
+</div>
+</section>
+
+<!-- SECTION 3 -->
+<section class="section" id="s3">
+<div class="container">
+  <div class="section-number">Abschnitt 03</div>
+  <h2>De-Dollarisierungsanfälligkeit nach GCC-Land</h2>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Land</th><th>Anfälligkeit</th><th>Hauptgrund</th><th>Hormus-Bypass</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Katar</strong></td><td><span class="tag tag-danger">Hoch</span></td><td>Hauptabnehmer ist China. Totale Abhängigkeit von Hormus</td><td>Kein</td></tr>
+      <tr><td><strong>Kuwait</strong></td><td><span class="tag tag-danger">Hoch</span></td><td>90% der Einnahmen vom Öl abhängig. Asiatische Käufer</td><td>Kein</td></tr>
+      <tr><td><strong>Irak</strong></td><td><span class="tag tag-warning">Mittel-Hoch</span></td><td>China und Indien als Hauptkunden. Kein Bypass für Basra</td><td>Kein</td></tr>
+      <tr><td><strong>VAE</strong></td><td><span class="tag tag-warning">Mittel</span></td><td>Wirtschaftliche Diversifizierung. Experimentiert bereits mit Rupien</td><td>Fujairah (1,8 Mb/d)</td></tr>
+      <tr><td><strong>Saudi-Arabien</strong></td><td><span class="tag tag-success">Mittel-Niedrig</span></td><td>Dollar-Bindung erzeugt Währungsrisiko. Aber das entscheidende Glied</td><td>Ost-West (~5–7 Mb/d)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout danger">
+    <div class="callout-label">Entscheidende Unterscheidung: erzwungen vs. freiwillig</div>
+    <p>Wenn Iran den Hormus-Transit de facto kontrolliert und Maut in Yuan erhebt, wählen Länder ohne Bypass (Katar, Kuwait, Irak) die De-Dollarisierung nicht — <strong>sie werden dazu gezwungen.</strong> Das beschleunigt das Erosionstempo dramatisch.</p>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 4 -->
+<section class="section" id="s4">
+<div class="container">
+  <div class="section-number">Abschnitt 04</div>
+  <h2>Vergleichende Quantifizierung: Bodenoffensive vs. Petrodollar-Erosion</h2>
+
+  <h3>Szenario A: Bodenoffensive</h3>
+  <p><strong>Referenz: Irak 2003.</strong> Kostete ~2–3 Billionen $ an direkten Ausgaben + 1 Billion $ für Veteranen. Die Bush-Regierung projizierte 50–60 Mrd. $. Der Krieg dauerte acht statt sechs Wochen.</p>
+  <p><strong>Iran ist ein erheblich schwierigeres Terrain:</strong> 3,8× größeres Territorium, 3,5× mehr Bevölkerung, Gebirgsgelände, nachgewiesene Raketenfähigkeiten, doppelter Meerengen-Verschluss, und Öl bei 107 $ statt 30 $ im Jahr 2003.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Posten</th><th>Konservative Schätzung</th><th>Hohe Schätzung</th></tr></thead>
+    <tbody>
+      <tr><td>Direkte Militärausgaben</td><td>2–3 Bio. $</td><td>4–5 Bio. $</td></tr>
+      <tr><td>Veteranenversorgung (40 Jahre)</td><td>1–1,5 Bio. $</td><td>2+ Bio. $</td></tr>
+      <tr><td>Zinsen auf aufgenommene Schulden</td><td>1,5–2 Bio. $</td><td>3+ Bio. $</td></tr>
+      <tr><td><strong>Gesamt</strong></td><td><strong>4,5–6,5 Bio. $</strong></td><td><strong>9–10+ Bio. $</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Szenario B: Petrodollar-Erosion</h3>
+
+  <div class="data-grid">
+    <div class="data-card"><div class="label">US-Staatsschulden</div><div class="value">$39B</div><div class="note">März 2026</div></div>
+    <div class="data-card"><div class="label">Zinszahlungen 2025</div><div class="value">$970B</div><div class="note">3. Haushaltsposten</div></div>
+    <div class="data-card"><div class="label">10J-Treasury</div><div class="value">4,44%</div><div class="note">8-Monats-Hochs</div></div>
+    <div class="data-card"><div class="label">Projektion 2036</div><div class="value">$2,1B</div><div class="note">Jährliche Zinsen (CBO)</div></div>
+  </div>
+
+  <p>Wenn ein Teil des GCC-Ölhandels in Yuan migriert → weniger recycelte Dollars → weniger Treasury-Nachfrage → Renditen steigen → USA zahlen mehr. <strong>Jede +50 Basispunkte ≈ ~195 Mrd. $ jährliche Mehrkosten.</strong></p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Migrationsszenario</th><th>Renditewirkung</th><th>Jährliche Mehrkosten</th><th>10-Jahres-Kosten</th></tr></thead>
+    <tbody>
+      <tr><td>5% des GCC migriert zu Yuan</td><td>+15–25 Bp</td><td>~60–100 Mrd. $</td><td>~0,6–1 Bio. $</td></tr>
+      <tr><td>15–20% des GCC migriert zu Yuan</td><td>+50–80 Bp</td><td>~195–310 Mrd. $</td><td>~2–3 Bio. $</td></tr>
+      <tr><td>Aufhebung der Riyal/Dollar-Bindung</td><td>+100–150 Bp</td><td>~390–585 Mrd. $</td><td>~4–6 Bio. $</td></tr>
+      <tr><td>Kaskade: GCC + BRICS de-dollarisieren 30%+</td><td>+150–250 Bp</td><td>~585 Mrd. $–1 Bio. $</td><td>~6–10 Bio. $</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Kernergebnis: die Kosten sind additiv</h3>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Szenario</th><th>Kosten A (Invasion)</th><th>Kosten B (Petrodollar)</th><th>Gesamt</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Invasion mit militärischem Erfolg</strong></td><td>4,5–10+ Bio. $</td><td>Partiell (irreversibler Schaden)</td><td>A + B partiell</td></tr>
+      <tr><td><strong>Invasion ohne Erfolg</strong></td><td>4,5–10+ Bio. $</td><td>Vollständig und beschleunigt</td><td>A + B vollständig</td></tr>
+      <tr><td><strong>Keine Invasion</strong></td><td>$0</td><td>Langsames, beherrschbares Tempo</td><td>Nur B (graduell)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout danger">
+    <div class="callout-label">Das unlösbare Paradox</div>
+    <p>Die Invasion verhindert die Petrodollar-Erosion nicht — sie beschleunigt sie. Jeder Kriegstag mit geschlossenem Hormus beweist öffentlich, dass die USA ihren Teil des Paktes von 1974 nicht erfüllen können. <strong>Es ist wie den Grundstock des Hauses verkaufen, um die Dachreparatur zu bezahlen.</strong></p>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 5 -->
+<section class="section" id="s5">
+<div class="container">
+  <div class="section-number">Abschnitt 05</div>
+  <h2>Die taktischen Erfolge und warum sie die strategische Gleichung nicht ändern</h2>
+
+  <h3>Was USA/Israel erreicht haben</h3>
+  <p>Die militärische Degradierung des Iran ist real: über 15.000 Ziele getroffen, ballistische Raketenabschusskapazität um 90% reduziert (laut Pentagon), mehr als 700 Raketen in ihren Anlagen zerstört, über 50 Schiffe versenkt, schwere Schäden an Natanz und Fordow.</p>
+
+  <h3>Warum es nicht ausreicht</h3>
+  <p><strong>Zur militärischen Degradierung:</strong> Was zählt, ist nicht die absolute Vernichtung, sondern die funktionale Restkapazität. Einen Monat danach feuert Iran noch immer und kontrolliert selektiv Hormus. Wenn die Abfangraketen-Bestände der USA sinken, könnte dieselbe iranische Restkapazität wirksamer werden.</p>
+
+  <p><strong>Zum Nuklearprogramm:</strong> Wissen lässt sich nicht wegbomben. Schlimmer noch: Die Ermordung Khameneis — der eine Fatwa gegen Nuklearwaffen erlassen hatte — und seine Ablösung durch die IRGC schafft die Bedingungen dafür, dass Iran zu dem Schluss kommt, es brauche ein einsatzfähiges Nukleararsenal.</p>
+
+  <p><strong>Zum „Nichtstun":</strong> Der Status quo war nicht kostenlos. Aber die Intervention hat öffentlich demonstriert, dass die USA nicht in der Lage sind, Hormus offenzuhalten. Eine Verhandlung ausgehend von Nicht-Intervention hätte zumindest den Schein der Handlungsfähigkeit gewahrt — was in der Geopolitik fast so wertvoll ist wie die Handlungsfähigkeit selbst.</p>
+
+  <div class="callout">
+    <div class="callout-label">Substitutionsverzerrung</div>
+    <p>Der Kriegsdiskurs ersetzt die Frage <em>„Schützen wir das Finanzsystem, von dem unsere Macht abhängt?"</em> durch die einfachere <em>„Degradieren wir die Militärkapazität des Feindes?"</em> Die Antwort auf die zweite kann „ja" lauten, während die erste „nein" ist. <strong>Was die Zukunft des Imperiums bestimmt, ist die erste.</strong></p>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 6 -->
+<section class="section" id="s6">
+<div class="container">
+  <div class="section-number">Abschnitt 06</div>
+  <h2>Zu beobachtende Variablen</h2>
+
+  <blockquote>Gibt es innerhalb der amerikanischen Regierung ausreichende analytische Klarheit, um zu verstehen, dass jede Kriegswoche die Erosion des Finanzmechanismus beschleunigt, den sie am meisten zu bewahren braucht?</blockquote>
+
+  <h4>Primäre Finanzindikatoren</h4>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Rendite 10-jährige US-Staatsanleihe</span>
+      <span class="indicator-value">4,44% (27.03.2026)</span>
+    </div>
+    <p>Direktes Signal für die Gesundheit des Petrodollars. Die Märkte bewerten eine 50%-Wahrscheinlichkeit einer Fed-Zinsanhebung bis Dezember — vollständige Umkehr früherer Zinssenkungserwartungen.</p>
+    <p><span class="tag tag-danger">Kritische Schwelle</span> Wenn er nachhaltig über 4,5% steigt, während auch das Öl steigt → Signal für ein Versagen des Recycling-Mechanismus.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">MOVE-Index (ICE BofA)</span>
+      <span class="indicator-value">Das „VIX des Anleihemarkts"</span>
+    </div>
+    <p>Bandbreiten: &lt;80 = ruhig; 80–120 = moderate Volatilität; &gt;120 = extremer Stress. Schnellregel: MOVE ÷ 15 = potenzialer täglicher Schwung bei 10J-Renditen.</p>
+    <p><span class="tag tag-danger">Schlüsselsignal</span> Anhaltender MOVE &gt;120 während des Konflikts = der Anleihemarkt bewertet systemisches Risiko in der amerikanischen Staatsverschuldung.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">EUR/CHF</span>
+      <span class="indicator-value">~0,915 (Ende März) · Tief 0,8975 (Anfang März)</span>
+    </div>
+    <p>Proxy für globale Liquidität: CHF stärkt sich (EUR/CHF fällt) bei Liquiditätskontraktion. Das Paar fiel 4,26% in 12 Monaten, aber die Erholung von 0,89 ist ein Gegensignal — die Märkte befinden sich (noch) nicht im systemischen Panikmodus.</p>
+    <p><span class="tag tag-danger">Bärisch</span> Nachhaltiger Durchbruch unter 0,90 → wahrgenommenes systemisches Risiko. <span class="tag tag-success">Bullisch</span> Anstieg auf 0,93–0,95 → Markt eskomptiert Deeskalation.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Gold</span>
+      <span class="indicator-value">~$4.450–4.800 · -15/20% vom ATH $5.595</span>
+    </div>
+    <p>Die schlechteste Gold-Performance in den ersten 4 Wochen eines größeren Konflikts seit 50 Jahren. Konvergierende Faktoren: Gewinnmitnahmen nach Bull-Run 2025 (+65%), starker DXY, hohe Renditen als konkurrierende Zuflucht, hawkische Fed, Zentralbanken verkaufen Reserven zur Finanzierung von Verteidigungs-/Energiekosten, massive ETF-Abflüsse.</p>
+    <p>Der Goldverfall ist paradoxerweise kohärent mit der These: Krieg → Öl steigt → Inflation → Fed kürzt nicht → Renditen steigen → Dollar kurzfristig stark → Gold fällt. Aber es ist eine <strong>toxische Dollar-Stärkung</strong> — getrieben durch hohe Zinsen, die die Schulden verteuern, nicht durch Vertrauen.</p>
+    <p><span class="tag tag-warning">Beobachten</span> Wenn die Fed durch wirtschaftliche Verschlechterung zu Zinssenkungen gezwungen wird (40% Rezessionswahrscheinlichkeit laut EY-Parthenon), könnte Gold heftig umkehren. GS und Deutsche halten Ziele von $6.000–6.300/oz für 2026.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Brent</span>
+      <span class="indicator-value">~$107/Barrel (jüngstes Hoch $116)</span>
+    </div>
+    <p><span class="tag tag-danger">Kritische Schwelle</span> Über nachhaltig $120–130 wird der Schaden für die Weltwirtschaft selbstverstärkend.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Yuan-Transaktionen in Hormus</span>
+    </div>
+    <p>CNN bestätigte, dass mindestens zwei Schiffe Maut in Yuan zahlten (14. März 2026). Die Volumenentwicklung als direkter Indikator für erzwungene De-Dollarisierung beobachten.</p>
+  </div>
+
+  <h4>Militärische Indikatoren</h4>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Zusammensetzung des Einsatzes</span>
+      <span class="indicator-value">~10–15.000 leichte Infanterie (aktuell) ist kein glaubwürdiger Einsatz</span>
+    </div>
+    <p>Aktueller Einsatz (82. Luftlandedivision) = bloßer Verhandlungsdruck. <span class="tag tag-danger">Signal für echte Invasion</span> Schwere Amphibienkräfte, MCM-Minenräumeinheiten oder &gt;50.000 Einsatzkräfte.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Iranische Restkapazität</span>
+    </div>
+    <p>Solange Iran noch feuert und Hormus selektiv kontrolliert, hat die Degradierung die funktionale Schwelle nicht erreicht. Abschussrate und Fähigkeit, verbündete Infrastruktur anzugreifen, beobachten.</p>
+  </div>
+
+  <h4>Politische Indikatoren für Deeskalation</h4>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Ablösung Netanyahus</span>
+      <span class="indicator-value">Wichtigstes politisches Signal</span>
+    </div>
+    <p>Am 27. März veröffentlichte Tucker Carlson „The Bibi Files" — eine Dokumentation basierend auf 1.000+ Stunden geleakten Polizeiverhören, gedreht vom Oscar-Gewinner Alex Gibney. In Israel verboten. Verbindet Kriegsentscheidungen mit Netanyahus Strategie, dem Gefängnis zu entgehen. Enthält Aufnahmen, in denen er monatliche Überweisungen von 35 Mio. $ aus Katar an die Hamas beschreibt.</p>
+    <p>Das Timing — mitten im Krieg, auf einer konservativen Plattform mit Publikum in der republikanischen Basis — legt nahe, dass Teile des Establishments die Grundlage für seinen Abgang als Deeskalationsbedingung vorbereiten.</p>
+    <p><span class="tag tag-success">Signal für Deeskalation</span> Wenn Netanyahu fällt, entfällt einer der Hauptanreize zur Verlängerung des Konflikts.</p>
+  </div>
+
+  <div class="indicator">
+    <div class="indicator-header">
+      <span class="indicator-name">Wiedereröffnung von Hormus</span>
+    </div>
+    <p><span class="tag tag-success">Positiv</span> Ohne Yuan-Maut → echte Deeskalation. <span class="tag tag-danger">Negativ</span> Mit Yuan-Maut → Petrodollar-Erosion auch im „Frieden."</p>
+  </div>
+</div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="conclusion" id="conclusion">
+<div class="container">
+  <h2>Schlussfolgerung</h2>
+  <p>Die USA haben keine guten Optionen. Die militärische Intervention hat einige taktische Erfolge erzielt — Degradierung des iranischen Nuklearprogramms, Zerstörung der Flotte und bestimmter Infrastrukturen — aber zum Preis der Beschleunigung der Erosion des Finanzsystems, von dem die amerikanische Macht abhängt, und ohne die Kontrolle über die Straße von Hormus reduziert zu haben.</p>
+  <p>Die Kostenstruktur ist nicht „Invasion <em>oder</em> Verlust des Petrodollars" — es ist <strong>„Invasion + beschleunigter Verlust des Petrodollars."</strong></p>
+  <p>Das amerikanische Imperium hat mutmaßlich einen Krieg begonnen, um eine Ordnung zu schützen, von der es abhängt. Aber der Krieg zerstört genau diese Ordnung.</p>
+  <p style="color: var(--accent); font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem; margin-top: 32px;">Der Petrodollar wird diesen Krieg in seiner gegenwärtigen Form nicht überleben, unabhängig vom militärischen Ausgang.</p>
+</div>
+</section>
+
+<!-- SOURCES -->
+<footer class="sources">
+<div class="container">
+  <p><strong>Quellen:</strong> U.S. Energy Information Administration, Visual Capitalist, OPEC Annual Statistical Bulletin 2025, Brown University Costs of War Project, Congressional Budget Office, Peterson Foundation, Deutsche Bank, Fortune, S&amp;P Global, Asia Society Policy Institute, Arms Control Association, Atlantic Council, Bloomberg, CNBC, Newsweek, BullionVault und weitere. Marktdaten per 30. März 2026.</p>
+</div>
+</footer>
+
+</body>
+</html>
