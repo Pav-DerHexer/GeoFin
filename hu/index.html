@@ -76,6 +76,23 @@
     width: auto;
   }
 
+  .masthead-telegram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin: 0.6rem auto 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .masthead-telegram:hover { color: var(--accent2); }
+  .masthead-telegram img { height: 16px; width: 16px; object-fit: contain; border-radius: 3px; }
+
   .masthead-tagline {
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 0.85rem;
@@ -275,6 +292,10 @@
   <header class="masthead">
     <p class="masthead-kicker">Elemzés · Vélemény · Geopolitika &amp; Pénzügyek</p>
     <img class="masthead-logo" src="../Logo/Logo_Criptomaneras.F.Blanco.jpg" alt="Criptomaneras">
+    <a class="masthead-telegram" href="https://t.me/+tjbF3GaGnGwzNzE8" target="_blank" rel="noopener">
+      <img src="../resources/telegram_icon.jpg" alt="Telegram">
+      Telegram csatorna spanyolul
+    </a>
     <p class="masthead-tagline">Geopolitika és pénzügyek eufemizmusok nélkül</p>
     <hr class="masthead-rule">
   </header>
@@ -327,7 +348,6 @@
 <footer>
   <div class="container">
     <p>Criptomaneras &mdash; Vélemény &amp; elemzés &mdash; A szövegek kizárólag a szerző véleményét tükrözik</p>
-    <p style="margin-top:0.75rem;"><a href="https://t.me/+tjbF3GaGnGwzNzE8">Telegram csatorna spanyolul →</a></p>
   </div>
 </footer>
 
