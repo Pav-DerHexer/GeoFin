@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elliott-hullámok számolása BTC-re</title>
+<link rel="alternate" hreflang="hu" href="./2026.05.03_Elliott.Wave.BTC.html">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f4f0e8;
+    --accent: #c8392b;
+    --accent2: #1a3a5c;
+    --muted: #6b6560;
+    --rule: #d4cfc7;
+    --gold: #b8860b;
+    --green: #2e7d32;
+    --amber: #e65100;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  .home-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 2rem;
+  }
+
+  .home-nav > a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    text-decoration: none;
+  }
+
+  .home-nav > a:hover { color: var(--accent); }
+
+  .lang-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .lang-bar a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .lang-bar a:hover { color: var(--accent2); }
+  .lang-bar a.active { color: var(--accent2); text-decoration: underline; text-underline-offset: 3px; }
+  .lang-bar .sep { color: var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 3px double var(--ink);
+    padding: 2rem 0 0;
+    text-align: center;
+  }
+
+  .header-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 820px;
+    margin: 0 auto 1.5rem;
+    padding: 0 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em { font-style: italic; color: var(--accent); }
+
+  .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 640px;
+    margin: 0 auto 1rem;
+    padding: 0 2rem;
+  }
+
+  .source-credit {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin: 0 auto 2rem;
+    padding: 0 2rem;
+  }
+  .source-credit a {
+    color: var(--accent2);
+    text-decoration: none;
+  }
+  .source-credit a:hover { text-decoration: underline; }
+
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── BODY ── */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin: 3rem 0 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 2.5rem 0 1rem;
+    color: var(--accent2);
+  }
+
+  p {
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  strong { font-weight: 500; }
+
+  a { color: var(--accent2); }
+
+  .lead {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    margin: 2.5rem 0;
+  }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    margin: 2.5rem 0;
+    padding: 2rem 2rem 2rem 3rem;
+    border-left: 4px solid var(--accent);
+    background: white;
+    position: relative;
+  }
+
+  .pullquote::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--accent);
+    opacity: 0.2;
+    position: absolute;
+    top: -1rem; left: 0.5rem;
+    line-height: 1;
+  }
+
+  .pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* ── TABLES ── */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: white;
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+  }
+
+  td {
+    padding: 0.75rem 0.9rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  tr:nth-child(even) td { background: white; }
+
+  .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    display: inline-block;
+  }
+  .badge-bull  { background: #d5f0e0; color: var(--green); }
+  .badge-bear  { background: #fde8e8; color: var(--accent); }
+  .badge-warn  { background: #fef3cd; color: var(--amber); }
+  .badge-blue  { background: #dce8f5; color: var(--accent2); }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    margin: 1.5rem 0 0.75rem;
+    display: inline-block;
+  }
+
+  /* ── IMAGES ── */
+  .article-img {
+    margin: 1.5rem 0;
+    border: 1px solid var(--rule);
+    background: white;
+  }
+
+  .article-img img {
+    width: 100%;
+    display: block;
+  }
+
+  .article-img figcaption {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    padding: 0.5rem 0.75rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── OPERATIVE BOX ── */
+  .op-box {
+    border: 2px solid var(--ink);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    background: white;
+    position: relative;
+  }
+
+  .op-box .op-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    position: absolute;
+    top: -0.55rem;
+    left: 1.2rem;
+    background: white;
+    padding: 0 0.4rem;
+  }
+
+  .op-box p { margin: 0; font-size: 0.92rem; }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    margin: 3rem 0 1rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--rule);
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.6;
+    background: white;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 3px double var(--ink);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+    .pullquote { padding: 1.5rem 1.5rem 1.5rem 2rem; }
+    .header-meta { flex-direction: column; gap: 0.4rem; }
+    .lang-bar { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="home-nav">
+  <a href="index.html">← Főoldal</a>
+  <div class="lang-bar">
+    <a href="../es/2026.05.03_Elliott.Wave.BTC.html">ES</a>
+    <span class="sep">·</span>
+    <a href="../en/2026.05.03_Elliott.Wave.BTC.html">EN</a>
+    <span class="sep">·</span>
+    <a href="../de/2026.05.03_Elliott.Wave.BTC.html">DE</a>
+    <span class="sep">·</span>
+    <a href="./2026.05.03_Elliott.Wave.BTC.html" class="active">HU</a>
+  </div>
+</nav>
+
+<header>
+  <div class="header-eyebrow">Technikai Elemzés &middot; Kriptó</div>
+  <h1>Elliott-hullámok számolása <em>BTC</em>-re</h1>
+  <p class="subtitle">Az 1–5-ös impulzus és az A-B-C korrekció validálása. Operatív küszöbértékek és kritériumok a C hullám lezárultának meghatározásához.</p>
+  <p class="source-credit">A számolást Miguel javasolta a <a href="https://youtu.be/VhJ9TJTYOsU" target="_blank">Bitcoin al Día</a> csatornán</p>
+  <div class="header-meta">
+    <span>P.V.</span>
+    <span>2026. Május</span>
+    <span>~8 perc olvasás</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <p class="lead">Az Elliott-hullámok elemzése, évtizedekkel a kidolgozása után, a technikai elemzés egyik legerőteljesebb —és legvitatottabb— eszköze maradt. Ereje abban rejlik, hogy nem csupán leírja, mit tett az ár, hanem egy belső struktúrát javasol, amely lehetővé teszi a következő lehetséges mozgás előrejelzését. Gyengesége ugyanaz: a számolás szubjektivitása.</p>
+
+  <p>Az alábbiakban egy szigorú validálási gyakorlatot végzünk. Kiindulópontunk a Bitcoin al Día csatorna Miguelje által BTC-re javasolt, napi és heti időkereteken alapuló számolás, amelyet az elmélet formális szabályainak vetünk alá. A cél nem valamilyen tézis megerősítése, hanem annak meghatározása, hogy milyen konkrét bizonyítékok különböztetnék meg a bullish és a bearish forgatókönyvet egymástól.</p>
+
+  <div class="pullquote">
+    <p>A számolás önmagában nem ér semmit. A módszertan az értékes – tudni, mikor téved.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Javasolt számolás: 1–5-ös impulzus és A-B-C korrekció</h2>
+
+  <p>Az általunk elemzett számolás a Bitcoin struktúráját az előző ciklus mélypontjaitól a közelmúlt csúcsáig (~108 500 USD) <strong>ötágú felfelé irányuló impulzusként</strong> írja le, amelyet egy folyamatban lévő, <strong>A-B-C expanded flat</strong> típusú korrekció követ.</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img1.jpg" alt="BTC heti grafikon 1–5-ös bullish impulzussal és A-B-C korrekcióval">
+    <figcaption>BTC/USD heti grafikon · Kraken · 1–5-ös impulzus és A-B-C expanded flat számolás</figcaption>
+  </figure>
+
+  <div class="section-label">A felfelé irányuló impulzus szerkezete (1–5. hullámok)</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Hullám</th><th>Leírás</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>1. hullám</strong></td><td>Első impulzus a ciklus mélypontjairól. Meghatározza a fő trend irányát.</td></tr>
+        <tr><td><strong>2. hullám</strong></td><td>Mély korrekció, az 1. hullám kiindulópontját nem lépve túl. Megerősíti a szerkezetet.</td></tr>
+        <tr><td><strong>3. hullám</strong></td><td>A leghosszabb impulzus. Általában a ciklus leghosszabb és legvolatilisabb hulláma.</td></tr>
+        <tr><td><strong>4. hullám</strong></td><td>Oldalirányú korrekció. Nem hatol be az 1. hullám területére. Váltakozási minta a 2. hullámmal.</td></tr>
+        <tr><td><strong>5. hullám</strong></td><td>Záró impulzus. Ciklusmaximum ~108 500 USD-nál. Az A-B-C korrekció kiindulópontja.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Az 5. hullám befejezése után az ár egy korrekcióba kezd, amelyet <strong>expanded flat-ként (3-3-5)</strong> osztályozunk. Ebben a mintában a B hullám meghaladja az előző impulzus 5. hullámának csúcsát —ami nemcsak megengedett, hanem az expanded flat meghatározó jellemzője—, a C hullám pedig öt alhullámból álló mozgással zárja le a korrekciót az A hullám mélypontja alatt.</p>
+
+  <p>Az Elliott-korrekciós minták szabályainak részletesebb ismertetéséért: <a href="https://bullwaves.org/complete-guide-elliott-wave-correction-patterns/" target="_blank">bullwaves.org — Complete Guide Elliott Wave Correction Patterns</a>.</p>
+
+  <div class="section-label">Az A-B-C expanded flat (3-3-5) formális szabályai</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Hullám</th><th>Szabályok és megjegyzések</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>A hullám</strong></td><td>Három belső alhullám. Ebben a számolásban: ~108 500-tól ~74 400 USD-ig.</td></tr>
+        <tr><td><strong>B hullám</strong></td><td>Három belső alhullám. Meghaladhatja —és az expanded flat esetén meg kell haladnia— az 5. hullám maximumát (~108 500 USD). Ebben a számolásban ~125 600 USD-t ért el. Ez nem érvényteleníti a mintát; ez a minta meghatározó jellemzője.</td></tr>
+        <tr><td><strong>C hullám</strong></td><td>Öt belső alhullám. Az A hullám minimuma (~74 400 USD) alatt kell végződnie. Irányadó cél: az A hosszának 162%-a, ~69 000–70 000 USD körüli zónában.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Az operatív kérdés: véget ért-e a C hullám?</h2>
+
+  <p>A Bitcoin jelenlegi ára (~78 000 USD az elemzés időpontjában) bizonytalan zónában van: az 5. hullám maximuma alatt és az A hullám minimuma felett. Ez a pozíció sem megerősíti, sem megcáfolja a C hullám lezárultát.</p>
+
+  <p>Két árküszöb határozza meg a forgatókönyv határait, és elsődleges bináris kritériumként működik:</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img2.jpg" alt="BTC grafikon 74 400 és 108 500 USD közötti bizonytalan zónával">
+    <figcaption>Operatív bizonytalan zóna az A hullám mélypontja (~74 400 USD) és az A hullám kiindulópontja (~108 500 USD) között</figcaption>
+  </figure>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Kritérium</th><th>Szint</th><th>Értelmezés</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-bull">Bullish</span></td>
+          <td><strong>&gt; 108 500 USD</strong></td>
+          <td>Kitörés az A hullám kiindulópontja (az 5. hullám maximuma) fölé. A korrekciós hullám formálisan lezárult. Az A-B-C korrekció véget ért, a piac folytatja a magasabb fokozatú felfelé irányuló impulzust.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-bear">Bearish</span></td>
+          <td><strong>&lt; 74 400 USD</strong></td>
+          <td>Kitörés az A hullám minimuma alá. A C hullám tovább fejlődik, további esési potenciállal és az új mélypontok elérésének lehetőségével.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-warn">Bizonytalan</span></td>
+          <td><strong>74 400–108 500 USD</strong></td>
+          <td>Zóna, amelyen belül az ár mozoghat anélkül, hogy megerősítené vagy érvénytelenítené a forgatókönyvet. Minden kategorikus állítás ezen a sávon belül megerősítési torzítás lenne. Kiegészítő kritériumok szükségesek.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Négy alternatív kritérium a bizonytalanság csökkentésére</h2>
+
+  <p>Mivel a 74 400 és 108 500 USD közötti sáv operatívan <strong>túl széles</strong>, négy további kritérium alkalmazható korai jelek szerzéséhez arról, hogy a C hullám lezárult-e vagy folytatódik. Egyikük sem döntő önmagában. Együttesük igen.</p>
+
+  <!-- 1. kritérium -->
+  <h3>1. kritérium — A C belső szerkezete: alhullámok számolása</h3>
+
+  <p>A C hullámnak <strong>öt bearish alhullámban</strong> kell befejeződnie a B csúcsától (~125 600 USD) számítva. Ha öt teljes alhullám megszámolható, a C formálisan befejeződött, a pontos ártól függetlenül. Ha csak három számlálható, a C szinte biztosan még nem zárult le.</p>
+
+  <p>Itt ismét szembesülünk a számolás szubjektivitásával. Egész könnyen megszámolhatjuk az 5 hullámot az alábbi módon:</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img3.jpg" alt="A alternatív számolás: C hullám 5 alhullámban befejezve">
+    <figcaption>A értelmezés — C hullám befejezve: 5 alhullám megszámolva a B hullám csúcsától</figcaption>
+  </figure>
+
+  <p>És arra a következtetésre juthatunk, hogy a C hullám 5 hullámból álló alszerkezetben bontakozik ki, ami validálja a lezárultság gondolatát.</p>
+
+  <p>De elvégezhetjük a következő számolást is:</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img4.jpg" alt="B alternatív számolás: C hullám még fejlődésben">
+    <figcaption>B értelmezés — C hullám fejlődésben: csak 3 alhullám, az 5. alhullám lefelé még hátravan</figcaption>
+  </figure>
+
+  <p>Ez utóbbi eset arra kényszerítene minket, hogy azt a következtetést vonjuk le, hogy a C hullám még nem ért véget, és egy 5. alhullám lefelé még kibontakozhat. A 74 400 USD lefelé való kitörése lehetséges jelet adna erre a lehetőségre, amelyet a 61 000 USD alá törés erősítene meg.</p>
+
+  <p>Amint látjuk, ez az első kritérium határozatlan marad, mivel a számolás szubjektivitásán alapul, bár a szerkezet megmondja, melyik értelmezés valószínűbb. Ha a következő bullish impulzus 1. hullámában vagyunk, impulzív szerkezetet kell látnunk, nem oldalazót vagy cikk-cakkot.</p>
+
+  <!-- 2. kritérium -->
+  <h3>2. kritérium — RSI divergencia (napi / heti)</h3>
+
+  <p>Szokásos eljárás a bizonytalan helyzetek feloldása az RSI mutató segítségével, megvizsgálva, hogy valamilyen divergencia jelenik-e meg, ami irányt jelezhetne.</p>
+
+  <p>A napi és heti grafikonokon azonban nem figyelhetők meg RSI-divergenciák.</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img5.jpg" alt="BTC napi RSI egyértelmű divergenciák nélkül">
+    <figcaption>RSI 14 — BTC/USD napi grafikon · Nem láthatók értékelhető bullish vagy bearish divergenciák</figcaption>
+  </figure>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img6.jpg" alt="BTC heti RSI">
+    <figcaption>RSI 14 — BTC/USD heti grafikon · Februári bearish divergencia március óta érvénytelenítve</figcaption>
+  </figure>
+
+  <p>A divergencia azt jelentené, hogy miközben az ár csökkenő mélypontokat alkot, az RSI emelkedő mélypontokat mutat (bullish divergencia), vagy fordítva (bearish divergencia). Ezek a körülmények azonban sem a napi, sem a heti grafikonon nem mutatkoznak. Ezért ez a második kritérium sem tűnik döntőnek. A divergenciák hiánya azonban jó jel, mivel az esetlegesen kialakuló 1. hullámban sem láthatók bearish divergenciák.</p>
+
+  <p>A mozgás elején, februárban, a heti grafikonon egy kis bearish divergencia volt megfigyelhető, ahol az ár emelkedő mélypontokat alkotott, miközben az RSI csökkenő mélypontokat. Ez a divergencia azonban március elejétől érvénytelenítésre került, ahol az RSI újra emelkedő mélypontokat jelöl az árral együtt. A bearish divergencia érvénytelenítése erőjelként értelmezhető, bár nem használnánk önálló érvényes operatív mutatóként.</p>
+
+  <!-- 3. kritérium -->
+  <h3>3. kritérium — Ár konfluencia Fibonacci célokkal</h3>
+
+  <p>Az A hullám hossza (~108 500-tól ~74 400 USD-ig) körülbelül <strong>34 000 USD-os esésnek</strong> felel meg. A B csúcsától (~125 600 USD) vetítve:</p>
+
+  <ul style="margin: 0.5rem 0 1.2rem 1.5rem; font-size: 0.95rem; line-height: 2;">
+    <li>Az A 100%-a → cél ~91 600 USD <em>(már elérve és meghaladva)</em></li>
+    <li><strong>Az A 162%-a → cél ~69 000–70 000 USD <em>(szintén elérve)</em></strong></li>
+  </ul>
+
+  <p>Ezt az árszintet már áttörték, ezért ez a kritérium <strong>arra utal</strong>, hogy a C hullám akár <strong>befejezettnek</strong> is tekinthető.</p>
+
+  <!-- 4. kritérium -->
+  <h3>4. kritérium — A C csökkenő trendvonal törése</h3>
+
+  <p>Itt egyértelmű jelet látunk.</p>
+
+  <p>A C hullám csökkenő trendvonalát április eleje óta megtörték.</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img7.jpg" alt="A C hullám csökkenő trendvonalának törése">
+    <figcaption>A C hullám csökkenő trendvonalának bullish törése · 2026. április eleje</figcaption>
+  </figure>
+
+  <p>Ez a jel azelőtt következik be, hogy az ár eléri a 108 500 USD-os küszöbértéket, és lehetővé teszi a fordulat előrejelzését rövidebb stop-távolsággal. Ez a négy kritérium közül a legkoraibb, de egyben a hamis pozitívumokra leginkább hajlamos is.</p>
+
+  <div class="op-box">
+    <span class="op-label">Összetett operatív kritérium</span>
+    <p>Három vagy több kritérium egybeesése ugyanazon az árszinten az a pont, ahol a C hullám végének valószínűsége eléri maximumát. Egyetlen kritérium sem indokol önmagában pozíciót. Az 5 alhullámos teljes szerkezet kombinációja a C hullámban (szubjektív) + ár az A 162%-os zónájában + csökkenő trendvonal törése ezen az elemzési keretrendszeren belül megbízhatóbb jelet alkot.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Összefoglaló döntési táblázat</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Szint / Kritérium</th><th>Jel</th><th>Értelmezés</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>&gt; 108 500 USD</strong></td>
+          <td><span class="badge badge-bull">Bullish</span></td>
+          <td>A-B-C befejezve. Expanded flat lezárult. Fő impulzus folytatódott.</td>
+        </tr>
+        <tr>
+          <td><strong>&lt; 74 400 USD</strong></td>
+          <td><span class="badge badge-bear">Bearish</span></td>
+          <td>C hullám fejlődésben. Következő cél: 69 000–70 000 USD körüli zóna.</td>
+        </tr>
+        <tr>
+          <td>5 teljes C alhullám</td>
+          <td><span class="badge badge-blue">Strukturális</span></td>
+          <td>C formálisan befejezve. Magasabb megbízhatóságú jel, de a számolás szubjektivitásától függ.</td>
+        </tr>
+        <tr>
+          <td>Nincs bearish divergencia a heti RSI-n</td>
+          <td><span class="badge badge-blue">Megerősítés</span></td>
+          <td>Nincs további bearish jel. Megerősíti a C végét, ha más kritériumokkal együtt jelenik meg.</td>
+        </tr>
+        <tr>
+          <td>Ár 69 000–70 000 USD zónában (már elérve)</td>
+          <td><span class="badge badge-bull">Cél</span></td>
+          <td>A B csúcs 162%-a elérve. Fibonacci konfluencia teljesült.</td>
+        </tr>
+        <tr>
+          <td>C csökkenő trendvonal törése (már megtörtént)</td>
+          <td><span class="badge badge-bull">Korai</span></td>
+          <td>Első fordulati jel. Áprilisban bekövetkezett. Hamis jelzésekre hajlamos.</td>
+        </tr>
+        <tr>
+          <td>74 400–108 500 USD (nincs bináris jel)</td>
+          <td><span class="badge badge-warn">Bizonytalan</span></td>
+          <td>Definitív kritérium nélküli zóna. Kiegészítő kritériumokat igényel.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Következtetés</h2>
+
+  <p>A javasolt számolás —1–5-ös impulzus, amelyet A-B-C expanded flat típusú korrekció követ— az Elliott-szabályok szerint <strong>formálisan érvényes</strong>, egy fontos fenntartással: az utolsó C hullám belső szerkezete kétféleképpen értelmezhető (3 vagy 5 alhullám), és csak az 5 alhullámos verzió tartja fenn azt az elképzelést, hogy lezárult. Ez a számolás legsebezhetőbb pontja.</p>
+
+  <p>A jelenlegi ár (~78 000 USD) bizonytalan zónában van. A két bináris küszöbérték —108 500 USD felfelé és 74 400 USD lefelé— továbbra is a forgatókönyv végső bírái. A négy alternatív kritérium az ezen a sávon belüli operatív bizonytalanság csökkentésének eszköze, nem megszüntetéséé.</p>
+
+  <p>A hullámanalízis nem jósolja meg a jövőt. Meghatározza azt a struktúrát, amelyen belül értelmezzük, hogy az ár mit tesz, és pontosan megállapítja, mikor cáfolódik meg az adott szerkezet. Ez a valódi haszna.</p>
+
+  <p>A technikai elemzésben soha nem bizonyosságokról, hanem lehetőségekről beszélünk. Jeleket értelmezünk, és a legvalószínűbb forgatókönyv mellé állunk.</p>
+
+  <h3>Rendben, de akkor vásároljak itt, vagy várjak?</h3>
+
+  <p>Vannak jelek arra, hogy a C hullám lezárult, de nincs bizonyosság. Ha rugalmas pozíciót lehet fenntartani, a kifejtett előfeltevések alapján (a következő felfelé irányuló impulzus 1. hullámának elején vagyunk) nyithatunk long pozíciót, amelynek érvénytelenítése (stop loss) 74 400 USD alatt van.</p>
+
+  <p>Ha hosszú távú Bitcoin kitettséget keresel, egyszerűen értsd ezt a zónát jó akkumulációs zónaként, még akkor is, ha fennáll az alacsonyabb szintek elérésének lehetősége. Ebből a perspektívából nézve vásárolj itt, és ne ess pánikba, de ne merítsd ki az összes tőkéd. Vásárolj tovább, ha folytatja az erő megmutatását, és ha letöri a 74 400 USD-t, várj az akkumulálással a már megjelölt 60 000 USD-es mélypont alatti szinteken.</p>
+
+  <div class="disclaimer">
+    <strong>Jogi nyilatkozat:</strong> Ez a cikk technikai elemzési gyakorlat tájékoztatási és oktatási célokra. Nem minősül pénzügyi tanácsadásnak vagy befektetési ajánlásnak. A kriptovaluta piacok rendkívül volatilisak. Minden befektetési döntés kizárólag az olvasó felelőssége.
+  </div>
+
+</div><!-- /container -->
+
+<div class="container" style="padding: 3rem 2rem; border-top: 1px solid var(--rule);">
+  <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem;">Comments · Comentarios · Kommentare · Megjegyzések</p>
+  <script src="https://giscus.app/client.js"
+          data-repo="Pav-DerHexer/Criptomaneras"
+          data-repo-id="R_kgDORl5KmA"
+          data-category="Comments"
+          data-category-id="DIC_kwDORl5KmM4C7qex"
+          data-mapping="specific"
+          data-term="article-2026-05-03-elliott-wave-btc"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="hu"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+<footer>
+  © 2026 Criptomaneras &nbsp;·&nbsp; P.V. &nbsp;·&nbsp;
+  <a href="https://t.me/+tjbF3GaGnGwzNzE8" style="color:var(--muted)">Telegram</a>
+</footer>
+
+</body>
+</html>

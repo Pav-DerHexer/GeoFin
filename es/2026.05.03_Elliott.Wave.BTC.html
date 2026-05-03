@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conteo Ondas de Elliott para BTC</title>
+<link rel="alternate" hreflang="es" href="./2026.05.03_Elliott.Wave.BTC.html">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f4f0e8;
+    --accent: #c8392b;
+    --accent2: #1a3a5c;
+    --muted: #6b6560;
+    --rule: #d4cfc7;
+    --gold: #b8860b;
+    --green: #2e7d32;
+    --amber: #e65100;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  .home-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 2rem;
+  }
+
+  .home-nav > a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    text-decoration: none;
+  }
+
+  .home-nav > a:hover { color: var(--accent); }
+
+  .lang-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .lang-bar a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .lang-bar a:hover { color: var(--accent2); }
+  .lang-bar a.active { color: var(--accent2); text-decoration: underline; text-underline-offset: 3px; }
+  .lang-bar .sep { color: var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 3px double var(--ink);
+    padding: 2rem 0 0;
+    text-align: center;
+  }
+
+  .header-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 820px;
+    margin: 0 auto 1.5rem;
+    padding: 0 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em { font-style: italic; color: var(--accent); }
+
+  .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 640px;
+    margin: 0 auto 1rem;
+    padding: 0 2rem;
+  }
+
+  .source-credit {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin: 0 auto 2rem;
+    padding: 0 2rem;
+  }
+  .source-credit a {
+    color: var(--accent2);
+    text-decoration: none;
+  }
+  .source-credit a:hover { text-decoration: underline; }
+
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── BODY ── */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin: 3rem 0 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 2.5rem 0 1rem;
+    color: var(--accent2);
+  }
+
+  p {
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  strong { font-weight: 500; }
+
+  a { color: var(--accent2); }
+
+  .lead {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    margin: 2.5rem 0;
+  }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    margin: 2.5rem 0;
+    padding: 2rem 2rem 2rem 3rem;
+    border-left: 4px solid var(--accent);
+    background: white;
+    position: relative;
+  }
+
+  .pullquote::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--accent);
+    opacity: 0.2;
+    position: absolute;
+    top: -1rem; left: 0.5rem;
+    line-height: 1;
+  }
+
+  .pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* ── TABLES ── */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: white;
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+  }
+
+  td {
+    padding: 0.75rem 0.9rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  tr:nth-child(even) td { background: white; }
+
+  .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    display: inline-block;
+  }
+  .badge-bull  { background: #d5f0e0; color: var(--green); }
+  .badge-bear  { background: #fde8e8; color: var(--accent); }
+  .badge-warn  { background: #fef3cd; color: var(--amber); }
+  .badge-blue  { background: #dce8f5; color: var(--accent2); }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    margin: 1.5rem 0 0.75rem;
+    display: inline-block;
+  }
+
+  /* ── IMAGES ── */
+  .article-img {
+    margin: 1.5rem 0;
+    border: 1px solid var(--rule);
+    background: white;
+  }
+
+  .article-img img {
+    width: 100%;
+    display: block;
+  }
+
+  .article-img figcaption {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    padding: 0.5rem 0.75rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── OPERATIVE BOX ── */
+  .op-box {
+    border: 2px solid var(--ink);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    background: white;
+    position: relative;
+  }
+
+  .op-box .op-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    position: absolute;
+    top: -0.55rem;
+    left: 1.2rem;
+    background: white;
+    padding: 0 0.4rem;
+  }
+
+  .op-box p { margin: 0; font-size: 0.92rem; }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    margin: 3rem 0 1rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--rule);
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.6;
+    background: white;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 3px double var(--ink);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+    .pullquote { padding: 1.5rem 1.5rem 1.5rem 2rem; }
+    .header-meta { flex-direction: column; gap: 0.4rem; }
+    .lang-bar { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="home-nav">
+  <a href="index.html">← Inicio</a>
+  <div class="lang-bar">
+    <a href="./2026.05.03_Elliott.Wave.BTC.html" class="active">ES</a>
+    <span class="sep">·</span>
+    <a href="../en/2026.05.03_Elliott.Wave.BTC.html">EN</a>
+    <span class="sep">·</span>
+    <a href="../de/2026.05.03_Elliott.Wave.BTC.html">DE</a>
+    <span class="sep">·</span>
+    <a href="../hu/2026.05.03_Elliott.Wave.BTC.html">HU</a>
+  </div>
+</nav>
+
+<header>
+  <div class="header-eyebrow">Análisis Técnico &middot; Cripto</div>
+  <h1>Conteo Ondas de Elliott para <em>BTC</em></h1>
+  <p class="subtitle">Validación del impulso 1–5 y la corrección A-B-C. Umbrales operativos y criterios para determinar si la onda C ha concluido.</p>
+  <p class="source-credit">Conteo propuesto por Miguel del canal <a href="https://youtu.be/VhJ9TJTYOsU" target="_blank">Bitcoin al Día</a></p>
+  <div class="header-meta">
+    <span>P.V.</span>
+    <span>Mayo 2026</span>
+    <span>~8 min lectura</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <p class="lead">El análisis de ondas de Elliott sigue siendo, décadas después de su formulación, una de las herramientas más potentes —y más debatidas— del análisis técnico. Su poder reside en que no solo describe lo que el precio ha hecho, sino que propone una estructura interna que permite anticipar lo que podría hacer a continuación. Su debilidad es la misma: la subjetividad del conteo.</p>
+
+  <p>Lo que sigue es un ejercicio de validación rigurosa. Partimos de un conteo propuesto por Miguel del canal Bitcoin al Día sobre Bitcoin en escalas diaria y semanal, para someterlo a las reglas formales de la teoría. El objetivo no es confirmar ninguna tesis, sino establecer qué evidencia concreta distinguiría un escenario alcista de uno bajista.</p>
+
+  <div class="pullquote">
+    <p>El conteo no vale por sí mismo. Vale la metodología para saber cuándo está equivocado.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Conteo propuesto: impulso 1–5 y corrección A-B-C</h2>
+
+  <p>El conteo que analizamos describe la estructura de Bitcoin desde los mínimos del ciclo anterior hasta el máximo reciente (~108.500 USD) como un <strong>impulso alcista de cinco ondas</strong>, seguido de una corrección en curso de tipo <strong>A-B-C expanded flat</strong>.</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img1.jpg" alt="Gráfico semanal BTC con impulso alcista 1-5 y corrección A-B-C">
+    <figcaption>Gráfico semanal BTC/USD · Kraken · Conteo impulso 1–5 y corrección A-B-C expanded flat</figcaption>
+  </figure>
+
+  <div class="section-label">Estructura del impulso alcista (ondas 1–5)</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Onda</th><th>Descripción</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Onda 1</strong></td><td>Primer impulso desde mínimos del ciclo. Define la dirección de la tendencia mayor.</td></tr>
+        <tr><td><strong>Onda 2</strong></td><td>Corrección profunda, sin superar el origen de la onda 1. Confirma la estructura.</td></tr>
+        <tr><td><strong>Onda 3</strong></td><td>El impulso más extenso. Generalmente la onda más larga y volátil del ciclo.</td></tr>
+        <tr><td><strong>Onda 4</strong></td><td>Corrección lateral. No penetra territorio de la onda 1. Patrón de alternancia con la onda 2.</td></tr>
+        <tr><td><strong>Onda 5</strong></td><td>Impulso final. Máximo del ciclo en ~108.500 USD. Origen de la corrección A-B-C.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Tras completar la onda 5, el precio inicia una corrección que clasificamos como <strong>expanded flat (3-3-5)</strong>. En este patrón, la onda B supera el máximo de la onda 5 del impulso precedente —lo cual no solo está permitido sino que es la característica definitoria del expanded flat— y la onda C completa la corrección con un movimiento en cinco subondas que termina por debajo del mínimo de la onda A.</p>
+
+  <p>Para más detalle sobre las reglas de los patrones correctivos de Elliott: <a href="https://bullwaves.org/complete-guide-elliott-wave-correction-patterns/" target="_blank">bullwaves.org — Complete Guide Elliott Wave Correction Patterns</a>.</p>
+
+  <div class="section-label">Reglas formales del expanded flat A-B-C (3-3-5)</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Onda</th><th>Reglas y notas</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Onda A</strong></td><td>Tres subondas internas. En este conteo: desde ~108.500 hasta ~74.400 USD.</td></tr>
+        <tr><td><strong>Onda B</strong></td><td>Tres subondas internas. Puede —y en el expanded flat, debe— superar el máximo de la onda 5 (~108.500 USD). En este conteo alcanzó ~125.600 USD. Esto no invalida el patrón; es su seña de identidad.</td></tr>
+        <tr><td><strong>Onda C</strong></td><td>Cinco subondas internas. Debe terminar por debajo del mínimo de la onda A (~74.400 USD). Objetivo orientativo: 162% de la longitud de A, en zona ~69.000–70.000 USD.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>La pregunta operativa: ¿ha terminado la onda C?</h2>
+
+  <p>El precio actual de Bitcoin (~78.000 USD en el momento de este análisis) se encuentra en zona ambigua: por debajo del máximo de onda 5 y por encima del mínimo de onda A. Esta posición no confirma ni invalida la conclusión de la onda C.</p>
+
+  <p>Dos umbrales de precio definen los límites del escenario y actúan como criterios binarios primarios:</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img2.jpg" alt="Gráfico BTC mostrando zona ambigua entre 74.4K y 108.5K">
+    <figcaption>Zona ambigua operativa entre el mínimo de onda A (~74.400 USD) y el origen de onda A (~108.500 USD)</figcaption>
+  </figure>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Criterio</th><th>Nivel</th><th>Interpretación</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-bull">Alcista</span></td>
+          <td><strong>&gt; 108.500 USD</strong></td>
+          <td>Ruptura por encima del origen de la onda A (máximo de onda 5). La onda correctiva queda formalmente concluida. La corrección A-B-C ha terminado y el mercado retoma el impulso alcista de grado mayor.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-bear">Bajista</span></td>
+          <td><strong>&lt; 74.400 USD</strong></td>
+          <td>Ruptura bajo el mínimo de la onda A. La onda C sigue en desarrollo con recorrido adicional a la baja, con posibilidad de visitar nuevos mínimos.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-warn">Ambiguo</span></td>
+          <td><strong>74.400–108.500 USD</strong></td>
+          <td>Zona donde el precio puede moverse sin confirmar ni invalidar el escenario. Cualquier afirmación categórica dentro de esta banda sería sesgo de confirmación. Se requieren criterios complementarios.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Cuatro criterios alternativos para reducir la ambigüedad</h2>
+
+  <p>Dado que el rango entre 74.400 y 108.500 USD es operativamente <strong>demasiado amplio</strong>, se pueden aplicar cuatro criterios adicionales para obtener señales anticipadas de si la onda C ha concluido o continúa. Ninguno es definitivo por sí solo. Su confluencia sí lo es.</p>
+
+  <!-- Criterio 1 -->
+  <h3>Criterio 1 — Estructura interna de C: conteo de subondas</h3>
+
+  <p>La onda C debe completarse en <strong>cinco subondas bajistas</strong> desde el máximo de B (~125.600 USD). Si se pueden contar cinco subondas completas, C ha terminado formalmente, independientemente del precio exacto. Si solo se cuentan tres, C casi con certeza no ha concluido.</p>
+
+  <p>Aquí es donde nuevamente nos topamos con la subjetividad en el conteo. Bien podríamos contar 5 ondas de esta forma:</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img3.jpg" alt="Conteo alternativo A: onda C completada en 5 subondas">
+    <figcaption>Interpretación A — Onda C completada: 5 subondas contadas desde el máximo de B</figcaption>
+  </figure>
+
+  <p>Y concluir que la onda C se desarrolla en una subestructura de 5 ondas, validando la idea de que ha concluido.</p>
+
+  <p>Pero también podríamos hacer el siguiente conteo:</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img4.jpg" alt="Conteo alternativo B: onda C todavía en desarrollo">
+    <figcaption>Interpretación B — Onda C en desarrollo: solo 3 subondas, queda subonda 5 a la baja</figcaption>
+  </figure>
+
+  <p>Este último caso nos obligaría a concluir que la onda C no ha terminado aún y que podríamos desplegar una subonda 5 todavía a la baja. La ruptura de los $74,4K a la baja nos daría una posible señal de esta posibilidad, que se confirmaría si rompemos los $61K.</p>
+
+  <p>Como vemos, este primer criterio queda indefinido ya que se basa en la subjetividad del conteo, aunque la estructura nos dirá si es más probable una interpretación u otra. Si estamos en la onda 1 del siguiente impulso alcista, debemos ver una estructura impulsiva y no lateral o en zigzag.</p>
+
+  <!-- Criterio 2 -->
+  <h3>Criterio 2 — Divergencia en el RSI (diario / semanal)</h3>
+
+  <p>Es usual resolver situaciones de ambigüedad a través del indicador RSI, estudiando si se produce algún tipo de divergencia que pueda señalar alguna dirección.</p>
+
+  <p>Sin embargo, en los gráficos diarios y semanal, no se observan divergencias con el RSI.</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img5.jpg" alt="RSI diario BTC sin divergencias claras">
+    <figcaption>RSI 14 — Gráfico diario BTC/USD · Sin divergencias alcistas ni bajistas apreciables</figcaption>
+  </figure>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img6.jpg" alt="RSI semanal BTC">
+    <figcaption>RSI 14 — Gráfico semanal BTC/USD · Divergencia bajista de febrero anulada desde marzo</figcaption>
+  </figure>
+
+  <p>Una divergencia significaría que mientras el precio hace mínimos decrecientes, se observan mínimos crecientes en el RSI (divergencia alcista), o viceversa (divergencia bajista). Pero estas circunstancias no se dan ni en el gráfico diario ni en el semanal. Por lo que este segundo criterio tampoco parece concluyente. Sin embargo, la ausencia de divergencias es un buen síntoma, pues tampoco se aprecian divergencias bajistas en la posible onda 1 que estaríamos formando.</p>
+
+  <p>Al inicio del movimiento, durante el mes de febrero, sí se aprecia una pequeña divergencia bajista en el gráfico semanal, donde el precio hacía mínimos crecientes mientras el RSI hacía mínimos decrecientes. Sin embargo, esa divergencia ha sido anulada desde principios de marzo, donde el RSI vuelve a marcar mínimos crecientes junto al precio. Una anulación de la divergencia bajista podría interpretarse como un signo de fuerza, aunque no lo usaríamos como un indicador independiente operativo válido.</p>
+
+  <!-- Criterio 3 -->
+  <h3>Criterio 3 — Confluencia de precio con objetivos de Fibonacci</h3>
+
+  <p>La longitud de la onda A (desde ~108.500 hasta ~74.400 USD) equivale a aproximadamente <strong>34.000 USD de caída</strong>. Proyectado desde el máximo de B (~125.600 USD):</p>
+
+  <ul style="margin: 0.5rem 0 1.2rem 1.5rem; font-size: 0.95rem; line-height: 2;">
+    <li>100% de A → objetivo ~91.600 USD <em>(ya alcanzado y superado)</em></li>
+    <li><strong>162% de A → objetivo ~69.000–70.000 USD <em>(también alcanzado)</em></strong></li>
+  </ul>
+
+  <p>Esta zona del precio ya ha sido perforada, por lo que este criterio <strong>sí nos indica</strong> que la onda C perfectamente podría estar <strong>completa</strong>.</p>
+
+  <!-- Criterio 4 -->
+  <h3>Criterio 4 — Ruptura de la directriz bajista de C</h3>
+
+  <p>Aquí vemos una señal clara.</p>
+
+  <p>La línea de tendencia bajista de la onda C ha sido rota desde principios de abril.</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img7.jpg" alt="Ruptura de la directriz bajista de la onda C">
+    <figcaption>Ruptura alcista de la directriz bajista de la onda C · Principios de abril 2026</figcaption>
+  </figure>
+
+  <p>Esta señal ocurre antes de que el precio alcance el umbral de 108.500 USD y permite anticipar el giro con menor distancia de stop. Es el criterio más temprano de los cuatro, pero también el más sujeto a falsos positivos.</p>
+
+  <div class="op-box">
+    <span class="op-label">Criterio compuesto operativo</span>
+    <p>La confluencia de tres o más de estos cuatro criterios en torno al mismo nivel de precio es donde la probabilidad de fin de C alcanza su máximo. Ningún criterio aislado justifica una posición. La combinación de estructura completa en 5 subondas dentro de la onda C (subjetivo) + precio en zona del 162% de A + ruptura de la línea bajista, constituye una señal de mayor fiabilidad dentro de este marco analítico.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Tabla de decisión resumida</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Nivel / Criterio</th><th>Señal</th><th>Interpretación</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>&gt; 108.500 USD</strong></td>
+          <td><span class="badge badge-bull">Alcista</span></td>
+          <td>A-B-C terminado. Expanded flat concluido. Impulso mayor reanudado.</td>
+        </tr>
+        <tr>
+          <td><strong>&lt; 74.400 USD</strong></td>
+          <td><span class="badge badge-bear">Bajista</span></td>
+          <td>Onda C en desarrollo. Objetivo siguiente: zona 69.000–70.000 USD.</td>
+        </tr>
+        <tr>
+          <td>5 subondas de C completas</td>
+          <td><span class="badge badge-blue">Estructural</span></td>
+          <td>C terminada formalmente. Señal de mayor fiabilidad, pero sujeta a subjetividad del conteo.</td>
+        </tr>
+        <tr>
+          <td>Ausencia de divergencia bajista en RSI semanal</td>
+          <td><span class="badge badge-blue">Confirmación</span></td>
+          <td>No hay señal bajista adicional. Refuerza el fin de C si aparece junto a otros criterios.</td>
+        </tr>
+        <tr>
+          <td>Precio en zona 69.000–70.000 (ya alcanzado)</td>
+          <td><span class="badge badge-bull">Objetivo</span></td>
+          <td>162% de A desde máximo de B alcanzado. Confluencia de Fibonacci cumplida.</td>
+        </tr>
+        <tr>
+          <td>Ruptura directriz bajista de C (ya producida)</td>
+          <td><span class="badge badge-bull">Anticipado</span></td>
+          <td>Primera señal de giro. Producida en abril. Sujeta a falsos positivos.</td>
+        </tr>
+        <tr>
+          <td>74.400–108.500 USD (sin señal binaria)</td>
+          <td><span class="badge badge-warn">Ambiguo</span></td>
+          <td>Zona sin criterio definitivo. Requiere criterios complementarios.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Conclusión</h2>
+
+  <p>El conteo propuesto —impulso 1–5 seguido de corrección A-B-C tipo expanded flat— es <strong>formalmente válido</strong> bajo las reglas de Elliott, con una salvedad importante: la estructura interna de la última onda C admite dos lecturas (3 o 5 subondas), y solo la versión en 5 subondas mantiene la idea de que haya concluido. Es el punto de mayor fragilidad del conteo.</p>
+
+  <p>El precio actual (~78.000 USD) se encuentra en zona ambigua. Los dos umbrales binarios —108.500 al alza y 74.400 a la baja— siguen siendo los árbitros últimos del escenario. Los cuatro criterios alternativos son herramientas para reducir la incertidumbre operativa dentro de esa banda, no para eliminarla.</p>
+
+  <p>El análisis de ondas no predice el futuro. Define la estructura dentro de la cual interpretamos lo que el precio hace, y establece con precisión cuándo esa estructura queda refutada. Esa es su utilidad real.</p>
+
+  <p>En análisis técnico, nunca hablamos de certidumbres, sino de posibilidades. Interpretamos señales y nos ponemos del lado del escenario más probable.</p>
+
+  <h3>Vale, pero entonces ¿Compro aquí o me espero?</h3>
+
+  <p>Hay indicios de que la onda C ha concluido, pero no hay certeza. Si se puede mantener una posición flexible, podríamos abrir una posición larga bajo las premisas expuestas (estamos al inicio de la onda 1 del siguiente impulso alcista) con invalidación (stop loss) por debajo de los $74,4K.</p>
+
+  <p>Si lo que buscas es tener una exposición a Bitcoin a largo plazo, simplemente entiende esta zona como una buena zona de acumulación, aunque exista la posibilidad de que podamos visitar niveles inferiores. Bajo esta perspectiva, compra aquí y no te azares, pero no agotes todo tu capital. Ve comprando si sigue demostrando fuerza, y si rompe los $74,4K espera a acumular en niveles inferiores al mínimo de $60K ya marcado.</p>
+
+  <div class="disclaimer">
+    <strong>Aviso legal:</strong> Este artículo es un ejercicio de análisis técnico con fines informativos y educativos. No constituye asesoramiento financiero ni recomendación de inversión. Los mercados de criptomonedas son altamente volátiles. Cualquier decisión de inversión es responsabilidad exclusiva del lector.
+  </div>
+
+
+</div><!-- /container -->
+
+<div class="container" style="padding: 3rem 2rem; border-top: 1px solid var(--rule);">
+  <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem;">Comments · Comentarios · Kommentare · Megjegyzések</p>
+  <script src="https://giscus.app/client.js"
+          data-repo="Pav-DerHexer/Criptomaneras"
+          data-repo-id="R_kgDORl5KmA"
+          data-category="Comments"
+          data-category-id="DIC_kwDORl5KmM4C7qex"
+          data-mapping="specific"
+          data-term="article-2026-05-03-elliott-wave-btc"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="es"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+<footer>
+  © 2026 Criptomaneras &nbsp;·&nbsp; P.V. &nbsp;·&nbsp;
+  <a href="https://t.me/+tjbF3GaGnGwzNzE8" style="color:var(--muted)">Telegram</a>
+</footer>
+
+</body>
+</html>

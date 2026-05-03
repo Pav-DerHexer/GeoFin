@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elliott-Wellen-Zählung für BTC</title>
+<link rel="alternate" hreflang="de" href="./2026.05.03_Elliott.Wave.BTC.html">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f4f0e8;
+    --accent: #c8392b;
+    --accent2: #1a3a5c;
+    --muted: #6b6560;
+    --rule: #d4cfc7;
+    --gold: #b8860b;
+    --green: #2e7d32;
+    --amber: #e65100;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  .home-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 2rem;
+  }
+
+  .home-nav > a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    text-decoration: none;
+  }
+
+  .home-nav > a:hover { color: var(--accent); }
+
+  .lang-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .lang-bar a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .lang-bar a:hover { color: var(--accent2); }
+  .lang-bar a.active { color: var(--accent2); text-decoration: underline; text-underline-offset: 3px; }
+  .lang-bar .sep { color: var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 3px double var(--ink);
+    padding: 2rem 0 0;
+    text-align: center;
+  }
+
+  .header-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 820px;
+    margin: 0 auto 1.5rem;
+    padding: 0 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em { font-style: italic; color: var(--accent); }
+
+  .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 640px;
+    margin: 0 auto 1rem;
+    padding: 0 2rem;
+  }
+
+  .source-credit {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin: 0 auto 2rem;
+    padding: 0 2rem;
+  }
+  .source-credit a {
+    color: var(--accent2);
+    text-decoration: none;
+  }
+  .source-credit a:hover { text-decoration: underline; }
+
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── BODY ── */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin: 3rem 0 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 2.5rem 0 1rem;
+    color: var(--accent2);
+  }
+
+  p {
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  strong { font-weight: 500; }
+
+  a { color: var(--accent2); }
+
+  .lead {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    margin: 2.5rem 0;
+  }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    margin: 2.5rem 0;
+    padding: 2rem 2rem 2rem 3rem;
+    border-left: 4px solid var(--accent);
+    background: white;
+    position: relative;
+  }
+
+  .pullquote::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--accent);
+    opacity: 0.2;
+    position: absolute;
+    top: -1rem; left: 0.5rem;
+    line-height: 1;
+  }
+
+  .pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* ── TABLES ── */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: white;
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+  }
+
+  td {
+    padding: 0.75rem 0.9rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  tr:nth-child(even) td { background: white; }
+
+  .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    display: inline-block;
+  }
+  .badge-bull  { background: #d5f0e0; color: var(--green); }
+  .badge-bear  { background: #fde8e8; color: var(--accent); }
+  .badge-warn  { background: #fef3cd; color: var(--amber); }
+  .badge-blue  { background: #dce8f5; color: var(--accent2); }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    margin: 1.5rem 0 0.75rem;
+    display: inline-block;
+  }
+
+  /* ── IMAGES ── */
+  .article-img {
+    margin: 1.5rem 0;
+    border: 1px solid var(--rule);
+    background: white;
+  }
+
+  .article-img img {
+    width: 100%;
+    display: block;
+  }
+
+  .article-img figcaption {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    padding: 0.5rem 0.75rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── OPERATIVE BOX ── */
+  .op-box {
+    border: 2px solid var(--ink);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    background: white;
+    position: relative;
+  }
+
+  .op-box .op-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    position: absolute;
+    top: -0.55rem;
+    left: 1.2rem;
+    background: white;
+    padding: 0 0.4rem;
+  }
+
+  .op-box p { margin: 0; font-size: 0.92rem; }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    margin: 3rem 0 1rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--rule);
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.6;
+    background: white;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 3px double var(--ink);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+    .pullquote { padding: 1.5rem 1.5rem 1.5rem 2rem; }
+    .header-meta { flex-direction: column; gap: 0.4rem; }
+    .lang-bar { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="home-nav">
+  <a href="index.html">← Startseite</a>
+  <div class="lang-bar">
+    <a href="../es/2026.05.03_Elliott.Wave.BTC.html">ES</a>
+    <span class="sep">·</span>
+    <a href="../en/2026.05.03_Elliott.Wave.BTC.html">EN</a>
+    <span class="sep">·</span>
+    <a href="./2026.05.03_Elliott.Wave.BTC.html" class="active">DE</a>
+    <span class="sep">·</span>
+    <a href="../hu/2026.05.03_Elliott.Wave.BTC.html">HU</a>
+  </div>
+</nav>
+
+<header>
+  <div class="header-eyebrow">Technische Analyse &middot; Krypto</div>
+  <h1>Elliott-Wellen-Zählung für <em>BTC</em></h1>
+  <p class="subtitle">Validierung des 1–5-Impulses und der A-B-C-Korrektur. Operative Schwellenwerte und Kriterien zur Bestimmung, ob Welle C abgeschlossen ist.</p>
+  <p class="source-credit">Zählung vorgeschlagen von Miguel vom Kanal <a href="https://youtu.be/VhJ9TJTYOsU" target="_blank">Bitcoin al Día</a></p>
+  <div class="header-meta">
+    <span>P.V.</span>
+    <span>Mai 2026</span>
+    <span>~8 Min. Lektüre</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <p class="lead">Die Elliott-Wellenanalyse bleibt, Jahrzehnte nach ihrer Formulierung, eines der mächtigsten —und umstrittensten— Werkzeuge der technischen Analyse. Ihre Stärke liegt darin, dass sie nicht nur beschreibt, was der Preis getan hat, sondern eine interne Struktur vorschlägt, die es erlaubt, das künftige Verhalten zu antizipieren. Ihre Schwäche ist dieselbe: die Subjektivität der Zählung.</p>
+
+  <p>Was folgt, ist eine strenge Validierungsübung. Wir gehen von einer Zählung aus, die Miguel vom Kanal Bitcoin al Día für Bitcoin auf täglicher und wöchentlicher Zeitebene vorgeschlagen hat, und unterziehen sie den formalen Regeln der Theorie. Das Ziel ist nicht, irgendeine These zu bestätigen, sondern festzustellen, welche konkreten Belege ein bullisches Szenario von einem bärischen unterscheiden würden.</p>
+
+  <div class="pullquote">
+    <p>Die Zählung ist nicht für sich genommen wertvoll. Wertvoll ist die Methodik, um zu wissen, wann sie falsch liegt.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Vorgeschlagene Zählung: 1–5-Impuls und A-B-C-Korrektur</h2>
+
+  <p>Die von uns analysierte Zählung beschreibt Bitcoins Struktur von den Tiefs des vorherigen Zyklus bis zum jüngsten Hoch (~108.500 USD) als einen <strong>fünfwelligen Aufwärtsimpuls</strong>, gefolgt von einer laufenden Korrektur des Typs <strong>A-B-C Expanded Flat</strong>.</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img1.jpg" alt="BTC-Wochenchart mit 1–5-Aufwärtsimpuls und A-B-C-Korrektur">
+    <figcaption>BTC/USD Wochenchart · Kraken · 1–5-Impuls und A-B-C Expanded Flat Zählung</figcaption>
+  </figure>
+
+  <div class="section-label">Struktur des Aufwärtsimpulses (Wellen 1–5)</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Welle</th><th>Beschreibung</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Welle 1</strong></td><td>Erster Impuls von den Zyklustiefs. Definiert die Richtung des übergeordneten Trends.</td></tr>
+        <tr><td><strong>Welle 2</strong></td><td>Tiefe Korrektur, ohne den Ursprung von Welle 1 zu überschreiten. Bestätigt die Struktur.</td></tr>
+        <tr><td><strong>Welle 3</strong></td><td>Der ausgedehnteste Impuls. Generell die längste und volatilste Welle des Zyklus.</td></tr>
+        <tr><td><strong>Welle 4</strong></td><td>Seitwärtskorrektur. Dringt nicht in das Territorium von Welle 1 ein. Wechselmuster mit Welle 2.</td></tr>
+        <tr><td><strong>Welle 5</strong></td><td>Schlussimpuls. Zyklusmaximum bei ~108.500 USD. Ursprung der A-B-C-Korrektur.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Nach Abschluss von Welle 5 beginnt der Preis eine Korrektur, die wir als <strong>Expanded Flat (3-3-5)</strong> klassifizieren. In diesem Muster überschreitet Welle B das Hoch von Welle 5 des vorangegangenen Impulses —was nicht nur erlaubt, sondern das definierende Merkmal des Expanded Flat ist— und Welle C schließt die Korrektur mit einer fünfteiligen Bewegung ab, die unterhalb des Tiefs von Welle A endet.</p>
+
+  <p>Weitere Details zu den Regeln der korrektiven Elliott-Muster: <a href="https://bullwaves.org/complete-guide-elliott-wave-correction-patterns/" target="_blank">bullwaves.org — Complete Guide Elliott Wave Correction Patterns</a>.</p>
+
+  <div class="section-label">Formale Regeln des Expanded Flat A-B-C (3-3-5)</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Welle</th><th>Regeln und Anmerkungen</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Welle A</strong></td><td>Drei interne Teilwellen. In dieser Zählung: von ~108.500 bis ~74.400 USD.</td></tr>
+        <tr><td><strong>Welle B</strong></td><td>Drei interne Teilwellen. Kann —und im Expanded Flat muss sie— das Maximum von Welle 5 (~108.500 USD) überschreiten. In dieser Zählung erreichte sie ~125.600 USD. Das macht das Muster nicht ungültig; es ist sein definierendes Merkmal.</td></tr>
+        <tr><td><strong>Welle C</strong></td><td>Fünf interne Teilwellen. Muss unterhalb des Minimums von Welle A (~74.400 USD) enden. Richtwert: 162 % der Länge von A, in der Zone ~69.000–70.000 USD.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Die operative Frage: Hat Welle C geendet?</h2>
+
+  <p>Bitcoins aktueller Preis (~78.000 USD zum Zeitpunkt dieser Analyse) befindet sich in einer unklaren Zone: unterhalb des Hochs von Welle 5 und oberhalb des Tiefs von Welle A. Diese Position bestätigt weder den Abschluss von Welle C noch widerlegt sie ihn.</p>
+
+  <p>Zwei Preisschwellen definieren die Grenzen des Szenarios und fungieren als primäre binäre Kriterien:</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img2.jpg" alt="BTC-Chart mit unklarer Zone zwischen 74.400 und 108.500 USD">
+    <figcaption>Operative unklare Zone zwischen dem Tief von Welle A (~74.400 USD) und dem Ursprung von Welle A (~108.500 USD)</figcaption>
+  </figure>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Kriterium</th><th>Niveau</th><th>Interpretation</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-bull">Bullish</span></td>
+          <td><strong>&gt; 108.500 USD</strong></td>
+          <td>Ausbruch über den Ursprung von Welle A (Hoch von Welle 5). Die Korrekturwelle ist formal abgeschlossen. Die A-B-C-Korrektur ist beendet und der Markt nimmt den übergeordneten Aufwärtsimpuls wieder auf.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-bear">Bearish</span></td>
+          <td><strong>&lt; 74.400 USD</strong></td>
+          <td>Ausbruch unter das Tief von Welle A. Welle C entwickelt sich weiter mit zusätzlichem Abwärtspotenzial und der Möglichkeit, neue Tiefs zu besuchen.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-warn">Unklar</span></td>
+          <td><strong>74.400–108.500 USD</strong></td>
+          <td>Zone, in der sich der Preis bewegen kann, ohne das Szenario zu bestätigen oder zu widerlegen. Jede kategorische Aussage innerhalb dieser Spanne wäre Bestätigungsfehler. Ergänzende Kriterien sind erforderlich.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Vier alternative Kriterien zur Verringerung der Unklarheit</h2>
+
+  <p>Da die Spanne zwischen 74.400 und 108.500 USD operativ <strong>zu weit</strong> ist, können vier zusätzliche Kriterien angewendet werden, um frühzeitige Signale zu erhalten, ob Welle C abgeschlossen ist oder weiterläuft. Keines ist für sich allein entscheidend. Ihr Zusammentreffen schon.</p>
+
+  <!-- Kriterium 1 -->
+  <h3>Kriterium 1 — Interne Struktur von C: Teilwellenzählung</h3>
+
+  <p>Welle C muss sich in <strong>fünf bärischen Teilwellen</strong> vom Hoch von B (~125.600 USD) vollenden. Wenn fünf vollständige Teilwellen gezählt werden können, ist C formal beendet, unabhängig vom genauen Preis. Wenn nur drei gezählt werden können, ist C mit an Sicherheit grenzender Wahrscheinlichkeit noch nicht abgeschlossen.</p>
+
+  <p>Hier stoßen wir erneut auf die Subjektivität der Zählung. Wir könnten durchaus 5 Wellen auf folgende Weise zählen:</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img3.jpg" alt="Alternative Zählung A: Welle C in 5 Teilwellen abgeschlossen">
+    <figcaption>Interpretation A — Welle C abgeschlossen: 5 Teilwellen vom Hoch von Welle B gezählt</figcaption>
+  </figure>
+
+  <p>Und schlussfolgern, dass Welle C sich in einer 5-Wellen-Unterstruktur entfaltet, was die Idee validiert, dass sie abgeschlossen ist.</p>
+
+  <p>Wir könnten aber auch folgende Zählung vornehmen:</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img4.jpg" alt="Alternative Zählung B: Welle C noch in Entwicklung">
+    <figcaption>Interpretation B — Welle C in Entwicklung: nur 3 Teilwellen, Teilwelle 5 auf der Unterseite steht noch aus</figcaption>
+  </figure>
+
+  <p>Dieser letzte Fall würde uns zwingen zu schlussfolgern, dass Welle C noch nicht beendet ist und dass sich noch eine Teilwelle 5 nach unten entfalten könnte. Ein Unterschreiten von 74.400 USD würde ein mögliches Signal für diese Möglichkeit liefern, das durch einen Bruch von 61.000 USD bestätigt würde.</p>
+
+  <p>Wie wir sehen, bleibt dieses erste Kriterium unbestimmt, da es auf der Subjektivität der Zählung beruht, obwohl uns die Struktur sagen wird, welche Interpretation wahrscheinlicher ist. Wenn wir uns in Welle 1 des nächsten Aufwärtsimpulses befinden, müssen wir eine impulsive Struktur sehen und keine seitliche oder Zickzack-Struktur.</p>
+
+  <!-- Kriterium 2 -->
+  <h3>Kriterium 2 — RSI-Divergenz (täglich / wöchentlich)</h3>
+
+  <p>Es ist üblich, Unklarheitssituationen durch den RSI-Indikator zu lösen, indem man untersucht, ob eine Art von Divergenz auftritt, die eine Richtung anzeigen könnte.</p>
+
+  <p>Auf den Tages- und Wochencharts sind jedoch keine RSI-Divergenzen zu beobachten.</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img5.jpg" alt="BTC Tages-RSI ohne klare Divergenzen">
+    <figcaption>RSI 14 — BTC/USD Tageschart · Keine nennenswerten bullischen oder bärischen Divergenzen</figcaption>
+  </figure>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img6.jpg" alt="BTC Wochen-RSI">
+    <figcaption>RSI 14 — BTC/USD Wochenchart · Bärische Divergenz vom Februar seit März aufgehoben</figcaption>
+  </figure>
+
+  <p>Eine Divergenz würde bedeuten, dass der RSI höhere Tiefs zeigt, während der Preis tiefere Tiefs macht (bullische Divergenz), oder umgekehrt (bärische Divergenz). Diese Umstände treten jedoch weder im Tages- noch im Wochenchart auf. Dieses zweite Kriterium erscheint daher ebenfalls nicht schlüssig. Das Fehlen von Divergenzen ist jedoch ein gutes Zeichen, da im möglichen Welle 1, das wir gerade ausbilden, auch keine bärischen Divergenzen erkennbar sind.</p>
+
+  <p>Zu Beginn der Bewegung, im Februar, war im Wochenchart eine kleine bärische Divergenz erkennbar, bei der der Preis höhere Tiefs machte, während der RSI tiefere Tiefs bildete. Diese Divergenz wurde jedoch seit Anfang März aufgehoben, als der RSI wieder höhere Tiefs zusammen mit dem Preis markiert. Eine Aufhebung der bärischen Divergenz könnte als Stärkezeichen interpretiert werden, obwohl wir es nicht als eigenständigen validen operativen Indikator verwenden würden.</p>
+
+  <!-- Kriterium 3 -->
+  <h3>Kriterium 3 — Preiskonfluenz mit Fibonacci-Zielen</h3>
+
+  <p>Die Länge von Welle A (von ~108.500 bis ~74.400 USD) entspricht ungefähr <strong>34.000 USD Rückgang</strong>. Projiziert vom Hoch von B (~125.600 USD):</p>
+
+  <ul style="margin: 0.5rem 0 1.2rem 1.5rem; font-size: 0.95rem; line-height: 2;">
+    <li>100 % von A → Ziel ~91.600 USD <em>(bereits erreicht und überschritten)</em></li>
+    <li><strong>162 % von A → Ziel ~69.000–70.000 USD <em>(ebenfalls erreicht)</em></strong></li>
+  </ul>
+
+  <p>Diese Preiszone wurde bereits unterschritten, sodass dieses Kriterium <strong>darauf hindeutet</strong>, dass Welle C durchaus <strong>abgeschlossen</strong> sein könnte.</p>
+
+  <!-- Kriterium 4 -->
+  <h3>Kriterium 4 — Bruch der Abwärtstrendlinie von C</h3>
+
+  <p>Hier sehen wir ein klares Signal.</p>
+
+  <p>Die bärische Trendlinie von Welle C wurde seit Anfang April gebrochen.</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img7.jpg" alt="Bruch der Abwärtstrendlinie von Welle C">
+    <figcaption>Bullischer Bruch der Abwärtstrendlinie von Welle C · Anfang April 2026</figcaption>
+  </figure>
+
+  <p>Dieses Signal tritt auf, bevor der Preis den Schwellenwert von 108.500 USD erreicht, und ermöglicht es, die Wende mit einem kürzeren Stop-Abstand zu antizipieren. Es ist das früheste der vier Kriterien, aber auch das anfälligste für Fehlsignale.</p>
+
+  <div class="op-box">
+    <span class="op-label">Zusammengesetztes operatives Kriterium</span>
+    <p>Das Zusammentreffen von drei oder mehr dieser vier Kriterien um dasselbe Preisniveau ist der Punkt, an dem die Wahrscheinlichkeit für das Ende von C ihr Maximum erreicht. Kein einzelnes Kriterium rechtfertigt allein eine Position. Die Kombination aus vollständiger 5-Teilwellen-Struktur innerhalb von Welle C (subjektiv) + Preis in der 162 %-von-A-Zone + Bruch der Abwärtstrendlinie bildet innerhalb dieses analytischen Rahmens ein zuverlässigeres Signal.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Zusammenfassende Entscheidungstabelle</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Niveau / Kriterium</th><th>Signal</th><th>Interpretation</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>&gt; 108.500 USD</strong></td>
+          <td><span class="badge badge-bull">Bullish</span></td>
+          <td>A-B-C abgeschlossen. Expanded Flat beendet. Übergeordneter Impuls wieder aufgenommen.</td>
+        </tr>
+        <tr>
+          <td><strong>&lt; 74.400 USD</strong></td>
+          <td><span class="badge badge-bear">Bearish</span></td>
+          <td>Welle C in Entwicklung. Nächstes Ziel: Zone 69.000–70.000 USD.</td>
+        </tr>
+        <tr>
+          <td>5 vollständige C-Teilwellen</td>
+          <td><span class="badge badge-blue">Strukturell</span></td>
+          <td>C formal abgeschlossen. Signal höherer Zuverlässigkeit, jedoch der Subjektivität der Zählung unterworfen.</td>
+        </tr>
+        <tr>
+          <td>Keine bärische Divergenz im wöchentlichen RSI</td>
+          <td><span class="badge badge-blue">Bestätigung</span></td>
+          <td>Kein zusätzliches bärisches Signal. Stärkt das Ende von C, wenn es zusammen mit anderen Kriterien erscheint.</td>
+        </tr>
+        <tr>
+          <td>Preis in Zone 69.000–70.000 (bereits erreicht)</td>
+          <td><span class="badge badge-bull">Ziel</span></td>
+          <td>162 % von A vom B-Hoch erreicht. Fibonacci-Konfluenz erfüllt.</td>
+        </tr>
+        <tr>
+          <td>Bruch der Abwärtstrendlinie von C (bereits erfolgt)</td>
+          <td><span class="badge badge-bull">Früh</span></td>
+          <td>Erstes Umkehrsignal. Im April aufgetreten. Anfällig für Fehlsignale.</td>
+        </tr>
+        <tr>
+          <td>74.400–108.500 USD (kein binäres Signal)</td>
+          <td><span class="badge badge-warn">Unklar</span></td>
+          <td>Zone ohne definitives Kriterium. Erfordert ergänzende Kriterien.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Fazit</h2>
+
+  <p>Die vorgeschlagene Zählung —1–5-Impuls gefolgt von A-B-C-Expanded-Flat-Korrektur— ist unter den Elliott-Regeln <strong>formal gültig</strong>, mit einem wichtigen Vorbehalt: Die interne Struktur der letzten Welle C erlaubt zwei Lesarten (3 oder 5 Teilwellen), und nur die Version mit 5 Teilwellen behält die Idee bei, dass sie abgeschlossen ist. Das ist der schwächste Punkt der Zählung.</p>
+
+  <p>Der aktuelle Preis (~78.000 USD) befindet sich in einer unklaren Zone. Die beiden binären Schwellenwerte —108.500 USD nach oben und 74.400 USD nach unten— bleiben die endgültigen Schiedsrichter des Szenarios. Die vier alternativen Kriterien sind Werkzeuge zur Verringerung der operativen Unsicherheit innerhalb dieser Spanne, nicht zu ihrer Beseitigung.</p>
+
+  <p>Die Wellenanalyse sagt die Zukunft nicht voraus. Sie definiert die Struktur, innerhalb derer wir interpretieren, was der Preis tut, und legt präzise fest, wann diese Struktur widerlegt ist. Das ist ihr eigentlicher Nutzen.</p>
+
+  <p>In der technischen Analyse sprechen wir nie von Gewissheiten, sondern von Möglichkeiten. Wir interpretieren Signale und positionieren uns auf der Seite des wahrscheinlichsten Szenarios.</p>
+
+  <h3>Schön, aber soll ich hier kaufen oder warten?</h3>
+
+  <p>Es gibt Anzeichen, dass Welle C abgeschlossen ist, aber es gibt keine Gewissheit. Wenn eine flexible Position gehalten werden kann, könnte man unter den dargelegten Prämissen eine Long-Position eröffnen (wir befinden uns am Beginn von Welle 1 des nächsten Aufwärtsimpulses) mit Invalidierung (Stop-Loss) unterhalb von 74.400 USD.</p>
+
+  <p>Wer eine langfristige Bitcoin-Exposition anstrebt, sollte diese Zone einfach als gute Akkumulationszone verstehen, auch wenn die Möglichkeit besteht, niedrigere Niveaus zu besuchen. Aus dieser Perspektive: hier kaufen und nicht nervös werden, aber nicht das gesamte Kapital aufbrauchen. Weiter kaufen, wenn der Preis weiterhin Stärke zeigt, und wenn er 74.400 USD unterschreitet, warten, um an Niveaus unterhalb des bereits markierten 60.000-USD-Tiefs zu akkumulieren.</p>
+
+  <div class="disclaimer">
+    <strong>Rechtlicher Hinweis:</strong> Dieser Artikel ist eine technische Analyseübung zu Informations- und Bildungszwecken. Er stellt keine Finanzberatung oder Anlageempfehlung dar. Kryptowährungsmärkte sind äußerst volatil. Jede Anlageentscheidung liegt in der alleinigen Verantwortung des Lesers.
+  </div>
+
+</div><!-- /container -->
+
+<div class="container" style="padding: 3rem 2rem; border-top: 1px solid var(--rule);">
+  <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem;">Comments · Comentarios · Kommentare · Megjegyzések</p>
+  <script src="https://giscus.app/client.js"
+          data-repo="Pav-DerHexer/Criptomaneras"
+          data-repo-id="R_kgDORl5KmA"
+          data-category="Comments"
+          data-category-id="DIC_kwDORl5KmM4C7qex"
+          data-mapping="specific"
+          data-term="article-2026-05-03-elliott-wave-btc"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="de"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+<footer>
+  © 2026 Criptomaneras &nbsp;·&nbsp; P.V. &nbsp;·&nbsp;
+  <a href="https://t.me/+tjbF3GaGnGwzNzE8" style="color:var(--muted)">Telegram</a>
+</footer>
+
+</body>
+</html>

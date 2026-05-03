@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elliott Wave Count for BTC</title>
+<link rel="alternate" hreflang="en" href="./2026.05.03_Elliott.Wave.BTC.html">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f4f0e8;
+    --accent: #c8392b;
+    --accent2: #1a3a5c;
+    --muted: #6b6560;
+    --rule: #d4cfc7;
+    --gold: #b8860b;
+    --green: #2e7d32;
+    --amber: #e65100;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  .home-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 2rem;
+  }
+
+  .home-nav > a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    text-decoration: none;
+  }
+
+  .home-nav > a:hover { color: var(--accent); }
+
+  .lang-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .lang-bar a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .lang-bar a:hover { color: var(--accent2); }
+  .lang-bar a.active { color: var(--accent2); text-decoration: underline; text-underline-offset: 3px; }
+  .lang-bar .sep { color: var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 3px double var(--ink);
+    padding: 2rem 0 0;
+    text-align: center;
+  }
+
+  .header-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 820px;
+    margin: 0 auto 1.5rem;
+    padding: 0 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em { font-style: italic; color: var(--accent); }
+
+  .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 640px;
+    margin: 0 auto 1rem;
+    padding: 0 2rem;
+  }
+
+  .source-credit {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin: 0 auto 2rem;
+    padding: 0 2rem;
+  }
+  .source-credit a {
+    color: var(--accent2);
+    text-decoration: none;
+  }
+  .source-credit a:hover { text-decoration: underline; }
+
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── BODY ── */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin: 3rem 0 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 2.5rem 0 1rem;
+    color: var(--accent2);
+  }
+
+  p {
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  strong { font-weight: 500; }
+
+  a { color: var(--accent2); }
+
+  .lead {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    margin: 2.5rem 0;
+  }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    margin: 2.5rem 0;
+    padding: 2rem 2rem 2rem 3rem;
+    border-left: 4px solid var(--accent);
+    background: white;
+    position: relative;
+  }
+
+  .pullquote::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--accent);
+    opacity: 0.2;
+    position: absolute;
+    top: -1rem; left: 0.5rem;
+    line-height: 1;
+  }
+
+  .pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* ── TABLES ── */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: white;
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+  }
+
+  td {
+    padding: 0.75rem 0.9rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  tr:nth-child(even) td { background: white; }
+
+  .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    display: inline-block;
+  }
+  .badge-bull  { background: #d5f0e0; color: var(--green); }
+  .badge-bear  { background: #fde8e8; color: var(--accent); }
+  .badge-warn  { background: #fef3cd; color: var(--amber); }
+  .badge-blue  { background: #dce8f5; color: var(--accent2); }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    margin: 1.5rem 0 0.75rem;
+    display: inline-block;
+  }
+
+  /* ── IMAGES ── */
+  .article-img {
+    margin: 1.5rem 0;
+    border: 1px solid var(--rule);
+    background: white;
+  }
+
+  .article-img img {
+    width: 100%;
+    display: block;
+  }
+
+  .article-img figcaption {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    padding: 0.5rem 0.75rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── OPERATIVE BOX ── */
+  .op-box {
+    border: 2px solid var(--ink);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    background: white;
+    position: relative;
+  }
+
+  .op-box .op-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    position: absolute;
+    top: -0.55rem;
+    left: 1.2rem;
+    background: white;
+    padding: 0 0.4rem;
+  }
+
+  .op-box p { margin: 0; font-size: 0.92rem; }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    margin: 3rem 0 1rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--rule);
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.6;
+    background: white;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 3px double var(--ink);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+    .pullquote { padding: 1.5rem 1.5rem 1.5rem 2rem; }
+    .header-meta { flex-direction: column; gap: 0.4rem; }
+    .lang-bar { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="home-nav">
+  <a href="index.html">← Home</a>
+  <div class="lang-bar">
+    <a href="../es/2026.05.03_Elliott.Wave.BTC.html">ES</a>
+    <span class="sep">·</span>
+    <a href="./2026.05.03_Elliott.Wave.BTC.html" class="active">EN</a>
+    <span class="sep">·</span>
+    <a href="../de/2026.05.03_Elliott.Wave.BTC.html">DE</a>
+    <span class="sep">·</span>
+    <a href="../hu/2026.05.03_Elliott.Wave.BTC.html">HU</a>
+  </div>
+</nav>
+
+<header>
+  <div class="header-eyebrow">Technical Analysis &middot; Crypto</div>
+  <h1>Elliott Wave Count for <em>BTC</em></h1>
+  <p class="subtitle">Validating the 1–5 impulse and the A-B-C correction. Operational thresholds and criteria to determine whether Wave C has concluded.</p>
+  <p class="source-credit">Count proposed by Miguel from the <a href="https://youtu.be/VhJ9TJTYOsU" target="_blank">Bitcoin al Día</a> channel</p>
+  <div class="header-meta">
+    <span>P.V.</span>
+    <span>May 2026</span>
+    <span>~8 min read</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <p class="lead">Elliott Wave analysis remains, decades after its formulation, one of the most powerful —and most debated— tools in technical analysis. Its strength lies in the fact that it does not merely describe what price has done, but proposes an internal structure that allows us to anticipate what it might do next. Its weakness is the same: the subjectivity of the count.</p>
+
+  <p>What follows is a rigorous validation exercise. We start from a count proposed by Miguel of the Bitcoin al Día channel on Bitcoin across daily and weekly timeframes, and subject it to the formal rules of the theory. The objective is not to confirm any thesis, but to establish what concrete evidence would distinguish a bullish scenario from a bearish one.</p>
+
+  <div class="pullquote">
+    <p>The count is not valuable by itself. What matters is the methodology to know when it is wrong.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Proposed Count: 1–5 Impulse and A-B-C Correction</h2>
+
+  <p>The count we are analysing describes Bitcoin's structure from the lows of the previous cycle to the recent high (~$108,500) as a <strong>five-wave bullish impulse</strong>, followed by an ongoing correction of the <strong>A-B-C expanded flat</strong> type.</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img1.jpg" alt="BTC weekly chart with 1–5 bullish impulse and A-B-C correction">
+    <figcaption>BTC/USD weekly chart · Kraken · 1–5 impulse and A-B-C expanded flat count</figcaption>
+  </figure>
+
+  <div class="section-label">Bullish impulse structure (waves 1–5)</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Wave</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Wave 1</strong></td><td>First impulse from cycle lows. Sets the direction of the major trend.</td></tr>
+        <tr><td><strong>Wave 2</strong></td><td>Deep correction, without exceeding the origin of Wave 1. Confirms the structure.</td></tr>
+        <tr><td><strong>Wave 3</strong></td><td>The most extensive impulse. Generally the longest and most volatile wave of the cycle.</td></tr>
+        <tr><td><strong>Wave 4</strong></td><td>Sideways correction. Does not penetrate Wave 1 territory. Alternation pattern with Wave 2.</td></tr>
+        <tr><td><strong>Wave 5</strong></td><td>Final impulse. Cycle high at ~$108,500. Origin of the A-B-C correction.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>After completing Wave 5, price begins a correction we classify as an <strong>expanded flat (3-3-5)</strong>. In this pattern, Wave B exceeds the Wave 5 high of the preceding impulse —which is not only permitted but is the defining characteristic of the expanded flat— and Wave C completes the correction with a five-sub-wave move ending below the Wave A low.</p>
+
+  <p>For more detail on the rules of Elliott corrective patterns: <a href="https://bullwaves.org/complete-guide-elliott-wave-correction-patterns/" target="_blank">bullwaves.org — Complete Guide Elliott Wave Correction Patterns</a>.</p>
+
+  <div class="section-label">Formal rules of the A-B-C expanded flat (3-3-5)</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Wave</th><th>Rules and notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Wave A</strong></td><td>Three internal sub-waves. In this count: from ~$108,500 to ~$74,400.</td></tr>
+        <tr><td><strong>Wave B</strong></td><td>Three internal sub-waves. Can —and in the expanded flat, must— exceed the Wave 5 high (~$108,500). In this count it reached ~$125,600. This does not invalidate the pattern; it is its defining characteristic.</td></tr>
+        <tr><td><strong>Wave C</strong></td><td>Five internal sub-waves. Must end below the Wave A low (~$74,400). Indicative target: 162% of A's length, in the ~$69,000–70,000 zone.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>The Operational Question: Has Wave C Ended?</h2>
+
+  <p>Bitcoin's current price (~$78,000 at the time of this analysis) sits in an ambiguous zone: below the Wave 5 high and above the Wave A low. This position neither confirms nor invalidates the conclusion of Wave C.</p>
+
+  <p>Two price thresholds define the boundaries of the scenario and act as primary binary criteria:</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img2.jpg" alt="BTC chart showing ambiguous zone between $74,400 and $108,500">
+    <figcaption>Operational ambiguous zone between Wave A low (~$74,400) and Wave A origin (~$108,500)</figcaption>
+  </figure>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Criterion</th><th>Level</th><th>Interpretation</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-bull">Bullish</span></td>
+          <td><strong>&gt; $108,500</strong></td>
+          <td>Break above the Wave A origin (Wave 5 high). The corrective wave is formally concluded. The A-B-C correction has ended and the market resumes the major bullish impulse.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-bear">Bearish</span></td>
+          <td><strong>&lt; $74,400</strong></td>
+          <td>Break below the Wave A low. Wave C continues to develop with additional downside, with the possibility of visiting new lows.</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-warn">Ambiguous</span></td>
+          <td><strong>$74,400–$108,500</strong></td>
+          <td>Zone where price can move without confirming or invalidating the scenario. Any categorical statement within this band would be confirmation bias. Complementary criteria are required.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Four Alternative Criteria to Reduce Ambiguity</h2>
+
+  <p>Given that the range between $74,400 and $108,500 is operationally <strong>too wide</strong>, four additional criteria can be applied to obtain early signals of whether Wave C has concluded or is ongoing. None is definitive on its own. Their confluence is.</p>
+
+  <!-- Criterion 1 -->
+  <h3>Criterion 1 — Internal Structure of C: Sub-wave Count</h3>
+
+  <p>Wave C must complete in <strong>five bearish sub-waves</strong> from the Wave B high (~$125,600). If five complete sub-waves can be counted, C has formally ended, regardless of the exact price. If only three can be counted, C has almost certainly not concluded.</p>
+
+  <p>This is where we once again run into the subjectivity of the count. We could quite easily count 5 waves as follows:</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img3.jpg" alt="Alternative count A: Wave C completed in 5 sub-waves">
+    <figcaption>Interpretation A — Wave C completed: 5 sub-waves counted from the Wave B high</figcaption>
+  </figure>
+
+  <p>And conclude that Wave C unfolds in a 5-wave sub-structure, validating the idea that it has concluded.</p>
+
+  <p>But we could also produce the following count:</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img4.jpg" alt="Alternative count B: Wave C still in development">
+    <figcaption>Interpretation B — Wave C in development: only 3 sub-waves, sub-wave 5 still to come on the downside</figcaption>
+  </figure>
+
+  <p>This latter case would force us to conclude that Wave C has not yet ended and that a sub-wave 5 to the downside could still unfold. A break of $74,400 to the downside would give a possible signal of this possibility, which would be confirmed by a break of $61,000.</p>
+
+  <p>As we can see, this first criterion remains undefined since it is based on the subjectivity of the count, although the structure will tell us which interpretation is more likely. If we are in Wave 1 of the next bullish impulse, we must see an impulsive structure and not a sideways or zigzag one.</p>
+
+  <!-- Criterion 2 -->
+  <h3>Criterion 2 — RSI Divergence (Daily / Weekly)</h3>
+
+  <p>It is common to resolve ambiguous situations through the RSI indicator, by studying whether any type of divergence occurs that might signal a direction.</p>
+
+  <p>However, no RSI divergences are observed on the daily or weekly charts.</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img5.jpg" alt="BTC daily RSI without clear divergences">
+    <figcaption>RSI 14 — BTC/USD daily chart · No appreciable bullish or bearish divergences</figcaption>
+  </figure>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img6.jpg" alt="BTC weekly RSI">
+    <figcaption>RSI 14 — BTC/USD weekly chart · February bearish divergence cancelled since March</figcaption>
+  </figure>
+
+  <p>A divergence would mean that while price makes lower lows, the RSI shows higher lows (bullish divergence), or vice versa (bearish divergence). But these circumstances do not appear on either the daily or weekly chart. So this second criterion does not appear conclusive either. However, the absence of divergences is a good sign, as no bearish divergences are apparent in the potential Wave 1 we may be forming.</p>
+
+  <p>At the start of the move, during February, a small bearish divergence was visible on the weekly chart, where price was making higher lows while the RSI was making lower lows. However, that divergence has been cancelled since early March, where the RSI resumes making higher lows alongside price. A cancellation of the bearish divergence could be interpreted as a sign of strength, although we would not use it as a standalone valid operational indicator.</p>
+
+  <!-- Criterion 3 -->
+  <h3>Criterion 3 — Price Confluence with Fibonacci Targets</h3>
+
+  <p>The length of Wave A (from ~$108,500 to ~$74,400) amounts to approximately <strong>$34,000 of decline</strong>. Projected from the Wave B high (~$125,600):</p>
+
+  <ul style="margin: 0.5rem 0 1.2rem 1.5rem; font-size: 0.95rem; line-height: 2;">
+    <li>100% of A → target ~$91,600 <em>(already reached and exceeded)</em></li>
+    <li><strong>162% of A → target ~$69,000–70,000 <em>(also reached)</em></strong></li>
+  </ul>
+
+  <p>This price zone has already been pierced, so this criterion <strong>does indicate</strong> that Wave C could perfectly well be <strong>complete</strong>.</p>
+
+  <!-- Criterion 4 -->
+  <h3>Criterion 4 — Break of the C Downtrend Line</h3>
+
+  <p>Here we see a clear signal.</p>
+
+  <p>The bearish trend line of Wave C has been broken since early April.</p>
+
+  <figure class="article-img">
+    <img src="../img/btc-elliott-img7.jpg" alt="Break of the Wave C downtrend line">
+    <figcaption>Bullish break of the Wave C downtrend line · Early April 2026</figcaption>
+  </figure>
+
+  <p>This signal occurs before price reaches the $108,500 threshold and allows anticipating the reversal with a shorter stop distance. It is the earliest of the four criteria, but also the most prone to false positives.</p>
+
+  <div class="op-box">
+    <span class="op-label">Composite Operational Criterion</span>
+    <p>The confluence of three or more of these four criteria around the same price level is where the probability of Wave C's end reaches its maximum. No single criterion alone justifies a position. The combination of complete 5 sub-wave structure within Wave C (subjective) + price in the 162% of A zone + break of the downtrend line constitutes a higher-reliability signal within this analytical framework.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Summary Decision Table</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Level / Criterion</th><th>Signal</th><th>Interpretation</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>&gt; $108,500</strong></td>
+          <td><span class="badge badge-bull">Bullish</span></td>
+          <td>A-B-C completed. Expanded flat concluded. Major impulse resumed.</td>
+        </tr>
+        <tr>
+          <td><strong>&lt; $74,400</strong></td>
+          <td><span class="badge badge-bear">Bearish</span></td>
+          <td>Wave C in development. Next target: $69,000–70,000 zone.</td>
+        </tr>
+        <tr>
+          <td>5 complete C sub-waves</td>
+          <td><span class="badge badge-blue">Structural</span></td>
+          <td>C formally completed. Higher-reliability signal, but subject to counting subjectivity.</td>
+        </tr>
+        <tr>
+          <td>No bearish divergence on weekly RSI</td>
+          <td><span class="badge badge-blue">Confirmation</span></td>
+          <td>No additional bearish signal. Reinforces end of C if it appears alongside other criteria.</td>
+        </tr>
+        <tr>
+          <td>Price in $69,000–70,000 zone (already reached)</td>
+          <td><span class="badge badge-bull">Target</span></td>
+          <td>162% of A from Wave B high reached. Fibonacci confluence fulfilled.</td>
+        </tr>
+        <tr>
+          <td>Break of C downtrend line (already occurred)</td>
+          <td><span class="badge badge-bull">Early</span></td>
+          <td>First reversal signal. Occurred in April. Subject to false positives.</td>
+        </tr>
+        <tr>
+          <td>$74,400–$108,500 (no binary signal)</td>
+          <td><span class="badge badge-warn">Ambiguous</span></td>
+          <td>Zone without definitive criterion. Requires complementary criteria.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <h2>Conclusion</h2>
+
+  <p>The proposed count —1–5 impulse followed by A-B-C expanded flat correction— is <strong>formally valid</strong> under Elliott's rules, with one important caveat: the internal structure of the final Wave C admits two readings (3 or 5 sub-waves), and only the 5 sub-wave version maintains the idea that it has concluded. This is the weakest point of the count.</p>
+
+  <p>The current price (~$78,000) sits in an ambiguous zone. The two binary thresholds —$108,500 to the upside and $74,400 to the downside— remain the ultimate arbiters of the scenario. The four alternative criteria are tools to reduce operational uncertainty within that band, not to eliminate it.</p>
+
+  <p>Wave analysis does not predict the future. It defines the structure within which we interpret what price does, and establishes precisely when that structure is refuted. That is its real utility.</p>
+
+  <p>In technical analysis, we never speak of certainties, only possibilities. We interpret signals and align ourselves with the most probable scenario.</p>
+
+  <h3>Fine, but should I buy here or wait?</h3>
+
+  <p>There are signs that Wave C has concluded, but there is no certainty. If a flexible position can be maintained, we could open a long position under the stated premises (we are at the start of Wave 1 of the next bullish impulse) with invalidation (stop loss) below $74,400.</p>
+
+  <p>If what you are looking for is long-term Bitcoin exposure, simply understand this zone as a good accumulation zone, even though there is a possibility of visiting lower levels. From this perspective, buy here and don't panic, but don't exhaust all your capital. Keep buying if it continues to show strength, and if it breaks $74,400 wait to accumulate at levels below the $60,000 low already marked.</p>
+
+  <div class="disclaimer">
+    <strong>Legal notice:</strong> This article is a technical analysis exercise for informational and educational purposes only. It does not constitute financial advice or investment recommendation. Cryptocurrency markets are highly volatile. Any investment decision is the sole responsibility of the reader.
+  </div>
+
+</div><!-- /container -->
+
+<div class="container" style="padding: 3rem 2rem; border-top: 1px solid var(--rule);">
+  <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem;">Comments · Comentarios · Kommentare · Megjegyzések</p>
+  <script src="https://giscus.app/client.js"
+          data-repo="Pav-DerHexer/Criptomaneras"
+          data-repo-id="R_kgDORl5KmA"
+          data-category="Comments"
+          data-category-id="DIC_kwDORl5KmM4C7qex"
+          data-mapping="specific"
+          data-term="article-2026-05-03-elliott-wave-btc"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+<footer>
+  © 2026 Criptomaneras &nbsp;·&nbsp; P.V. &nbsp;·&nbsp;
+  <a href="https://t.me/+tjbF3GaGnGwzNzE8" style="color:var(--muted)">Telegram</a>
+</footer>
+
+</body>
+</html>
